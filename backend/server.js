@@ -18,7 +18,8 @@ app.use(Express.json());
 
 app.post("/photo", async (request, response) => {
   try {
-    var result = await HomePageModel.find().exec();
+    var person = new HomePageModel(request.body);
+    var result = await person.save();
     response.send(result);
   } catch (error) {
     response.status(500).send(error);
@@ -27,8 +28,7 @@ app.post("/photo", async (request, response) => {
 
 app.post("/data", async (request, response) => {
   try {
-    console.log("data post")
-    let model = new HomePageModel({title: 'Sigrid', summary: 'version'});
+    let model = new HomePageModel(request.body);
     var result = await model.save();
     response.send(result);
   } catch (error) {
@@ -36,10 +36,10 @@ app.post("/data", async (request, response) => {
   }
 });
 
-app.get("/person/:id", async (request, response) => {
+app.get("/data/:id", async (request, response) => {
   try {
-    var person = await PersonModel.findById(request.params.id).exec();
-    response.send(person);
+    var homePage = await HomePageModel.findById(request.params.id).exec();
+    response.send(homePage);
   } catch (error) {
     response.status(500).send(error);
   }
