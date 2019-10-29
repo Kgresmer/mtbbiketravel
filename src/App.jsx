@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
+import HomePage from "./home-page";
 
 function App() {
   const [homepageData, setHomepageData] = useState({ title: 'Default Title', summary: 'Default Biking Stuff' });
@@ -21,8 +21,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <h1>{homepageData.title}</h1>
+        <HomePage />
         <h3>{homepageData.summary}</h3>
       </header>
     </div>
