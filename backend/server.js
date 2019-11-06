@@ -1,10 +1,16 @@
-const Mongoose = require("mongoose");
 const Express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const sharp = require('sharp');
+const fs = require('fs');
+const bodyParser = require('body-parser')
+const multer = require('multer');
+const fileUpload = require('express-fileupload');
 
-const HomePageModel = Mongoose.model('homepages', {
+
+
+const HomePageModel = mongoose.model('homepages', {
   title: String,
   summary: String
 });
@@ -12,17 +18,41 @@ const HomePageModel = Mongoose.model('homepages', {
 const app = Express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(Express.json());
+var whitelist = ['http://localhost:3000', "http://localhost:5000"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+// Then pass them to cors:
+app.use(cors(corsOptions));
 
 
-app.post("/photo", async (request, response) => {
+const upload = multer({ dest: 'uploads/' });
+
+app.post("/photo", upload.single('file'), (req, res) => {
   try {
-    var person = new HomePageModel(request.body);
-    var result = await person.save();
-    response.send(result);
+    console.log(req.file);
+    console.log(req.body.name);
+
+    var data = fs.readFileSync('./uploads/' + req.file.filename);
+
+    sharp(data)
+      .resize(200, 200)
+      .toFile(req.body.name);
+
+    fs.unlinkSync('./uploads/' + req.file.filename)
+
+    res.status(200).send('pic uploaded');
+
   } catch (error) {
-    response.status(500).send(error);
+    console.log(error)
+    res.status(500).send(error);
   }
 });
 

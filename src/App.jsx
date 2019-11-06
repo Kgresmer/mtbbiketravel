@@ -8,10 +8,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios({
-        url: 'http://localhost:5000/data/5dafb1bb572dcf1398bfbf70',
-        method: 'get'
-      });
+      const response = await axios.get('http://localhost:5000/data/5dafb1bb572dcf1398bfbf70');
       setHomepageData(response.data);
       console.log(response)
     }
