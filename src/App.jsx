@@ -7,7 +7,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import HomePage from "./home-page";
+import HomePage from "./public/home-page";
+import About from "./public/About";
+import Contact from "./public/Contact";
 
 function App() {
   const [homepageData, setHomepageData] = useState({ title: 'Default Title', summary: 'Default Biking Stuff' });
@@ -33,17 +35,15 @@ function App() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
+          <h3>{homepageData.title}</h3>
+          <h4>{homepageData.summary}</h4>
         </nav>
 
 
         <div className="App">
-          <header className="App-header">
-            <h1>{homepageData.title}</h1>
-            <h3>{homepageData.summary}</h3>
-          </header>
         </div>
 
         <Switch>
@@ -51,10 +51,10 @@ function App() {
             <About />
           </Route>
           <Route exact={true} path="/contact">
-            <contact />
+            <Contact />
           </Route>
           <Route path="/">
-            <Home />
+            <HomePage />
           </Route>
           <Route component={HomePage} />
         </Switch>

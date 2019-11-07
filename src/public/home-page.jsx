@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import ImageUploader from 'react-images-upload';
 import axios from "axios";
 import FormData from 'form-data'
 
