@@ -1,3 +1,4 @@
+const photoService = require('./photo-service.js');
 const Express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -37,14 +38,30 @@ const upload = multer({ dest: 'uploads/' });
 
 app.post("/photo", upload.single('file'), (req, res) => {
   try {
-    console.log(req.file);
-    console.log(req.body.name);
 
-    var data = fs.readFileSync('./uploads/' + req.file.filename);
+    const data = fs.readFileSync('./uploads/' + req.file.filename);
+    sharp(data).metadata()
+      .then(info => {
+        const smW = Math.round(info.width * 11 / 100);
+        const smH = Math.round(info.height * 11 / 100);
+        const mW = Math.round(info.width * 29 / 100);
+        const mH = Math.round(info.height * 29 / 100);
+        const lgW = Math.round(info.width * 60 / 100);
+        const lgH = Math.round(info.height * 60 / 100);
+        const xlW = Math.round(info.width * 100 / 100);
+        const xlH = Math.round(info.height * 100 / 100);
 
-    sharp(data)
-      .resize(200, 200)
-      .toFile(req.body.name);
+        sharp(data).resize(smW, smH).toFile(req.body.name + '-sm.jpg');
+        sharp(data).resize(mW, mH).toFile(req.body.name + '-m.jpg');
+        sharp(data).resize(lgW, lgH).toFile(req.body.name + '-lg.jpg');
+        sharp(data).resize(xlW, xlH).toFile(req.body.name + '-xl.jpg');
+
+        fs.readFile('./' + req.body.name + '-sm.jpg', function (err, data) {
+          if (err) throw err;
+          photoService.upload(data, req.body.name + '-sm.jpg');
+        });
+
+      });
 
     fs.unlinkSync('./uploads/' + req.file.filename)
 

@@ -29,7 +29,7 @@ const HomePage = () => {
       if (picture) {
         const formData = new FormData();
         formData.append('file', picture.target.files[0], {type: 'file'});
-        formData.append('name', 'kevin.jpg');
+        formData.append('name', 'kevin');
         axios.post('http://localhost:5000/photo', formData, {
           headers: {
             'accept': 'application/json',
