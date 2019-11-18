@@ -60,6 +60,18 @@ app.post("/photo", upload.single('file'), (req, res) => {
           if (err) throw err;
           photoService.upload(data, req.body.name + '-sm.jpg');
         });
+        fs.readFile('./' + req.body.name + '-m.jpg', function (err, data) {
+          if (err) throw err;
+          photoService.upload(data, req.body.name + '-m.jpg');
+        });
+        fs.readFile('./' + req.body.name + '-lg.jpg', function (err, data) {
+          if (err) throw err;
+          photoService.upload(data, req.body.name + '-lg.jpg');
+        });
+        fs.readFile('./' + req.body.name + '-xl.jpg', function (err, data) {
+          if (err) throw err;
+          photoService.upload(data, req.body.name + '-xl.jpg');
+        });
 
       });
 

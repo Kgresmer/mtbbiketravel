@@ -5,7 +5,6 @@ const fs = require('fs');
 const photoBucket = 'mtbbiketravel';
 
 AWS.config.update({
-  region: 'US_EAST_1',
   credentials: {
     accessKeyId: process.env.ACCESS_GET,
     secretAccessKey: process.env.SECRET_GET
