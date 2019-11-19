@@ -36,51 +36,38 @@ app.use(cors(corsOptions));
 
 const upload = multer({ dest: 'uploads/' });
 
+const resizeAndUpload = (data, percent, extension, fileName) => {
+  sharp(data).metadata()
+    .then(info => {
+      const smW = Math.round(info.width * percent / 100);
+      const smH = Math.round(info.height * percent / 100);
+
+      sharp(data).resize(smW, smH).toFile(fileName + extension).then((s) => {
+        console.log(s);
+        fs.readFile('./' + fileName + extension, function (err, data) {
+          if (err) throw err;
+          photoService.upload(data, fileName + extension);
+        });
+      });
+    });
+};
+
 app.post("/photo", upload.single('file'), (req, res) => {
   try {
 
     const data = fs.readFileSync('./uploads/' + req.file.filename);
-    sharp(data).metadata()
-      .then(info => {
-        const smW = Math.round(info.width * 11 / 100);
-        const smH = Math.round(info.height * 11 / 100);
-        const mW = Math.round(info.width * 29 / 100);
-        const mH = Math.round(info.height * 29 / 100);
-        const lgW = Math.round(info.width * 60 / 100);
-        const lgH = Math.round(info.height * 60 / 100);
-        const xlW = Math.round(info.width * 100 / 100);
-        const xlH = Math.round(info.height * 100 / 100);
 
-        sharp(data).resize(smW, smH).toFile(req.body.name + '-sm.jpg');
-        sharp(data).resize(mW, mH).toFile(req.body.name + '-m.jpg');
-        sharp(data).resize(lgW, lgH).toFile(req.body.name + '-lg.jpg');
-        sharp(data).resize(xlW, xlH).toFile(req.body.name + '-xl.jpg');
+    resizeAndUpload(data, 11, '-sm.jpg', req.body.name);
+    resizeAndUpload(data, 29, '-m.jpg', req.body.name);
+    resizeAndUpload(data, 60, '-lg.jpg', req.body.name);
+    resizeAndUpload(data, 100, '-xl.jpg', req.body.name);
 
-        fs.readFile('./' + req.body.name + '-sm.jpg', function (err, data) {
-          if (err) throw err;
-          photoService.upload(data, req.body.name + '-sm.jpg');
-        });
-        fs.readFile('./' + req.body.name + '-m.jpg', function (err, data) {
-          if (err) throw err;
-          photoService.upload(data, req.body.name + '-m.jpg');
-        });
-        fs.readFile('./' + req.body.name + '-lg.jpg', function (err, data) {
-          if (err) throw err;
-          photoService.upload(data, req.body.name + '-lg.jpg');
-        });
-        fs.readFile('./' + req.body.name + '-xl.jpg', function (err, data) {
-          if (err) throw err;
-          photoService.upload(data, req.body.name + '-xl.jpg');
-        });
-
-      });
-
-    fs.unlinkSync('./uploads/' + req.file.filename)
+    fs.unlinkSync('./uploads/' + req.file.filename);
 
     res.status(200).send('pic uploaded');
 
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).send(error);
   }
 });
