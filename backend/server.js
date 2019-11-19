@@ -39,6 +39,13 @@ const upload = multer({ dest: 'uploads/' });
 const resizeAndUpload = (data, percent, extension, fileName) => {
   sharp(data).metadata()
     .then(info => {
+
+      if (info.width < 1300) {
+        const ratio = info.width / info.height;
+        info.width = 1300;
+        info.height = ratio * info.width;
+      }
+
       const smW = Math.round(info.width * percent / 100);
       const smH = Math.round(info.height * percent / 100);
 
@@ -57,9 +64,9 @@ app.post("/photo", upload.single('file'), (req, res) => {
 
     const data = fs.readFileSync('./uploads/' + req.file.filename);
 
-    resizeAndUpload(data, 11, '-sm.jpg', req.body.name);
-    resizeAndUpload(data, 29, '-m.jpg', req.body.name);
-    resizeAndUpload(data, 60, '-lg.jpg', req.body.name);
+    resizeAndUpload(data, 42, '-sm.jpg', req.body.name);
+    resizeAndUpload(data, 65, '-m.jpg', req.body.name);
+    resizeAndUpload(data, 75, '-lg.jpg', req.body.name);
     resizeAndUpload(data, 100, '-xl.jpg', req.body.name);
 
     fs.unlinkSync('./uploads/' + req.file.filename);
