@@ -56,6 +56,7 @@ export default function Login(props) {
       <Nav/>
       <div className={'form-card'}>
         <Card className={classes['form-card']}>
+        <h2>Admin Login</h2>
           <form>
             <InputLabel htmlFor="email-input">Email</InputLabel>
             <OutlinedInput id="email-input" label="Email" variant="outlined"
