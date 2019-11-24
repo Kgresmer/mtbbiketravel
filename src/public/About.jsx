@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Nav from "./Contact";
+import Card from '@material-ui/core/Card';
+
 
 function About() {
   const [homepageData, setHomepageData] = useState({mainHeader: 'Default Main Heading', subHeader: 'Default Sub Heading', mainDescription: 'Default main description'});
+  const [bannerImage, setBannerImage] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -15,13 +18,34 @@ function About() {
     fetchData();
   }, []);
 
+  const determineScreenSize = () => {
+    const w = window.innerWidth;
+    if (w < 480) {
+      setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban-205.jpg');
+    } else if (w >= 480 && w < 780) {
+      setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban-561.jpg');
+    } else if (w >= 780 && w < 1200) {
+      setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban-907.jpg');
+    } else if (w >= 1200) {
+      setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-banner-1-9.jpg');
+    }
+  };
+
+  useEffect(() => {
+    determineScreenSize();
+  });
+
+
   return (
     <div>
       <Nav />
-      <h1>About Page</h1>
-      <h1>{homepageData.mainHeader}</h1>
-      <h3>{homepageData.subHeader}</h3>
-      <p>{homepageData.mainDescription}</p>
+      <Card>
+        <img className="" src={bannerImage} alt='swiss mountains'/>
+        <h1>About Page</h1>
+        <h1>{homepageData.mainHeader}</h1>
+        <h3>{homepageData.subHeader}</h3>
+        <p>{homepageData.mainDescription}</p>
+      </Card>
     </div>
     
   );

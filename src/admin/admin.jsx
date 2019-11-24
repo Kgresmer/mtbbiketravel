@@ -11,7 +11,6 @@ const Admin = () => {
 
     const SUCCESS = "Upload Successful! If the website still shows the old photos after reloading, try clearing your browser cache.";
     const FAILURE = "Something went wrong during the upload, please try again. Make sure the file has one of the following extensions: '.jpg', '.png'";
-    const [bannerImage, setBannerImage] = useState('');
     const [formData, setFormData] = useState({mainDescription: ''});
     const [mhError, setMhError] = useState(false);
     const [shError, setShError] = useState(false);
@@ -35,23 +34,6 @@ const Admin = () => {
     let messageIndex = 0;
     let endInterval = () => {
     };
-
-    const determineScreenSize = () => {
-      const w = window.innerWidth;
-      if (w < 480) {
-        setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban-205.jpg');
-      } else if (w >= 480 && w < 780) {
-        setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban-561.jpg');
-      } else if (w >= 780 && w < 1200) {
-        setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban-907.jpg');
-      } else if (w >= 1200) {
-        setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-banner-1-9.jpg');
-      }
-    };
-
-    useEffect(() => {
-      determineScreenSize();
-    });
 
     const onDrop = (picture) => {
       setPic(picture.target.files[0]);
@@ -147,12 +129,6 @@ const Admin = () => {
 
     return (
       <div style={{width: '100%'}}>
-        <Card>
-          <p>{formData['mainHeader']}</p>
-          <p>{formData['subHeader']}</p>
-          <p>{formData['mainDescription']}</p>
-          <img className="" src={bannerImage} alt='swiss mountains'/>
-        </Card>
         <Card className='form-card'>
           <form>
             <TextField id="outlined-basic" label="Main Header" variant="outlined"
