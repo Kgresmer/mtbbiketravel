@@ -7,8 +7,6 @@ import Card from '@material-ui/core/Card';
 import TextField from '@material-ui/core/TextField';
 
 
-
-
 const Admin = () => {
 
     const SUCCESS = "Upload Successful! If the website still shows the old photos after reloading, try clearing your browser cache.";
@@ -64,7 +62,7 @@ const Admin = () => {
       return setInterval(callback, length);
     };
 
-    const onSubmit = (event) => {
+    const onSubmitPhoto = (event) => {
       event.preventDefault();
       if (pic) {
         setLoading(true);
@@ -104,6 +102,38 @@ const Admin = () => {
       }
     };
 
+    const onSubmitData = (event) => {
+      event.preventDefault();
+      if (formData && formData.mainDescription && formData.mainHeader) {
+        setLoading(true);
+        endInterval = interval(() => {
+          setLoadingMessage(loadingMessages[messageIndex]);
+          if (messageIndex === loadingMessages.length - 1) {
+            messageIndex = 0;
+          } else {
+            messageIndex++;
+          }
+        }, 1500);
+        console.log(formData)
+        const config = { headers: {"Accept": "application/json", 'Content-Type':  "application/json"} };
+        axios.put('http://localhost:5000/data/5dafb1bb572dcf1398bfbf70', formData, config).then((response) => {
+            setLoading(false);
+            messageIndex = 0;
+            clearInterval(endInterval);
+            console.log(response);
+            setUploadMessage(SUCCESS);
+          }
+        ).catch((error) => {
+            setLoading(false);
+            messageIndex = 0;
+            clearInterval(endInterval);
+            console.log(error);
+            setUploadMessage(FAILURE);
+          }
+        );
+      }
+    };
+
     const onFieldBlur = (e, fieldName, errorFunction) => {
       if (e.target.value) {
         errorFunction(false);
@@ -124,7 +154,7 @@ const Admin = () => {
           <img className="" src={bannerImage} alt='swiss mountains'/>
         </Card>
         <Card className='form-card'>
-          <form action="http://localhost:5000/photo" method="post" encType="multipart/form-data">
+          <form>
             <TextField id="outlined-basic" label="Main Header" variant="outlined"
                        required={true}
                        multiline
@@ -149,11 +179,16 @@ const Admin = () => {
                        helperText={mdError ? 'This field is required.' : ''}
                        fullWidth={true}
                        margin='normal'/>
-
-
-            <input type="file" name="file" onChange={p => onDrop(p)}/>
-            <input type="submit" value="Upload" onClick={e => onSubmit(e)}/>
+            <input type="submit" value="UploadData" onClick={onSubmitData}/>
           </form>
+        </Card>
+        <Card className='form-card'>
+          <form >
+            <input type="file" name="file" onChange={p => onDrop(p)}/>
+            <input type="submit" value="UploadPhoto" onClick={e => onSubmitPhoto(e)}/>
+          </form>
+        </Card>
+        <Card>
           {loading ? (
             <div id="loadingContainer">
               <p>

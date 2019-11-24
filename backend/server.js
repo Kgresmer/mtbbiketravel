@@ -6,22 +6,28 @@ require("dotenv").config();
 const sharp = require('sharp');
 const fs = require('fs');
 const multer = require('multer');
+const bodyParser = require('body-parser');
 
 
 const HomePageModel = mongoose.model('homepages', {
-  title: String,
-  summary: String
+  mainHeader: String,
+  subHeader: String,
+  mainDescription: String
 });
 
 const app = Express();
 const port = process.env.PORT || 5000;
 
-var whitelist = ['http://localhost:3000', "http://localhost:5000"];
+app.use(bodyParser.json());
+
+var whitelist = ["http://localhost:3000", "http://localhost:5000"];
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
+      console.log("allowed");
       callback(null, true)
     } else {
+      console.log("not allowed" + whitelist.indexOf(origin) !== -1)
       callback(new Error('Not allowed by CORS'))
     }
   }
@@ -162,10 +168,11 @@ app.get("/data/:id", async (request, response) => {
 app.put("/data/:id", async (request, response) => {
   try {
     var person = await HomePageModel.findById(request.params.id).exec();
-    person.set(request.body);
+    person.set({...request.body, _id: request.params.id});
     var result = await person.save();
     response.send(result);
   } catch (error) {
+    console.log(error)
     response.status(500).send(error);
   }
 });
