@@ -127,11 +127,16 @@ const Admin = () => {
       console.log(formData)
     };
 
+    const validateForm = () => {
+      return formData.mainDescription.length > 0 && formData.mainHeader.length > 0 &&
+        !mhError && !shError && !mdError;
+    };
+
     return (
       <div style={{width: '100%'}}>
         <Card className='form-card'>
           <form>
-            <TextField id="outlined-basic" label="Main Header" variant="outlined"
+            <TextField id="main-header-input" label="Main Header" variant="outlined"
                        required={true}
                        multiline
                        error={mhError}
@@ -139,7 +144,7 @@ const Admin = () => {
                        helperText={mhError ? 'This field is required.' : ''}
                        fullWidth={true}
                        margin='normal'/>
-            <TextField id="outlined-basic" label="Sub Header" variant="outlined"
+            <TextField id="sub-header-input" label="Sub Header" variant="outlined"
                        required={true}
                        multiline
                        error={shError}
@@ -147,7 +152,7 @@ const Admin = () => {
                        helperText={shError ? 'This field is required.' : ''}
                        fullWidth={true}
                        margin='normal'/>
-            <TextField id="outlined-basic" label="Main Description" variant="outlined"
+            <TextField id="main-desc-input" label="Main Description" variant="outlined"
                        required={true}
                        multiline
                        error={mdError}
@@ -155,7 +160,7 @@ const Admin = () => {
                        helperText={mdError ? 'This field is required.' : ''}
                        fullWidth={true}
                        margin='normal'/>
-            <input type="submit" value="UploadData" onClick={onSubmitData}/>
+            <input disabled={!validateForm()} type="submit" value="UploadData" onClick={onSubmitData}/>
           </form>
         </Card>
         <Card className='form-card'>
