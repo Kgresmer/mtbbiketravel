@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './App.css';
 import {
@@ -7,12 +7,17 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import HomePage from "./public/home-page";
+import Admin from "./admin/admin";
 import About from "./public/About";
 import Contact from "./public/Contact";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faCircleNotch);
 
 function App() {
-  const [homepageData, setHomepageData] = useState({ title: 'Default Title', summary: 'Default Biking Stuff' });
+  const [homepageData, setHomepageData] = useState({title: 'Default Title', summary: 'Default Biking Stuff'});
 
   useEffect(() => {
     async function fetchData() {
@@ -20,6 +25,7 @@ function App() {
       setHomepageData(response.data);
       console.log(response)
     }
+
     fetchData();
   }, []);
 
@@ -42,21 +48,20 @@ function App() {
           <h4>{homepageData.summary}</h4>
         </nav>
 
-
         <div className="App">
         </div>
 
         <Switch>
           <Route exact={true} path="/about">
-            <About />
+            <About/>
           </Route>
           <Route exact={true} path="/contact">
-            <Contact />
+            <Contact/>
           </Route>
           <Route path="/">
-            <HomePage />
+            <Admin/>
           </Route>
-          <Route component={HomePage} />
+          <Route component={Admin}/>
         </Switch>
       </div>
     </Router>

@@ -1,0 +1,31 @@
+
+.fa-spin {
+    margin: 0 2em;
+}
+
+img {
+    width: 50vw;
+    margin: 0 25vw;
+}
+
+.MuiCard-root {
+    padding: 0.5em;
+    margin: 1em;
+}
+
+.form-card {
+    display: flex;
+}
+
+form {
+    width: 100%;
+}
+
+input {
+    display: block;
+    margin-bottom: 1em;
+}
+
+.form-input {
+    margin-bottom: 1em;
+}

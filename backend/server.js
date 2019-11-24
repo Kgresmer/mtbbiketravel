@@ -5,10 +5,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const sharp = require('sharp');
 const fs = require('fs');
-const bodyParser = require('body-parser')
 const multer = require('multer');
-const fileUpload = require('express-fileupload');
-
 
 
 const HomePageModel = mongoose.model('homepages', {
@@ -36,8 +33,9 @@ app.use(cors(corsOptions));
 
 const upload = multer({ dest: 'uploads/' });
 
-const resizeAndUpload = (data, percent, extension, fileName) => {
-  sharp(data).metadata()
+const resizeAndUpload = async (data, percent, extension, fileName) => {
+  let w, h;
+  await sharp(data).metadata()
     .then(info => {
 
       if (info.width < 1300) {
@@ -46,32 +44,95 @@ const resizeAndUpload = (data, percent, extension, fileName) => {
         info.height = ratio * info.width;
       }
 
-      const smW = Math.round(info.width * percent / 100);
-      const smH = Math.round(info.height * percent / 100);
+      w = Math.round(info.width * percent / 100);
+      h = Math.round(info.height * percent / 100);
+      console.log('done getting sizes')
 
-      sharp(data).resize(smW, smH).toFile(fileName + extension).then((s) => {
-        console.log(s);
-        fs.readFile('./' + fileName + extension, function (err, data) {
-          if (err) throw err;
-          photoService.upload(data, fileName + extension);
-        });
-      });
     });
+  if (w && h) {
+    await sharp(data).resize(w, h).toFile(fileName + extension).then((s) => {
+      console.log('resized ' + extension);
+    });
+
+  }
 };
 
-app.post("/photo", upload.single('file'), (req, res) => {
-  try {
+const readFile = async (extension, fileName) => {
+  return await fs.readFileSync('./' + fileName + extension);
+}
 
+app.post("/photo", upload.single('file'), async (req, res) => {
+  try {
     const data = fs.readFileSync('./uploads/' + req.file.filename);
 
-    resizeAndUpload(data, 42, '-sm.jpg', req.body.name);
-    resizeAndUpload(data, 65, '-m.jpg', req.body.name);
-    resizeAndUpload(data, 75, '-lg.jpg', req.body.name);
-    resizeAndUpload(data, 100, '-xl.jpg', req.body.name);
+    await resizeAndUpload(data, 42, '-sm.jpg', req.body.name);
+    await resizeAndUpload(data, 65, '-m.jpg', req.body.name);
+    await resizeAndUpload(data, 75, '-lg.jpg', req.body.name);
+    await resizeAndUpload(data, 100, '-xl.jpg', req.body.name);
+    const smFile = await readFile('-sm.jpg', req.body.name);
+    const mFile = await readFile('-m.jpg', req.body.name);
+    const lgFile = await readFile('-lg.jpg', req.body.name);
+    const xlFile = await readFile('-xl.jpg', req.body.name);
 
-    fs.unlinkSync('./uploads/' + req.file.filename);
+    const upload1 = photoService.upload(smFile, req.body.name + '-sm.jpg').promise();
+    const upload2 = photoService.upload(mFile, req.body.name + '-m.jpg').promise();
+    const upload3 = photoService.upload(lgFile, req.body.name + '-lg.jpg').promise();
+    const upload4 = photoService.upload(xlFile, req.body.name + '-xl.jpg').promise();
 
-    res.status(200).send('pic uploaded');
+    upload1.then(() => {
+      console.log('upload 1 resolved');
+      fs.unlink('./' + req.body.name + '-sm.jpg', function (err) {
+        if (err) {
+          console.error(err);
+        }
+        console.log('Temp File Delete');
+      });
+    }).catch((err) => {
+      throw err;
+    })
+
+    upload2.then(() => {
+      console.log('upload 2 resolved');
+      fs.unlink('./' + req.body.name + '-m.jpg', function (err) {
+        if (err) {
+          console.error(err);
+        }
+        console.log('Temp File Delete');
+      });
+    }).catch((err) => {
+      throw err;
+    })
+
+    upload3.then(() => {
+      console.log('upload 3 resolved');
+      fs.unlink('./' + req.body.name + '-lg.jpg', function (err) {
+        if (err) {
+          console.error(err);
+        }
+        console.log('Temp File Delete');
+      });
+    }).catch((err) => {
+      throw err;
+    })
+
+    upload4.then(() => {
+      console.log('upload 4 resolved');
+      fs.unlink('./' + req.body.name + '-xl.jpg', function (err) {
+        if (err) {
+          console.error(err);
+        }
+        console.log('Temp File Delete');
+      });
+    }).catch((err) => {
+      throw err;
+    })
+
+    Promise.all([upload1, upload2, upload3, upload4]).then(() => {
+      fs.unlinkSync('./uploads/' + req.file.filename);
+      console.log('unlinking and sending response _______________________')
+      res.status(200).send('pic uploaded');
+    });
+
 
   } catch (error) {
     console.log(error);

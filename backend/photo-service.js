@@ -21,8 +21,9 @@ const upload = (photoData, fileName) => {
     Key: fileName,
     Body: photoData
   };
-  s3.upload(params, function (err, data) {
-    console.log(data);
+  console.log('starting upload')
+  return s3.upload(params, function (err, data) {
+    console.log('inside upload')
     // Whether there is an error or not, delete the temp file
     fs.unlink('./' + fileName, function (err) {
       if (err) {
