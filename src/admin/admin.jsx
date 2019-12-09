@@ -44,7 +44,14 @@ const Admin = () => {
       return setInterval(callback, length);
     };
 
-    const onSubmitPhoto = (event) => {
+    const toBase64 = file => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+    const onSubmitPhoto = async (event) => {
       event.preventDefault();
       if (pic) {
         setLoading(true);
@@ -56,9 +63,16 @@ const Admin = () => {
             messageIndex++;
           }
         }, 1500);
+        const result = await toBase64(pic).catch(e => e);
+        if (result instanceof Error) {
+          console.log('Error: ', result.message);
+          return;
+        }
         const formData = new FormData();
-        formData.append('file', pic, {type: 'file'});
+        formData.append('file', result, );
         formData.append('name', 'test-three');
+
+
         axios.post('http://localhost:5000/photo', formData, {
           headers: {
             'accept': 'application/json',
@@ -97,7 +111,7 @@ const Admin = () => {
           }
         }, 1500);
         console.log(formData)
-        const config = { headers: {"Accept": "application/json", 'Content-Type':  "application/json"} };
+        const config = {headers: {"Accept": "application/json", 'Content-Type': "application/json"}};
         axios.put('http://localhost:5000/data/5dafb1bb572dcf1398bfbf70', formData, config).then((response) => {
             setLoading(false);
             messageIndex = 0;
@@ -164,7 +178,7 @@ const Admin = () => {
           </form>
         </Card>
         <Card className='form-card'>
-          <form >
+          <form>
             <input type="file" name="file" onChange={p => onDrop(p)}/>
             <input type="submit" value="UploadPhoto" onClick={e => onSubmitPhoto(e)}/>
           </form>
