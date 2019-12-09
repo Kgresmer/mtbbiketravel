@@ -58,14 +58,10 @@ function About() {
           <section className="hero-section">
               <figure className="hero">
                   <img className="hero-img" src={bannerImage} alt='swiss mountains'/>
-                  <figcaption className="hero-caption">Unique, hardcore mountain bike adventures organized by local experts.</figcaption>
+                  <figcaption className="hero-caption">Coming Soon!</figcaption>
               </figure>
           </section>
 
-          <section className="trip-info-section">
-
-
-          </section>
       </main>
 
       <footer>

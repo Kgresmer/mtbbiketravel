@@ -108,11 +108,13 @@ header {
 .hero-section {
     position: relative;
     background-color: var(--dark-teal);
+    height: 100vh;
+    overflow: hidden;
 
 }
 
 .hero-image {
-    height: 100%;
+
 }
 
 .hero-caption {
@@ -131,7 +133,7 @@ header {
 ***********************/
 .trip-info-section {
     background-color: var(--dark-teal);
-    height: 30em;
+    height: 15em;
 }
 
 
