@@ -24,15 +24,15 @@ function App() {
         <Nav />
 
         <Switch>
-          <Route exact path="/contact">
-            <Contact/>
-          </Route>
-          <Route exact path="/login">
-            <Login/>
-          </Route>
-          <Route exact path="/admin">
-            <Admin/>
-          </Route>
+          {/*<Route exact path="/contact">*/}
+            {/*<Contact/>*/}
+          {/*</Route>*/}
+          {/*<Route exact path="/login">*/}
+            {/*<Login/>*/}
+          {/*</Route>*/}
+          {/*<Route exact path="/admin">*/}
+            {/*<Admin/>*/}
+          {/*</Route>*/}
           <Route path="/">
             <About/>
           </Route>
