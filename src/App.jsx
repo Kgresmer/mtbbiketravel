@@ -1,12 +1,13 @@
 import React from 'react';
-import './App.css';
+import './css/normalize.css';
+import './css/App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 import Admin from "./admin/admin";
-import About from "./public/About";
+import About from "./public/about/About";
 import Contact from "./public/Contact";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -21,18 +22,18 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {/*<Nav />*/}
 
         <Switch>
-          <Route exact path="/contact">
-            <Contact/>
-          </Route>
-          <Route exact path="/login">
-            <Login/>
-          </Route>
-          <Route exact path="/admin">
-            <Admin/>
-          </Route>
+          {/*<Route exact path="/contact">*/}
+            {/*<Contact/>*/}
+          {/*</Route>*/}
+          {/*<Route exact path="/login">*/}
+            {/*<Login/>*/}
+          {/*</Route>*/}
+          {/*<Route exact path="/admin">*/}
+            {/*<Admin/>*/}
+          {/*</Route>*/}
           <Route path="/">
             <About/>
           </Route>

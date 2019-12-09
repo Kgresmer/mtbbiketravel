@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Card from '@material-ui/core/Card';
+import headerImage from '../assets/mtnbiketravel-logo.png';
+import './about.css';
 
 
 function About() {
@@ -37,13 +38,39 @@ function About() {
 
   return (
     <div>
-      <Card>
-        <img className="" src={bannerImage} alt='swiss mountains'/>
-        <h1>About Page</h1>
-        <h1>{homepageData.mainHeader}</h1>
-        <h3>{homepageData.subHeader}</h3>
-        <p>{homepageData.mainDescription}</p>
-      </Card>
+      <header>
+        <div className="left-nav col">
+            <figure className="logo">
+                <img  src={headerImage} alt="Mountain Bike Travel logo"/>
+            </figure>
+        </div>
+
+        <nav className="right-nav col">
+            <ul className="main-nav">
+                <li className="nav-item"><a href="#">Home</a></li>
+                <li className="nav-item"><a href="#">Destinations</a></li>
+                <li className="nav-item"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+      </header>
+
+      <main>
+          <section className="hero-section">
+              <figure className="hero">
+                  <img className="hero-img" src={bannerImage} alt='swiss mountains'/>
+                  <figcaption className="hero-caption">Unique, hardcore mountain bike adventures organized by local experts.</figcaption>
+              </figure>
+          </section>
+
+          <section className="trip-info-section">
+
+
+          </section>
+      </main>
+
+      <footer>
+
+      </footer>
     </div>
     
   );
