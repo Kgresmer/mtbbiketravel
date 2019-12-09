@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import Nav from "./Nav";
 import Card from '@material-ui/core/Card';
 
 
@@ -42,8 +41,6 @@ function Contact() {
 
   return (
     <div>
-      <Nav/>
-
       <Card>
         <img className="" src={bannerImage} alt='swiss mountains'/>
         <h1>Contact Page</h1>

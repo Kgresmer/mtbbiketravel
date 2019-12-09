@@ -12,6 +12,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import Login from "./public/login/Login";
+import Nav from "./public/Nav";
 
 library.add(fab, faCircleNotch);
 
@@ -20,23 +21,21 @@ function App() {
   return (
     <Router>
       <div>
-        <div className="App">
-        </div>
+        <Nav />
 
         <Switch>
-          <Route exact={true} path="/about">
-            <About/>
-          </Route>
-          <Route exact={true} path="/contact">
+          <Route exact path="/contact">
             <Contact/>
           </Route>
-          <Route exact={true} path="/login">
+          <Route exact path="/login">
             <Login/>
           </Route>
-          <Route exact={true} path="/admin">
+          <Route exact path="/admin">
             <Admin/>
           </Route>
-          <Route component={About}/>
+          <Route path="/">
+            <About/>
+          </Route>
         </Switch>
       </div>
     </Router>

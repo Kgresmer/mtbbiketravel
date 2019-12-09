@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import Nav from "../Nav";
 import Card from '@material-ui/core/Card';
 import './Login.css';
 import {makeStyles} from '@material-ui/core/styles';
@@ -65,7 +64,6 @@ export default function Login(props) {
 
   return (
     <div>
-      <Nav/>
       <div className={'form-card'}>
         <Card className={classes['form-card']}>
         <h2>Admin Login</h2>
