@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from '@material-ui/core/Card';
+import './contact.css';
 
 
 function Contact() {

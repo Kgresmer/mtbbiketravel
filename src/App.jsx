@@ -7,13 +7,15 @@ import {
   Route
 } from "react-router-dom";
 import Admin from "./admin/admin";
-import About from "./public/about/About";
-import Contact from "./public/Contact";
+import Home from "./public/home/home";
+import Contact from "./public/contact/contact";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import Login from "./public/login/Login";
-import Nav from "./public/Nav";
+import Nav from "./public/nav/nav";
+import Destinations from "./public/destinations/destinations";
+import Footer from "./public/footer/footer";
 
 library.add(fab, faCircleNotch);
 
@@ -22,22 +24,26 @@ function App() {
   return (
     <Router>
       <div>
-        {/*<Nav />*/}
+        <Nav/>
 
+        <div className='app-content'>
         <Switch>
-          {/*<Route exact path="/contact">*/}
-            {/*<Contact/>*/}
-          {/*</Route>*/}
-          {/*<Route exact path="/login">*/}
-            {/*<Login/>*/}
-          {/*</Route>*/}
-          {/*<Route exact path="/admin">*/}
-            {/*<Admin/>*/}
-          {/*</Route>*/}
+          <Route exact path="/home">
+            <Home/>
+          </Route>
+          <Route exact path="/destinations">
+            <Destinations/>
+          </Route>
+          <Route exact path="/contact">
+            <Contact/>
+          </Route>
           <Route path="/">
-            <About/>
+            <Home/>
           </Route>
         </Switch>
+        </div>
+
+        <Footer/>
       </div>
     </Router>
   );

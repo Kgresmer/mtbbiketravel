@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import headerImage from '../assets/mtnbiketravel-logo.png';
-import './about.css';
+import './home.css';
 
 
-function About() {
+function Home() {
   const [homepageData, setHomepageData] = useState({mainHeader: 'Default Main Heading', subHeader: 'Default Sub Heading', mainDescription: 'Default main description'});
   const [bannerImage, setBannerImage] = useState('');
 
@@ -35,25 +34,8 @@ function About() {
     determineScreenSize();
   });
 
-
   return (
     <div>
-      <header>
-        <div className="left-nav col">
-            <figure className="logo">
-                <img  src={headerImage} alt="Mountain Bike Travel logo"/>
-            </figure>
-        </div>
-
-        <nav className="right-nav col">
-            <ul className="main-nav">
-                <li className="nav-item"><a href="#">Home</a></li>
-                <li className="nav-item"><a href="#">Destinations</a></li>
-                <li className="nav-item"><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-      </header>
-
       <main>
           <section className="hero-section">
               <figure className="hero">
@@ -61,15 +43,10 @@ function About() {
                   <figcaption className="hero-caption">Coming Soon!</figcaption>
               </figure>
           </section>
-
       </main>
-
-      <footer>
-
-      </footer>
     </div>
     
   );
 }
 
-export default About;
+export default Home;
