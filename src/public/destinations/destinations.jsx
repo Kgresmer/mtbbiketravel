@@ -42,13 +42,14 @@ function Destinations() {
 
   return (
     <div>
-      <Card>
-        <img className="" src={bannerImage} alt='swiss mountains'/>
-        <h1>Contact Page</h1>
-        <h1>{homepageData.mainHeader}</h1>
-        <h3>{homepageData.subHeader}</h3>
-        <p>{homepageData.mainDescription}</p>
-      </Card>
+      <main>
+        <section className="hero-section">
+          <figure className="hero">
+            <img className="hero-img" src='https://mtbbiketravel.s3.us-east-2.amazonaws.com/other-pages.jpg' alt='swiss mountains'/>
+            <figcaption className="hero-caption">Coming Soon!</figcaption>
+          </figure>
+        </section>
+      </main>
     </div>
   );
 }

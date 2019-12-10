@@ -4,6 +4,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--dark-teal);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 code {
@@ -40,4 +44,33 @@ img {
 
 figure {
   margin: 0;
+}
+
+/***********************
+      Hero Section
+***********************/
+.hero-section {
+  position: center;
+  background-color: var(--dark-teal);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 60vh;
+  width: 100%;
+  overflow: hidden;
+  color: white;
+}
+
+.row {
+  padding: 1rem;
+}
+
+.hero-caption {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  color: white;
+  font-weight: bold;
+  font-size: 2.5em;
+  width: 60%;
 }

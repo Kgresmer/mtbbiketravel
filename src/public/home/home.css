@@ -1,32 +1,12 @@
-/***********************
-      Hero Section
-***********************/
-.hero-section {
-    position: relative;
-    background-color: var(--dark-teal);
-    height: 100vh;
-    overflow: hidden;
-}
 
-.hero-image {
-
-}
-
-.hero-caption {
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    color: white;
-    font-weight: bold;
-    font-size: 2.5em;
-    width: 60%;
-}
-
-
-/***********************
-      Trip Info Section
-***********************/
 .trip-info-section {
-    background-color: var(--dark-teal);
-    height: 15em;
+    position: center;
+    height: 60vh;
+    width: 100%;
+    overflow: visible;
+    color: white;
+}
+
+.tab-heading:hover {
+    background-color: #4a7740;
 }
