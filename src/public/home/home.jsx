@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './home.css';
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 
 function Overview() {
@@ -172,6 +175,7 @@ function Home() {
   });
   const [bannerImage, setBannerImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg)'});
   const [tab, setTab] = useState(<Overview/>);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
 
   useEffect(() => {
     async function fetchData() {
@@ -179,20 +183,32 @@ function Home() {
       setHomepageData(response.data);
       console.log(response)
     }
+
     //determineScreenSize();
 
     //fetchData();
   }, []);
 
+  useEffect(() => {
+    if (!typeof window === 'object') {
+      return false;
+    }
+    function handleResize() {
+      setWindowSize(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const determineScreenSize = () => {
-    const w = window.innerWidth;
-    if (w < 480) {
+
+    if (windowSize < 480) {
       setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg');
-    } else if (w >= 480 && w < 780) {
+    } else if (windowSize >= 480 && windowSize < 780) {
       setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg');
-    } else if (w >= 780 && w < 1200) {
+    } else if (windowSize >= 780 && windowSize < 1200) {
       setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg');
-    } else if (w >= 1200) {
+    } else if (windowSize >= 1200) {
       setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg');
     }
   };
@@ -201,26 +217,56 @@ function Home() {
     setTab(selectedTab);
   };
 
+  const displayTabSelectors = () => {
+    if (windowSize > 768) {
+      return (
+        <div>
+          <div className="col-12 col-sm-4 tab-heading tab-heading-hover" onClick={() => switchTab(<Overview/>)}>
+            <h2>Overview</h2>
+          </div>
+          <div className="col-12 col-sm-4 tab-heading tab-heading-hover" onClick={() => switchTab(<Itinerary/>)}>
+            <h2>Itinerary</h2>
+          </div>
+          <div className="col-12 col-sm-4 tab-heading tab-heading-hover" onClick={() => switchTab(<WhatsIncluded/>)}>
+            <h2>Whats Included</h2>
+          </div>
+          <div>{tab}</div>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <div className="col-12 col-sm-4 tab-heading">
+            <h2>Overview</h2>
+            <Overview/>
+          </div>
+          <div className="col-12 col-sm-4 tab-heading">
+            <h2>Itinerary</h2>
+            <Itinerary/>
+          </div>
+          <div className="col-12 col-sm-4 tab-heading">
+            <h2>Whats Included</h2>
+            <WhatsIncluded/>
+          </div>
+        </div>
+      )
+    }
+  };
+
+
   return (
     <div>
       <main className="">
         <section className="hero-section" style={bannerImage}>
 
         </section>
+
         <section className="trip-info-section container">
           <div className="row">
-            <div className="col-12 col-sm-4 tab-heading" onClick={() => switchTab(<Overview/>)}>
-              <h2>Overview</h2>
-            </div>
-            <div className="col-12 col-sm-4 tab-heading" onClick={() => switchTab(<Itinerary/>)}>
-              <h2>Itinerary</h2>
-            </div>
-            <div className="col-12 col-sm-4 tab-heading" onClick={() => switchTab(<WhatsIncluded/>)}>
-              <h2>Whats Included</h2>
-            </div>
-            <div>{tab}</div>
+            {displayTabSelectors()}
           </div>
         </section>
+
         <section className="hero-section">
 
         </section>

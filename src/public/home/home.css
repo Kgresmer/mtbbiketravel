@@ -1,12 +1,12 @@
 
 .trip-info-section {
     position: center;
-    height: 60vh;
     width: 100%;
+    height: 60vh;
     overflow: visible;
     color: white;
 }
 
-.tab-heading:hover {
+.tab-heading-hover:hover {
     background-color: #4a7740;
 }
