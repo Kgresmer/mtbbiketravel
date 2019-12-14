@@ -9,9 +9,9 @@ const Footer = () => {
       <footer>
         <div className="footer-container">
           <div>
-            <p>Home</p>
-            <p>Destinations</p>
+            <p>About</p>
             <p>Contact</p>
+            <p>Privacy</p>
           </div>
           <div>
             Copyright 2020

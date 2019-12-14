@@ -175,6 +175,8 @@ function Home() {
   const [tabImage, setTabImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/tab-image.jpg)'});
   const [tab, setTab] = useState(<Overview/>);
   const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const lightGreenBackground = {'background-color': '#30472c'};
+  const darkGreenBackground = {'background-color': '#4a7740'};
 
   useEffect(() => {
     async function fetchData() {
@@ -224,20 +226,20 @@ function Home() {
         <div className="tab-section">
           <div className="tab-heading-section">
             <div class="tab-heading-offset"></div>
-            <div className="tab-heading tab-heading-hover"
-                 style={tab.type.name === 'Overview' ? {'background-color': '#30472c'} : {'background-color': '#4a7740'}}
+            <div className="tab-heading"
+                 style={tab.type.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab(<Overview/>)}>
-              <h3>Overview</h3>
+              <h4>Overview</h4>
             </div>
-            <div className="tab-heading tab-heading-hover"
-                 style={tab.type.name === 'Itinerary' ? {'background-color': '#30472c'} : {'background-color': '#4a7740'}}
+            <div className="tab-heading"
+                 style={tab.type.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab(<Itinerary/>)}>
-              <h3>Itinerary</h3>
+              <h4>Itinerary</h4>
             </div>
-            <div className="tab-heading tab-heading-hover"
-                 style={tab.type.name === 'WhatsIncluded' ? {'background-color': '#30472c'} : {'background-color': '#4a7740'}}
+            <div className="tab-heading"
+                 style={tab.type.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab(<WhatsIncluded/>)}>
-              <h3>Whats Included</h3>
+              <h4>Whats Included</h4>
             </div>
             <div className="tab-heading-offset"></div>
             <div className="tab-heading-offset"></div>
@@ -245,25 +247,35 @@ function Home() {
             <div className="tab-heading-offset"></div>
           </div>
           <div className="tab-content-section flex-row background-color-selected">
-            <div className="tab-text-section">{tab}</div>
+            <div className="tab-text-section tab-text-section-large">{tab}</div>
             <div className="tab-image-section" style={tabImage}></div>
           </div>
         </div>
       )
     } else {
       return (
-        <div className="background-color-non-selected">
-          <div className="margin-small-container">
-            <h3 className="background-color-selected padding-heading">Overview</h3>
-            <Overview/>
+        <div className="tab-section">
+          <div className="tab-heading-section">
+            <div className="tab-heading-offset"></div>
+            <div className="tab-heading"
+                 style={tab.type.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab(<Overview/>)}>
+              <h4>Overview</h4>
+            </div>
+            <div className="tab-heading"
+                 style={tab.type.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab(<Itinerary/>)}>
+              <h4>Itinerary</h4>
+            </div>
+            <div className="tab-heading"
+                 style={tab.type.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab(<WhatsIncluded/>)}>
+              <h4>Whats Included</h4>
+            </div>
+            <div className="tab-heading-offset"></div>
           </div>
-          <div className="margin-small-container">
-            <h3 className="background-color-selected padding-heading">Itinerary</h3>
-            <Itinerary/>
-          </div>
-          <div className="margin-small-container">
-            <h3 className="background-color-selected padding-heading">Whats Included</h3>
-            <WhatsIncluded/>
+          <div className="tab-content-section flex-row background-color-selected">
+            <div className="tab-text-section">{tab}</div>
           </div>
         </div>
       )
