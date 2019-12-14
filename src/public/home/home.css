@@ -1,12 +1,95 @@
 
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.tab-section {
+    width: 100vw;
+}
+
+.tab-heading-section {
+    display: flex;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .trip-info-section {
+    margin-top: 10vh;
     position: center;
     width: 100%;
-    height: 60vh;
     overflow: visible;
     color: white;
 }
 
-.tab-heading-hover:hover {
+.tab-content-section {
+    display: flex;
     background-color: #4a7740;
+    padding: 8vw;
+}
+
+.tab-image-section, .tab-text-section {
+    width: 42vw;
+    margin: 5px;
+}
+
+.tab-image-section {
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.tab-text-section {
+    font-size: 1.4rem;
+}
+
+.tab-heading-hover:hover {
+    background-color: #30472c;
+}
+
+.tab-heading-offset {
+    flex: 1;
+}
+
+.tab-heading {
+    flex: 2;
+    padding: 0 10px;
+    text-align: center;
+    background-color: #4a7740;
+    border: solid 1px #30472c;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 28px;
+    left: 68px;
+    width: 400px;
+    font-size: 2.5rem;
+}
+
+.background-color-non-selected {
+    background-color: #4a7740;
+}
+
+.background-color-selected {
+    background-color: #30472c;
+}
+
+.col-md-3 {
+    padding: 0;
+}
+
+.margin-small-container {
+    margin: 20px;
+}
+
+.padding-heading {
+    padding: 20px;
 }

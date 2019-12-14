@@ -8,9 +8,9 @@ import Switch from "@material-ui/core/Switch";
 
 function Overview() {
   return (
-    <div className="col-12">
-      <div className="row">
-        <div className="col-12">
+    <div className="flex-column">
+      <div className="flex-row">
+        <div className="">
           <p>Basecamp for the week will be in Scuol, Switzerland, a small village nestled in the Alps in the far
             eastern portion of Switzerland near the borders of Austria and Italy. Scuol is surrounded by
             rippling peaks and dense forests, and is ideal for remote mountain biking and crowd-free enjoyment.
@@ -18,8 +18,8 @@ function Overview() {
             and fountains that spout mineral water tapped from one of 20 springs in the region.</p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-12">
+      <div className="flex-row">
+        <div className="">
           <p>
             The extensive and well organized infrastructure of Switzerland allows for easy access to what would
             otherwise be remote wilderness. Mountain bikes are the best means to explore and enjoy the countless
@@ -27,8 +27,8 @@ function Overview() {
             Screen reader support enabled.
           </p></div>
       </div>
-      <div className="row">
-        <div className="col-12">
+      <div className="flex-row">
+        <div className="">
           <p>While in the Alps near the Swiss border, the trip will include beautiful glacier views at
             spectacular St Moritz, a day in Davos, the highest city in Europe and full day at in dynamic town of
             Livigno, Italy. After a day of pedaling, treat yourself at one of the oldest spa complexes of
@@ -51,20 +51,20 @@ function Overview() {
 
 function Itinerary() {
   return (
-    <div className="col-12 ">
-      <div className="row">
-        <div className="col-12">
+    <div className="flex-row">
+      <div className="flex-row">
+        <div className="">
           <ul>
-            <li>Day 1: Arrive in Zurich</li>
+            <p>Day 1: Arrive in Zurich
 
-            <p>Welcome to Switzerland!</p>
+              Welcome to Switzerland!
 
-            <p>You will be met at the Zürich Airport and begin the week there. We take a 2.5 hour train through
-              the Swiss countryside then begin the accent into the spectacular place called the Alps.</p>
+              You will be met at the Zürich Airport and begin the week there. We take a 2.5 hour train through
+              the Swiss countryside then begin the accent into the spectacular place called the Alps.
 
-            <p>Once we arrive in Scuol and get settled we’ll grab our bikes and go for a warm-up ride. The day
-              will end with some local cuisine at one of the best restaurant’s in Scuol.</p>
-
+              Once we arrive in Scuol and get settled we’ll grab our bikes and go for a warm-up ride. The day
+              will end with some local cuisine at one of the best restaurant’s in Scuol.
+            </p>
             <li>Day 2: St Mortiz – The Vail of Europe</li>
 
             <p>We load into the vans and head to St Moritz for a spectacular day of riding. As the world’s
@@ -137,9 +137,9 @@ function Itinerary() {
 
 function WhatsIncluded() {
   return (
-    <div className="col-12">
-      <div className="row">
-        <div className="col-12">
+    <div className="flex-row">
+      <div className="flex-row">
+        <div className="">
           <p>Transportation to & from Zürich Airport</p>
           <p>6 Nights lodging in Scuol</p>
           <p>Transportation to riding destinations throughout the week</p>
@@ -154,8 +154,6 @@ function WhatsIncluded() {
           <p>Photo gallery</p>
           <p>Lift tickets at resorts throughout the week as needed</p>
           <p>Morning rafting trip on one of the most exciting white-water rivers in Europe</p>
-
-
           <p>What’s Not included:</p>
 
           <p>· Airfare to Zürich</p>
@@ -174,6 +172,7 @@ function Home() {
     mainDescription: 'Default main description'
   });
   const [bannerImage, setBannerImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg)'});
+  const [tabImage, setTabImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/tab-image.jpg)'});
   const [tab, setTab] = useState(<Overview/>);
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
@@ -193,9 +192,11 @@ function Home() {
     if (!typeof window === 'object') {
       return false;
     }
+
     function handleResize() {
       setWindowSize(window.innerWidth);
     }
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -220,32 +221,48 @@ function Home() {
   const displayTabSelectors = () => {
     if (windowSize > 768) {
       return (
-        <div>
-          <div className="col-12 col-sm-4 tab-heading tab-heading-hover" onClick={() => switchTab(<Overview/>)}>
-            <h2>Overview</h2>
+        <div className="tab-section">
+          <div className="tab-heading-section">
+            <div class="tab-heading-offset"></div>
+            <div className="tab-heading tab-heading-hover"
+                 style={tab.type.name === 'Overview' ? {'background-color': '#30472c'} : {'background-color': '#4a7740'}}
+                 onClick={() => switchTab(<Overview/>)}>
+              <h3>Overview</h3>
+            </div>
+            <div className="tab-heading tab-heading-hover"
+                 style={tab.type.name === 'Itinerary' ? {'background-color': '#30472c'} : {'background-color': '#4a7740'}}
+                 onClick={() => switchTab(<Itinerary/>)}>
+              <h3>Itinerary</h3>
+            </div>
+            <div className="tab-heading tab-heading-hover"
+                 style={tab.type.name === 'WhatsIncluded' ? {'background-color': '#30472c'} : {'background-color': '#4a7740'}}
+                 onClick={() => switchTab(<WhatsIncluded/>)}>
+              <h3>Whats Included</h3>
+            </div>
+            <div className="tab-heading-offset"></div>
+            <div className="tab-heading-offset"></div>
+            <div className="tab-heading-offset"></div>
+            <div className="tab-heading-offset"></div>
           </div>
-          <div className="col-12 col-sm-4 tab-heading tab-heading-hover" onClick={() => switchTab(<Itinerary/>)}>
-            <h2>Itinerary</h2>
+          <div className="tab-content-section flex-row background-color-selected">
+            <div className="tab-text-section">{tab}</div>
+            <div className="tab-image-section" style={tabImage}></div>
           </div>
-          <div className="col-12 col-sm-4 tab-heading tab-heading-hover" onClick={() => switchTab(<WhatsIncluded/>)}>
-            <h2>Whats Included</h2>
-          </div>
-          <div>{tab}</div>
         </div>
       )
     } else {
       return (
-        <div>
-          <div className="col-12 col-sm-4 tab-heading">
-            <h2>Overview</h2>
+        <div className="background-color-non-selected">
+          <div className="margin-small-container">
+            <h3 className="background-color-selected padding-heading">Overview</h3>
             <Overview/>
           </div>
-          <div className="col-12 col-sm-4 tab-heading">
-            <h2>Itinerary</h2>
+          <div className="margin-small-container">
+            <h3 className="background-color-selected padding-heading">Itinerary</h3>
             <Itinerary/>
           </div>
-          <div className="col-12 col-sm-4 tab-heading">
-            <h2>Whats Included</h2>
+          <div className="margin-small-container">
+            <h3 className="background-color-selected padding-heading">Whats Included</h3>
             <WhatsIncluded/>
           </div>
         </div>
@@ -258,16 +275,14 @@ function Home() {
     <div>
       <main className="">
         <section className="hero-section" style={bannerImage}>
-
+          <div className="image-caption">Unique, hardcore mountain bike adventures, organized by local experts</div>
         </section>
 
-        <section className="trip-info-section container">
-          <div className="row">
+        <section className="trip-info-section">
             {displayTabSelectors()}
-          </div>
         </section>
 
-        <section className="hero-section">
+        <section className="">
 
         </section>
       </main>

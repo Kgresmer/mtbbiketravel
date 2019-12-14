@@ -7,7 +7,16 @@ const Footer = () => {
   return (
     <div>
       <footer>
-        <p>Footer</p>
+        <div className="footer-container">
+          <div>
+            <p>Home</p>
+            <p>Destinations</p>
+            <p>Contact</p>
+          </div>
+          <div>
+            Copyright 2020
+          </div>
+        </div>
       </footer>
     </div>
   )
