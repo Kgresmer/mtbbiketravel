@@ -256,7 +256,6 @@ function Home() {
       return (
         <div className="tab-section">
           <div className="tab-heading-section">
-            <div className="tab-heading-offset"></div>
             <div className="tab-heading"
                  style={tab.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <Overview/>, name: 'Overview'})}>
@@ -272,7 +271,6 @@ function Home() {
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
               <h4>Whats Included</h4>
             </div>
-            <div className="tab-heading-offset"></div>
           </div>
           <div className="tab-content-section flex-row background-color-selected">
             <div className="tab-text-section">{tab.component}</div>
