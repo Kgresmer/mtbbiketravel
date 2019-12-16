@@ -4,7 +4,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--dark-teal);
+  background-color: #0b3442 !important;
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
@@ -51,7 +51,7 @@ figure {
 ***********************/
 .hero-section {
   position: relative;
-  background-color: var(--dark-teal);
+  background-color: #0b3442;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

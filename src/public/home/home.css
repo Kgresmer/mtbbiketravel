@@ -1,7 +1,7 @@
 
 h4 {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
 }
 
 .tab-section {
@@ -81,6 +81,9 @@ h4 {
     background-color: #4a7740;
     border: solid 1px #30472c;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tab-heading:hover {
@@ -89,10 +92,33 @@ h4 {
 
 .image-caption {
     position: absolute;
-    bottom: 15vh;
-    left: 10vw;
-    width: 45vw;
-    font-size: 3rem;
+}
+
+@media screen and (min-width: 351px) {
+    .image-caption {
+        font-size: 2.3rem;
+        width: 60vw;
+        bottom: 4vh;
+        left: 4vw;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .image-caption {
+        font-size: 2.6rem;
+        width: 52vw;
+        bottom: 7vh;
+        left: 6vw;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .image-caption {
+        font-size: 3rem;
+        width: 47vw;
+        bottom: 15vh;
+        left: 10vw;
+    }
 }
 
 .col-md-3 {

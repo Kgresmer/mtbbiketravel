@@ -173,10 +173,10 @@ function Home() {
   });
   const [bannerImage, setBannerImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg)'});
   const [tabImage, setTabImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/tab-image.jpg)'});
-  const [tab, setTab] = useState(<Overview/>);
+  const [tab, setTab] = useState({component: <Overview/>, name: 'Overview'});
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const lightGreenBackground = {'background-color': '#30472c'};
-  const darkGreenBackground = {'background-color': '#4a7740'};
+  const lightGreenBackground = {'backgroundColor': '#30472c'};
+  const darkGreenBackground = {'backgroundColor': '#4a7740'};
 
   useEffect(() => {
     async function fetchData() {
@@ -225,20 +225,20 @@ function Home() {
       return (
         <div className="tab-section">
           <div className="tab-heading-section">
-            <div class="tab-heading-offset"></div>
+            <div className="tab-heading-offset"></div>
             <div className="tab-heading"
-                 style={tab.type.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
-                 onClick={() => switchTab(<Overview/>)}>
+                 style={tab.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <Overview/>, name: 'Overview'})}>
               <h4>Overview</h4>
             </div>
             <div className="tab-heading"
-                 style={tab.type.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
-                 onClick={() => switchTab(<Itinerary/>)}>
+                 style={tab.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <Itinerary/>, name: 'Itinerary'})}>
               <h4>Itinerary</h4>
             </div>
             <div className="tab-heading"
-                 style={tab.type.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
-                 onClick={() => switchTab(<WhatsIncluded/>)}>
+                 style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
               <h4>Whats Included</h4>
             </div>
             <div className="tab-heading-offset"></div>
@@ -247,7 +247,7 @@ function Home() {
             <div className="tab-heading-offset"></div>
           </div>
           <div className="tab-content-section flex-row background-color-selected">
-            <div className="tab-text-section tab-text-section-large">{tab}</div>
+            <div className="tab-text-section tab-text-section-large">{tab.component}</div>
             <div className="tab-image-section" style={tabImage}></div>
           </div>
         </div>
@@ -258,24 +258,24 @@ function Home() {
           <div className="tab-heading-section">
             <div className="tab-heading-offset"></div>
             <div className="tab-heading"
-                 style={tab.type.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
-                 onClick={() => switchTab(<Overview/>)}>
+                 style={tab.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <Overview/>, name: 'Overview'})}>
               <h4>Overview</h4>
             </div>
             <div className="tab-heading"
-                 style={tab.type.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
-                 onClick={() => switchTab(<Itinerary/>)}>
+                 style={tab.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <Itinerary/>, name: 'Itinerary'})}>
               <h4>Itinerary</h4>
             </div>
             <div className="tab-heading"
-                 style={tab.type.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
-                 onClick={() => switchTab(<WhatsIncluded/>)}>
+                 style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
               <h4>Whats Included</h4>
             </div>
             <div className="tab-heading-offset"></div>
           </div>
           <div className="tab-content-section flex-row background-color-selected">
-            <div className="tab-text-section">{tab}</div>
+            <div className="tab-text-section">{tab.component}</div>
           </div>
         </div>
       )

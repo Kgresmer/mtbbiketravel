@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from '@material-ui/core/Card';
 import './contact.css';
+import {Link} from "react-router-dom";
 
 
 function Contact() {
@@ -10,17 +11,18 @@ function Contact() {
     subHeader: 'Default Sub Heading',
     mainDescription: 'Default main description'
   });
-  const [bannerImage, setBannerImage] = useState('');
+
+  const [bannerImage, setBannerImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg)'});
 
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get('http://localhost:5000/data/5dafb1bb572dcf1398bfbf70');
-      setHomepageData(response.data);
-      console.log(response)
-    }
-
-    fetchData();
+    // async function fetchData() {
+    //   const response = await axios.get('http://localhost:5000/data/5dafb1bb572dcf1398bfbf70');
+    //   setHomepageData(response.data);
+    //   console.log(response)
+    // }
+    //
+    // fetchData();
   }, []);
 
   const determineScreenSize = () => {
@@ -37,17 +39,15 @@ function Contact() {
   };
 
   useEffect(() => {
-    determineScreenSize();
+    //determineScreenSize();
   });
 
   return (
     <div>
-      <main>
-        <section className="hero-section">
-          <figure className="hero">
-            <img className="hero-img" src='https://mtbbiketravel.s3.us-east-2.amazonaws.com/other-pages.jpg' alt='swiss mountains'/>
-            <figcaption className="hero-caption">Coming Soon!</figcaption>
-          </figure>
+      <main className="">
+        <section className="hero-section"
+                 style={bannerImage}>
+            <div className="image-caption">Contact Page Coming Soon!</div>
         </section>
       </main>
     </div>

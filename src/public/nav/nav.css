@@ -11,19 +11,6 @@
     justify-content: flex-end;
 }
 
-
-@media screen and (max-width: 764px) {
-    .main-nav {
-        padding-top: 0;
-    }
-}
-
-@media screen and (min-width: 765px) {
-    .main-nav {
-        padding-top: 3.5rem;
-    }
-}
-
 .main-nav {
     display: flex;
     justify-content: flex-end;
@@ -58,6 +45,10 @@
     width: 0;
     border-bottom: 2px solid var(--med-green);
     transition: 0.4s;
+}
+
+.main-nav-active-link {
+    border-bottom: 2px solid var(--med-green);
 }
 
 .main-nav a:hover:after {

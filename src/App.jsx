@@ -13,7 +13,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import Login from "./public/login/Login";
-import Nav from "./public/nav/nav";
+import Navigation from "./public/nav/nav";
 import Destinations from "./public/destinations/destinations";
 import Footer from "./public/footer/footer";
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav/>
+        <Navigation/>
 
         <div className='app-content'>
         <Switch>
