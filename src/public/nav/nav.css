@@ -60,6 +60,11 @@
     float: right;
 }
 
+.nav-link {
+    display: block;
+    padding: .5rem .5rem !important;
+}
+
 .logo {
     max-width:100%;
     height:auto;
