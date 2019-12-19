@@ -54,7 +54,17 @@ h4 {
     margin: 5px;
 }
 
-.tab-image-section {
+.tab-it-image-section {
+    width: 54vw;
+    margin: 5px;
+}
+
+.tab-text-it-section-large {
+    width: 34vw;
+    margin: 5px;
+}
+
+.tab-image-section, .tab-it-image-section {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

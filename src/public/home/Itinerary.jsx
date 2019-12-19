@@ -185,12 +185,12 @@ export default function Itinerary() {
 
   return (
     <>
-      <div className={`tab-text-section ${windowSize > 768 ? 'tab-text-section-large' : ''}`}>
+      <div className={`tab-text-section ${windowSize > 768 ? 'tab-text-it-section-large' : ''}`}>
         <div className={classes.root}>
           {expansionItems}
         </div>
       </div>
-      {windowSize > 768 && <div className="tab-image-section" style={tabImage}></div>}
+      {windowSize > 768 && <div className="tab-it-image-section" style={tabImage}></div>}
     </>
   );
 };
