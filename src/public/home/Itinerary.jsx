@@ -9,16 +9,18 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    backgroundColor: '#0b3442'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
+    color: 'white'
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
+    color: 'white'
+  }
 }));
 
 const itineraryData = [
@@ -94,16 +96,30 @@ Munich – 4 hours`
 export default function Itinerary() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const [tabImage, setTabImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel1.jpg)'});
+  const [tabImage, setTabImage] = useState({backgroundImage: `url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel1-wide.jpg)`});
   const [windowSize, setWindowSize] = useState(window.innerWidth);
 
+  const updateTabImage = (panelNumber) => {
+    if (window.innerWidth > 1100) {
+      setTabImage({backgroundImage: `url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel${panelNumber}-wide.jpg)`});
+      console.log('going wide')
+    } else {
+      setTabImage({backgroundImage: `url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel${panelNumber}.jpg)`});
+      console.log('going narrow')
+    }
+  };
+
   useEffect(() => {
+    setExpanded('panel1');
+    updateTabImage(1);
     if (!typeof window === 'object') {
       return false;
     }
 
     function handleResize() {
       setWindowSize(window.innerWidth);
+      const panelNumber = tabImage.backgroundImage.split('panel')[1].substr(0,1);
+      updateTabImage(panelNumber)
     }
 
     window.addEventListener('resize', handleResize);
@@ -114,31 +130,31 @@ export default function Itinerary() {
     setExpanded(isExpanded ? panel : false);
     switch (panel) {
       case 'panel1': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel1.jpg)'});
+        updateTabImage(1);
         break;
       }
       case 'panel2': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel2.jpg)'});
+        updateTabImage(2);
         break;
       }
       case 'panel3': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel3.jpg)'});
+        updateTabImage(3);
         break;
       }
       case 'panel4': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel4.jpg)'});
+        updateTabImage(4);
         break;
       }
       case 'panel5': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel5.jpg)'});
+        updateTabImage(5);
         break;
       }
       case 'panel6': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel6.jpg)'});
+        updateTabImage(6);
         break;
       }
       case 'panel7': {
-        setTabImage({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/panel7.jpg)'});
+        updateTabImage(7);
         break;
       }
     }
