@@ -218,7 +218,7 @@ function Home() {
     <div>
       <main className="">
         <section className="hero-section" style={bannerImage}>
-          <div className="image-caption">Unique, hardcore mountain bike adventures, organized by local experts</div>
+          <div className="image-caption">Unique, mountain bike adventures, organized by local experts</div>
         </section>
 
         <section className="trip-info-section">
