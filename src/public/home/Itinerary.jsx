@@ -5,6 +5,10 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import './itinerary.css';
+import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
+import HotelIcon from '@material-ui/icons/Hotel';
+import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,6 +97,33 @@ Munich – 4 hours`
   }
 ]
 
+function DayDisplay(props) {
+  const {data} = props;
+
+  return (
+    <>
+      <div className="flex-column-it">
+        <div className="main-body">{data.body}</div>
+
+        <div className="flex-row center stats">
+          <div className="stat-column">
+            <DirectionsBikeIcon/> Distance:<br></br>
+            <p>65 kilometers</p>
+          </div>
+          <div className="stat-column">
+            <FilterHdrIcon/> Elevation Gain:<br></br>
+            <p>1344 meters </p>
+          </div>
+          <div className="stat-column">
+            <HotelIcon/> Lodging:<br></br>
+            <p>A tent near a cliff</p>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
+
 export default function Itinerary() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -118,7 +149,7 @@ export default function Itinerary() {
 
     function handleResize() {
       setWindowSize(window.innerWidth);
-      const panelNumber = tabImage.backgroundImage.split('panel')[1].substr(0,1);
+      const panelNumber = tabImage.backgroundImage.split('panel')[1].substr(0, 1);
       updateTabImage(panelNumber)
     }
 
@@ -173,9 +204,7 @@ export default function Itinerary() {
               <Typography className={classes.secondaryHeading}>{data.title}</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Typography>
-                {data.body}
-              </Typography>
+              <DayDisplay data={data}/>
             </ExpansionPanelDetails>
           </ExpansionPanel>
         </div>
