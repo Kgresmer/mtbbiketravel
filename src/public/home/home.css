@@ -19,13 +19,15 @@ h4 {
 .flex-column {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: center;
 }
 
 .trip-info-section {
     margin-top: 10vh;
     position: center;
     width: 100%;
-    min-height: 70vh;
+    min-height: 80vh;
     overflow: visible;
     color: white !important;
 }
@@ -45,13 +47,20 @@ h4 {
 .tab-content-section {
     display: flex;
     background-color: #4a7740;
-    padding: 5vh 6vw;
+    padding: 5vh 4vw;
     height: 100%;
 }
 
-.tab-image-section, .tab-text-section-large {
-    width: 44vw;
+.tab-image-section {
+    width: 60vw;
+    height: 70vh;
     margin: 5px;
+}
+
+.tab-text-section-large {
+    width: 32vw;
+    height: 70vh;
+    margin: 8px;
 }
 
 .tab-it-image-section {

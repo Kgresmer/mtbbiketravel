@@ -29,8 +29,8 @@ function Overview() {
         <div className="flex-column">
           <div className="flex-row">
             <div className="">
-              <p>Ready to challenge yourself, enjoy great scenery and a little luxury?</p>
-              <p></p>
+              <p className="font-weight-bold">Ready to challenge yourself, enjoy great scenery and a little luxury?</p>
+              <br></br>
               <p>Join us for a week of biking in the Swiss Alps.</p>
               <p>Basecamp in Scuol is in a small village nestled in the Alps in eastern Switzerland
                 near the Austrian-Italian border. It’s remote and crowd-free. The week of riding
@@ -45,7 +45,7 @@ function Overview() {
           </div>
         </div>
       </div>
-      {windowSize > 768 && <div className="tab-image-section" style={{backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/tab-image.jpg)'}}></div>}
+      {windowSize > 768 && <div className="tab-image-section" style={{backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/overview-map.png)'}}></div>}
     </>
   )
 }
