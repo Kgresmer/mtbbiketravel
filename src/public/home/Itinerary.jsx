@@ -13,18 +13,42 @@ import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    backgroundColor: '#0b3442'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
-    color: 'white'
+    color: 'white',
   },
   secondaryHeading: {
     fontSize: '1.0em',
     color: 'white'
+  },
+  active: {
+    color: 'white'
+  },
+  icon: {
+    color: 'white'
+  },
+  panel: {
+    borderBottom: '1px solid #bfbfbf',
+    backgroundColor: '#0b3442',
+    '&:hover': {
+      backgroundColor: '#4a7740'
+    }
+  },
+  activePanel: {
+    borderBottom: '1px solid #bfbfbf',
+    backgroundColor: '#0b3442',
+  },
+  lastPanel: {
+    borderBottom: 'none'
   }
+
+  //Make the active header a different color, maybe try light green color.
+  //Possibly try making the active header white and the non-active ones the light green color.
+  //Whatever color we decide on should be the hover color when you hover over each section too.
+
 }));
 
 const itineraryData = [
@@ -32,7 +56,7 @@ const itineraryData = [
     day: 1,
     title: 'Arrive in Zurich',
     body: 'Welcome to Switzerland! You will be met at the Zürich Airport and begin the week there. We take a 2.5 hour train through\n' +
-      'the Swiss countryside then begin the accent into the spectacular place called the Alps.\n' +
+      'the Swiss countryside then begin the ascent into the spectacular place called the Alps.\n' +
       'Once we arrive in Scuol and get settled we’ll grab our bikes and go for a warm-up ride. The day\n' +
       'will end with some local cuisine at one of the best restaurant’s in Scuol.'
   },
@@ -207,16 +231,19 @@ export default function Itinerary() {
   };
 
   const expansionItems = itineraryData.map((data, index) => {
+      const isActive = expanded === `panel${data.day}`;
+      const active = isActive ? classes.active : '';
+
       return (
         <div key={index}>
-          <ExpansionPanel expanded={expanded === `panel${data.day}`} onChange={handleChange(`panel${data.day}`)}>
+          <ExpansionPanel className={`${isActive ? classes.activePanel : classes.panel} ${index === 6 ? classes.lastPanel : ''}`} expanded={isActive} onChange={handleChange(`panel${data.day}`)}>
             <ExpansionPanelSummary
-              expandIcon={<ExpandMoreIcon/>}
+              expandIcon={<ExpandMoreIcon className={classes.icon}/>}
               aria-controls={`panel${data.day}bh-content`}
               id={`panel${data.day}bh-header`}
             >
-              <Typography className={classes.heading}>{`Day: ${data.day}`}</Typography>
-              <Typography className={classes.secondaryHeading}>{data.title}</Typography>
+              <Typography className={`${classes.heading} ${active}`}>{`Day: ${data.day}`}</Typography>
+              <Typography className={`${classes.secondaryHeading} ${active}`}>{data.title}</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <DayDisplay data={data}/>

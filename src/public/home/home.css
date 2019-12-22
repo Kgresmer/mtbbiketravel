@@ -144,10 +144,3 @@ h4 {
     padding: 20px;
 }
 
-.MuiPaper-root {
-    background-color: #0b3442 !important;
-}
-
-.MuiTypography-body1, .MuiIconButton-root {
-    color: white !important;
-}

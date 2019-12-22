@@ -44,3 +44,16 @@
 .center-text {
     text-align: center;
 }
+
+/*.MuiExpansionPanel-rounded:first-child {*/
+    /*border-bottom: 1px solid red !important;*/
+    /*border-top: none !important;*/
+/*}*/
+
+/*.MuiExpansionPanel-rounded:last-child {*/
+    /*border-bottom: none !important;*/
+/*}*/
+
+/*.MuiExpansionPanel-rounded {*/
+    /*border-bottom: 1px solid red !important;*/
+/*}*/
