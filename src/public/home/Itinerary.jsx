@@ -112,12 +112,7 @@ for you`
 If you would like to extend your European holiday there is no better place to start than from
   Zurich. By far, the best way to see Europe is from the train.
 
-Travel times from Zurich by train:
-
-Milan – 4 Hours
-London – 7 Hours
-Paris – 4 Hours
-Munich – 4 hours`
+Travel times from Zurich by train:`
   }
 ]
 
@@ -127,7 +122,14 @@ function DayDisplay(props) {
   return (
     <>
       <div className="flex-column-it">
-        <div className="main-body">{data.body}</div>
+        <div className="main-body">{data.body}
+          {data.day === 7 && <ul>
+            <li>Milan – 4 Hours</li>
+            <li>London – 7 Hours</li>
+            <li>Paris – 4 Hours</li>
+            <li>Munich – 4 hours</li>
+          </ul>}
+        </div>
 
         <div className="flex-row center stats">
           <div className="stat-column center">
