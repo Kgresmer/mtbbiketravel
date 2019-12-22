@@ -261,7 +261,15 @@ export default function Itinerary() {
           {expansionItems}
         </div>
       </div>
-      {windowSize > 768 && <div className="tab-it-image-section" style={tabImage}></div>}
+      {(windowSize > 768 && windowSize < 1099) && <div className="tab-image-section" >
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="640" height="640"></iframe>
+      </div>}
+      {(windowSize >= 1100 && windowSize < 1350) && <div className="tab-image-section" >
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="710" height="640"></iframe>
+      </div>}
+      {windowSize > 1350 && <div className="tab-image-section" >
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840" height="640"></iframe>
+      </div>}
     </>
   );
 };
