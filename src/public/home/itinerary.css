@@ -1,10 +1,7 @@
-.makeStyles-secondaryHeading-217 {
-    font-size: 1.0em !important;
-}
 
 .main-body {
     color: white;
-    margin: 1vh 1vw 0 1vw;
+    margin: 0 1vw 0 1vw;
 }
 
 .stats {
@@ -19,25 +16,31 @@
 }
 
 .tab-it-image-section {
-    width: 48vw;
+    width: 45vw;
     margin: 5px;
 }
 
 .tab-text-it-section-large {
-    width: 45vw;
+    width: 48vw;
     margin: 5px;
 }
 
 .stat-column {
     margin-right: 2vw;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .stat-column p {
     font-size: 0.7em;
-    padding-left: 28px;
 }
 
 .center {
     align-items: center;
     justify-content: center;
+}
+
+.center-text {
+    text-align: center;
 }

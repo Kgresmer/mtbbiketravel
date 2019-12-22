@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     color: 'white'
   },
   secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: '1.0em',
     color: 'white'
   }
 }));
@@ -106,17 +106,32 @@ function DayDisplay(props) {
         <div className="main-body">{data.body}</div>
 
         <div className="flex-row center stats">
-          <div className="stat-column">
-            <DirectionsBikeIcon/> Distance:<br></br>
-            <p>65 kilometers</p>
+          <div className="stat-column center">
+            <div className="">
+              <DirectionsBikeIcon/>
+            </div>
+            <div className="center-text">
+              Distance from Scuol:<br></br>
+              <p>65 kilometers</p>
+            </div>
           </div>
-          <div className="stat-column">
-            <FilterHdrIcon/> Elevation Gain:<br></br>
-            <p>1344 meters </p>
+          <div className="stat-column center">
+            <div className="">
+              <FilterHdrIcon/>
+            </div>
+            <div className="center-text">
+              Elevation at base:<br></br>
+              <p>1344 meters</p>
+            </div>
           </div>
-          <div className="stat-column">
-            <HotelIcon/> Lodging:<br></br>
-            <p>A tent near a cliff</p>
+          <div className="stat-column center">
+            <div className="">
+              <HotelIcon/>
+            </div>
+            <div className="center-text">
+              Ride Duration:<br></br>
+              <p>~3 hours 30 minutes</p>
+            </div>
           </div>
         </div>
       </div>
