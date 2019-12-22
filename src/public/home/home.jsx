@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './home.css';
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-import Itinerary from "./Itinerary";
+import Itinerary from "./itinerary/Itinerary";
+import WhatsIncluded from "./whatsIncluded/whatsIncluded";
 
 
 function Overview() {
@@ -54,56 +52,6 @@ function Overview() {
       {windowSize > 1350 && <div className="tab-image-section" >
         <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840" height="640"></iframe>
       </div>}
-    </>
-  )
-}
-
-function WhatsIncluded() {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    if (!typeof window === 'object') {
-      return false;
-    }
-
-    function handleResize() {
-      setWindowSize(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return (
-    <>
-      <div className={`tab-text-section ${windowSize > 768 ? 'tab-text-section-large' : ''}`}>
-        <div className="flex-row">
-          <div className="flex-row">
-            <div className="">
-              <p>Transportation to & from Zürich Airport</p>
-              <p>6 Nights lodging in Scuol</p>
-              <p>Transportation to riding destinations throughout the week</p>
-              <p>Local guides that know every twist & turn for each adventure</p>
-              <p>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
-                flexible attitude, as well as the local connections that our guides have make each and every trip
-                spectacular.</p>
-              <p>Daily Breakfast</p>
-              <p>First & last night’s dinner</p>
-              <p>Bike rental for week</p>
-              <p>Osprey Raptor pack to keep</p>
-              <p>Photo gallery</p>
-              <p>Lift tickets at resorts throughout the week as needed</p>
-              <p>Morning rafting trip on one of the most exciting white-water rivers in Europe</p>
-              <p>What’s Not included:</p>
-
-              <p>· Airfare to Zürich</p>
-              <p>· Not all meals</p>
-              <p>· Travel Insurance – required</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {windowSize > 768 && <div className="tab-image-section" style={{backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/tab-image.jpg)'}}></div>}
     </>
   )
 }
@@ -185,10 +133,8 @@ function Home() {
             </div>
             <div className="tab-heading-offset"></div>
             <div className="tab-heading-offset"></div>
-            <div className="tab-heading-offset"></div>
-            <div className="tab-heading-offset"></div>
           </div>
-          <div className="tab-content-section flex-row background-color-selected">
+          <div className={`${tab.name === 'WhatsIncluded' ? 'tab-content-section-w' : 'tab-content-section'} flex-row background-color-selected`}>
             {tab.component}
           </div>
         </div>

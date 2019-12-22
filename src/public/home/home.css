@@ -4,8 +4,13 @@ h4 {
     margin-bottom: 20px !important;
 }
 
+h5 {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+}
+
 .tab-section {
-    width: 100vw;
+    width: 100%;
 }
 
 .tab-heading-section {
@@ -112,6 +117,9 @@ h4 {
         bottom: 2vh;
         left: 2vw;
     }
+    h4 {
+        font-size: 1.2rem !important;
+    }
 }
 
 @media screen and (min-width: 601px) {
@@ -120,6 +128,9 @@ h4 {
         width: 52vw;
         bottom: 7vh;
         left: 3vw;
+    }
+    h4 {
+        font-size: 1.5rem !important;
     }
 }
 

@@ -114,7 +114,7 @@ If you would like to extend your European holiday there is no better place to st
 
 Travel times from Zurich by train:`
   }
-]
+];
 
 function DayDisplay(props) {
   const {data} = props;
