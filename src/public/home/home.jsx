@@ -67,8 +67,8 @@ function Home(props) {
   const [bannerImage, setBannerImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg)'});
   const [tab, setTab] = useState({component: <Overview/>, name: 'Overview'});
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const lightGreenBackground = {'backgroundColor': '#30472c'};
-  const darkGreenBackground = {'backgroundColor': '#4a7740'};
+  const darkGreenBackground = {'backgroundColor': '#30472c'};
+  const lightGreenBackground = {'backgroundColor': '#4a7740'};
 
   useEffect(() => {
     async function fetchData() {
@@ -135,21 +135,20 @@ function Home(props) {
       return (
         <div className="tab-section">
           <div className="tab-heading-section">
-            <div className="tab-heading-offset"></div>
-            <div className="tab-heading"
+            <div className="tab-heading first-tab"
                  style={tab.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <Overview/>, name: 'Overview'})}>
-              <h4>Overview</h4>
+              <h5>Overview</h5>
             </div>
             <div className="tab-heading"
                  style={tab.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <Itinerary/>, name: 'Itinerary'})}>
-              <h4>Itinerary</h4>
+              <h5>Itinerary</h5>
             </div>
-            <div className="tab-heading"
+            <div className="tab-heading last-tab"
                  style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
-              <h4>Whats Included</h4>
+              <h5>Whats Included</h5>
             </div>
             <div className="tab-heading-offset"></div>
             <div className="tab-heading-offset"></div>
@@ -166,20 +165,20 @@ function Home(props) {
             <div className="tab-heading"
                  style={tab.name === 'Overview' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <Overview/>, name: 'Overview'})}>
-              <h4>Overview</h4>
+              <h5>Overview</h5>
             </div>
             <div className="tab-heading"
                  style={tab.name === 'Itinerary' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <Itinerary/>, name: 'Itinerary'})}>
-              <h4>Itinerary</h4>
+              <h5>Itinerary</h5>
             </div>
             <div className="tab-heading"
                  style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
-              <h4>Whats Included</h4>
+              <h5>Whats Included</h5>
             </div>
           </div>
-          <div className="tab-content-section flex-row background-color-selected">
+          <div className={`${tab.name === 'WhatsIncluded' ? 'tab-content-section-w' : 'tab-content-section'} flex-row background-color-selected`}>
             <div className="tab-text-section">{tab.component}</div>
           </div>
         </div>
@@ -196,6 +195,11 @@ function Home(props) {
         </section>
 
         <section className="trip-info-section" id="Overview">
+          <div className="flex-row">
+            <div className="overview-tab-banner">
+              <h3>SCOUL SWISS ALPS TRIP</h3>
+            </div>
+          </div>
           {displayTabSelectors()}
         </section>
 

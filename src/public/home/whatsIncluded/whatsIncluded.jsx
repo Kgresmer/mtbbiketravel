@@ -6,8 +6,6 @@ import Itinerary from "../home";
 export default function OverviewWhatsIncluded() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [tab, setTab] = useState({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'});
-  const lightGreenBackground = {'backgroundColor': '#30472c'};
-  const darkGreenBackground = {'backgroundColor': 'white'};
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -29,7 +27,14 @@ export default function OverviewWhatsIncluded() {
   return (
     <>
       <div className="tab-section-w">
+        <div className="tab-banner-w">
+          <div className="banner">
+            <h3>What's Included</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          </div>
+        </div>
         <div className="tab-heading-section">
+          <div className="tab-heading-offset"></div>
           <div className={`tab-heading-w ${tab.name === 'WhatsIncluded' ? 'activeHeading' : ''}`}
                onClick={() => switchTab({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'})}>
             <h5>Whats Included</h5>
@@ -42,10 +47,11 @@ export default function OverviewWhatsIncluded() {
                onClick={() => switchTab({component: <Bikes/>, name: 'Bikes'})}>
             <h5>Bikes</h5>
           </div>
-          <div className={`tab-heading-w ${tab.name === 'Gear' ? 'activeHeading' : ''}`}
+          <div className={`tab-heading-w ${tab.name === 'Gear' ? 'activeHeading' : ''} last-tab`}
                onClick={() => switchTab({component: <Gear/>, name: 'Gear'})}>
             <h5>Gear</h5>
           </div>
+          <div className="tab-heading-offset"></div>
         </div>
         <div className="inner-tab-content-section-w flex-column background-color-selected">
           {tab.component}

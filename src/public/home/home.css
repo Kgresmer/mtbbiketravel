@@ -15,6 +15,8 @@ h5 {
 
 .tab-heading-section {
     display: flex;
+    top: 36px;
+    position: relative;
 }
 
 .flex-row {
@@ -52,8 +54,9 @@ h5 {
 .tab-content-section {
     display: flex;
     background-color: #4a7740;
-    padding: 5vh 4vw;
+    padding: 7vh 4vw;
     height: 100%;
+    border: 1px solid #b7b7b7;
 }
 
 .tab-image-section {
@@ -83,11 +86,20 @@ h5 {
 }
 
 .background-color-non-selected {
-    background-color: #4a7740;
+    background-color: #30472c;
 }
 
 .background-color-selected {
-    background-color: #30472c;
+    background-color: #4a7740;
+}
+
+.first-tab {
+    margin-left: 10%
+}
+
+.overview-tab-banner {
+    margin: 1% 3% -1% 10%;
+    flex: 3;
 }
 
 .tab-heading {
@@ -95,15 +107,22 @@ h5 {
     padding: 0 10px;
     text-align: center;
     background-color: #4a7740;
-    border: solid 1px #30472c;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-left: 1px solid #b7b7b7;
+    border-top: 1px solid #b7b7b7;
+    border-bottom: 1px solid #b7b7b7;
+    text-transform: uppercase;
+}
+
+.last-tab {
+    border-right: 1px solid #b7b7b7;
 }
 
 .tab-heading:hover {
-    background-color: #30472c !important;
+    background-color: #4a7740 !important;
 }
 
 .image-caption {
