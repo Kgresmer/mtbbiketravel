@@ -6,8 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './itinerary.css';
-import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
-import HotelIcon from '@material-ui/icons/Hotel';
+import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import FilterHdrIcon from '@material-ui/icons/FilterHdr';
 
 const useStyles = makeStyles(theme => ({
@@ -131,10 +131,10 @@ function DayDisplay(props) {
           </ul>}
         </div>
 
-        <div className="flex-row center stats">
+        {data.day !== 7 && <div className="flex-row center stats">
           <div className="stat-column center">
             <div className="">
-              <DirectionsBikeIcon/>
+              <AirportShuttleIcon/>
             </div>
             <div className="center-text">
               Distance from Scuol:<br></br>
@@ -152,14 +152,14 @@ function DayDisplay(props) {
           </div>
           <div className="stat-column center">
             <div className="">
-              <HotelIcon/>
+              <AccessTimeIcon/>
             </div>
             <div className="center-text">
               Ride Duration:<br></br>
               <p>~3 hours 30 minutes</p>
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     </>
   )

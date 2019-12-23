@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import headerImage from "../assets/mtnbiketravel-logo.png";
+import headerImage from "../assets/mtn-travel-logo-long.png";
 import './nav.css';
 import {withRouter} from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
