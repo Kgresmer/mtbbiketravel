@@ -1,6 +1,8 @@
 
 import React from "react";
 import './footer.css';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
 
 const Footer = () => {
 
@@ -9,9 +11,8 @@ const Footer = () => {
       <footer>
         <div className="footer-container">
           <div>
-            <p>About</p>
-            <p>Contact</p>
-            <p>Privacy</p>
+            <p><a href="#" className="plain-link"><FacebookIcon/> Mtn Bike Travel</a></p>
+            <p><a href="#" className="plain-link"><InstagramIcon/> @MtnBikeTravel</a></p>
           </div>
           <div>
             Copyright 2020

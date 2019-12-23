@@ -11,3 +11,8 @@
 div > p {
     margin-bottom: 2px;
 }
+
+.plain-link {
+    text-decoration: none;
+    color: white;
+}
