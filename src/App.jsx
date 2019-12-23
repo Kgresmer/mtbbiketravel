@@ -3,7 +3,6 @@ import './css/normalize.css';
 import './css/App.css';
 import {
   BrowserRouter as Router,
-  Switch,
   Route
 } from "react-router-dom";
 import Admin from "./admin/admin";
@@ -14,7 +13,6 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import Login from "./public/login/Login";
 import Navigation from "./public/nav/nav";
-import Destinations from "./public/destinations/destinations";
 import Footer from "./public/footer/footer";
 
 library.add(fab, faCircleNotch);
@@ -27,20 +25,24 @@ function App() {
         <Navigation/>
 
         <div className='app-content'>
-        <Switch>
           <Route exact path="/home">
             <Home/>
           </Route>
-          <Route exact path="/destinations">
-            <Destinations/>
+          <Route exact path="/home#Overview">
+            <Home/>
+          </Route>
+          <Route exact path="/home#Itinerary">
+            <Home/>
+          </Route>
+          <Route exact path="/home#WhatsIncluded">
+            <Home/>
           </Route>
           <Route exact path="/contact">
             <Contact/>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home/>
           </Route>
-        </Switch>
         </div>
 
         <Footer/>

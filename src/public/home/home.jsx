@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import './home.css';
 import Itinerary from "./itinerary/Itinerary";
 import WhatsIncluded from "./whatsIncluded/whatsIncluded";
+import {withRouter} from "react-router-dom";
 
 
 function Overview() {
@@ -56,7 +57,8 @@ function Overview() {
   )
 }
 
-function Home() {
+function Home(props) {
+  const { location } = props;
   const [homepageData, setHomepageData] = useState({
     mainHeader: 'Default Main Heading',
     subHeader: 'Default Sub Heading',
@@ -79,6 +81,24 @@ function Home() {
 
     //fetchData();
   }, []);
+
+  useEffect(() => {
+    const tabElements = document.getElementById('Overview');
+    if (tabElements) {
+      const y = tabElements.scrollHeight - 25;
+      console.log(y)
+
+      if (window.location.hash === '#Itinerary') {
+        switchTab({component: <Itinerary/>, name: 'Itinerary'});
+        window.scrollTo(0, y)
+      } else if (window.location.hash === '#WhatsIncluded') {
+        switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'});
+        window.scrollTo(0, y)
+      } else if (window.location.hash === '#Overview') {
+        switchTab({component: <Overview/>, name: 'Overview'});
+      }
+    }
+  }, [location.hash]);
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -171,11 +191,11 @@ function Home() {
   return (
     <div>
       <main className="">
-        <section className="hero-section" style={bannerImage}>
+        <section className="hero-section" style={bannerImage} id="home">
           <div className="image-caption">Unique, mountain bike adventures, organized by local experts</div>
         </section>
 
-        <section className="trip-info-section">
+        <section className="trip-info-section" id="Overview">
           {displayTabSelectors()}
         </section>
 
@@ -188,4 +208,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default withRouter(Home);

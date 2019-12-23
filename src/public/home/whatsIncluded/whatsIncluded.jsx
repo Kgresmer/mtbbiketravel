@@ -3,7 +3,7 @@ import './whatsIncluded.css';
 import Itinerary from "../home";
 
 
-export default function WhatsIncluded() {
+export default function OverviewWhatsIncluded() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [tab, setTab] = useState({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'});
   const lightGreenBackground = {'backgroundColor': '#30472c'};
