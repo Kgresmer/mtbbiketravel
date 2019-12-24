@@ -1,5 +1,8 @@
 .app-content {
     width: 100%;
+    position: relative;
+    max-width: 1420px;
+    margin: 0 auto;
 }
 
 
@@ -52,4 +55,65 @@
 .centerText {
     text-align: center;
     width: 500px;
+}
+
+@font-face {
+    font-family: "Industry Black Italic";
+    src: url("../fonts/industry-blackitalic.woff") format('woff');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Industry Black";
+    src: url("../fonts/industry-black.woff") format('woff');
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Industry Bold";
+    src: url("../fonts/industry-bold.woff") format('woff');
+    font-weight: bold;
+}
+
+
+
+@font-face {
+    font-family: "Industry Bold Italic";
+    src: url("../fonts/industry-bolditalic.woff") format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Industry Demi";
+    src: url("../fonts/industry-demi.woff") format('woff');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Industry Demi Italic";
+    src: url("../fonts/industry-demiitalic.woff") format('woff');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Industry Medium";
+    src: url("../fonts/industry-medium.woff") format('woff');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Industry Medium Italic";
+    src: url("../fonts/industry-mediumitalic.woff") format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: "Industry Book";
+    src: url("../fonts/industry-book.woff") format('woff');
+    font-weight: 300;
 }

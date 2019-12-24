@@ -30,7 +30,10 @@ export default function OverviewWhatsIncluded() {
         <div className="tab-banner-w">
           <div className="banner">
             <h3>What's Included</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur.</p>
           </div>
         </div>
         <div className="tab-heading-section">
@@ -53,7 +56,7 @@ export default function OverviewWhatsIncluded() {
           </div>
           <div className="tab-heading-offset"></div>
         </div>
-        <div className="inner-tab-content-section-w flex-column background-color-selected">
+        <div className="inner-tab-content-section-w background-color-selected">
           {tab.component}
         </div>
       </div>
@@ -66,26 +69,35 @@ function WhatsIncludedTab(props) {
 
   return (
     <>
-      <h1>Whats Included</h1>
-      <p>Transportation to & from Zürich Airport</p>
-      <p>6 Nights lodging in Scuol</p>
-      <p>Transportation to riding destinations throughout the week</p>
-      <p>Local guides that know every twist & turn for each adventure</p>
-      <p>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
-      flexible attitude, as well as the local connections that our guides have make each and every trip
-      spectacular.</p>
-      <p>Daily Breakfast</p>
-      <p>First & last night’s dinner</p>
-      <p>Bike rental for week</p>
-      <p>Osprey Raptor pack to keep</p>
-      <p>Photo gallery</p>
-      <p>Lift tickets at resorts throughout the week as needed</p>
-      <p>Morning rafting trip on one of the most exciting white-water rivers in Europe</p>
-      <p>What’s Not included:</p>
+      <div className="flex-row whats-included-section">
+        <div className="flex-1">
+          <ul>
+          <li>Transportation to & from Zürich Airport</li>
+          <li>6 Nights lodging in Scuol</li>
+          <li>Transportation to riding destinations throughout the week</li>
+          <li>Local guides that know every twist & turn for each adventure</li>
+          <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
+            flexible attitude, as well as the local connections that our guides have make each and every trip
+            spectacular.</li>
+          <li>Daily Breakfast</li>
+          <li>First & last night’s dinner</li>
+          <li>Bike rental for week</li>
+          </ul>
+        </div>
+        <div className="flex-1">
+          <ul>
+          <li>Osprey Raptor pack to keep</li>
+          <li>Photo gallery</li>
+          <li>Lift tickets at resorts throughout the week as needed</li>
+          <li>Morning rafting trip on one of the most exciting white-water rivers in Europe</li>
+          <li>What’s Not included:</li>
 
-      <p>· Airfare to Zürich</p>
-      <p>· Not all meals</p>
-      <p>· Travel Insurance – required</p>
+          <li>· Airfare to Zürich</li>
+          <li>· Not all meals</li>
+          <li>· Travel Insurance – required</li>
+          </ul>
+        </div>
+      </div>
     </>
   )
 }
@@ -95,26 +107,35 @@ function WhatsNot(props) {
 
   return (
     <>
-      <h1>Whats Not</h1>
-      <p>Transportation to & from Zürich Airport</p>
-      <p>6 Nights lodging in Scuol</p>
-      <p>Transportation to riding destinations throughout the week</p>
-      <p>Local guides that know every twist & turn for each adventure</p>
-      <p>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
-        flexible attitude, as well as the local connections that our guides have make each and every trip
-        spectacular.</p>
-      <p>Daily Breakfast</p>
-      <p>First & last night’s dinner</p>
-      <p>Bike rental for week</p>
-      <p>Osprey Raptor pack to keep</p>
-      <p>Photo gallery</p>
-      <p>Lift tickets at resorts throughout the week as needed</p>
-      <p>Morning rafting trip on one of the most exciting white-water rivers in Europe</p>
-      <p>What’s Not included:</p>
+      <div className="flex-row whats-included-section">
+        <div className="flex-1">
+          <ul>
+            <li>Transportation to & from Zürich Airport</li>
+            <li>6 Nights lodging in Scuol</li>
+            <li>Transportation to riding destinations throughout the week</li>
+            <li>Local guides that know every twist & turn for each adventure</li>
+            <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
+              flexible attitude, as well as the local connections that our guides have make each and every trip
+              spectacular.</li>
+            <li>Daily Breakfast</li>
+            <li>First & last night’s dinner</li>
+            <li>Bike rental for week</li>
+          </ul>
+        </div>
+        <div className="flex-1">
+          <ul>
+            <li>Osprey Raptor pack to keep</li>
+            <li>Photo gallery</li>
+            <li>Lift tickets at resorts throughout the week as needed</li>
+            <li>Morning rafting trip on one of the most exciting white-water rivers in Europe</li>
+            <li>What’s Not included:</li>
 
-      <p>· Airfare to Zürich</p>
-      <p>· Not all meals</p>
-      <p>· Travel Insurance – required</p>
+            <li>· Airfare to Zürich</li>
+            <li>· Not all meals</li>
+            <li>· Travel Insurance – required</li>
+          </ul>
+        </div>
+      </div>
     </>
   )
 }
@@ -124,26 +145,16 @@ function Bikes(props) {
 
   return (
     <>
-      <h1>Bikes</h1>
-      <p>Transportation to & from Zürich Airport</p>
-      <p>6 Nights lodging in Scuol</p>
-      <p>Transportation to riding destinations throughout the week</p>
-      <p>Local guides that know every twist & turn for each adventure</p>
-      <p>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
-        flexible attitude, as well as the local connections that our guides have make each and every trip
-        spectacular.</p>
-      <p>Daily Breakfast</p>
-      <p>First & last night’s dinner</p>
-      <p>Bike rental for week</p>
-      <p>Osprey Raptor pack to keep</p>
-      <p>Photo gallery</p>
-      <p>Lift tickets at resorts throughout the week as needed</p>
-      <p>Morning rafting trip on one of the most exciting white-water rivers in Europe</p>
-      <p>What’s Not included:</p>
-
-      <p>· Airfare to Zürich</p>
-      <p>· Not all meals</p>
-      <p>· Travel Insurance – required</p>
+      <div className="flex-row">
+        <div className="bike-section">
+          <img className="" src="bike.jpeg"/>
+          <p>This is a good bike i hear. </p>
+        </div>
+        <div className="bike-section right-section">
+          <img className="" src="bike.jpeg"/>
+          <p>This is another bike. </p>
+        </div>
+      </div>
     </>
   )
 }
@@ -153,26 +164,35 @@ function Gear(props) {
 
   return (
     <>
-      <h1>Gear</h1>
-      <p>Transportation to & from Zürich Airport</p>
-      <p>6 Nights lodging in Scuol</p>
-      <p>Transportation to riding destinations throughout the week</p>
-      <p>Local guides that know every twist & turn for each adventure</p>
-      <p>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
-        flexible attitude, as well as the local connections that our guides have make each and every trip
-        spectacular.</p>
-      <p>Daily Breakfast</p>
-      <p>First & last night’s dinner</p>
-      <p>Bike rental for week</p>
-      <p>Osprey Raptor pack to keep</p>
-      <p>Photo gallery</p>
-      <p>Lift tickets at resorts throughout the week as needed</p>
-      <p>Morning rafting trip on one of the most exciting white-water rivers in Europe</p>
-      <p>What’s Not included:</p>
+      <div className="flex-row whats-included-section">
+        <div className="flex-1">
+          <ul>
+            <li>Transportation to & from Zürich Airport</li>
+            <li>6 Nights lodging in Scuol</li>
+            <li>Transportation to riding destinations throughout the week</li>
+            <li>Local guides that know every twist & turn for each adventure</li>
+            <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and
+              flexible attitude, as well as the local connections that our guides have make each and every trip
+              spectacular.</li>
+            <li>Daily Breakfast</li>
+            <li>First & last night’s dinner</li>
+            <li>Bike rental for week</li>
+          </ul>
+        </div>
+        <div className="flex-1">
+          <ul>
+            <li>Osprey Raptor pack to keep</li>
+            <li>Photo gallery</li>
+            <li>Lift tickets at resorts throughout the week as needed</li>
+            <li>Morning rafting trip on one of the most exciting white-water rivers in Europe</li>
+            <li>What’s Not included:</li>
 
-      <p>· Airfare to Zürich</p>
-      <p>· Not all meals</p>
-      <p>· Travel Insurance – required</p>
+            <li>· Airfare to Zürich</li>
+            <li>· Not all meals</li>
+            <li>· Travel Insurance – required</li>
+          </ul>
+        </div>
+      </div>
     </>
   )
 }
