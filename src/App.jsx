@@ -3,15 +3,14 @@ import './css/normalize.css';
 import './css/App.css';
 import {
   BrowserRouter as Router,
+  Switch,
   Route
 } from "react-router-dom";
-import Admin from "./admin/admin";
 import Home from "./public/home/home";
 import Contact from "./public/contact/contact";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
-import Login from "./public/login/Login";
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {fab} from '@fortawesome/free-brands-svg-icons'
+import {faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 import Navigation from "./public/nav/nav";
 import Footer from "./public/footer/footer";
 
@@ -25,24 +24,26 @@ function App() {
         <Navigation/>
 
         <div className='app-content'>
-          <Route exact path="/home">
-            <Home/>
-          </Route>
-          <Route exact path="/home#Overview">
-            <Home/>
-          </Route>
-          <Route exact path="/home#Itinerary">
-            <Home/>
-          </Route>
-          <Route exact path="/home#WhatsIncluded">
-            <Home/>
-          </Route>
-          <Route exact path="/contact">
-            <Contact/>
-          </Route>
-          <Route exact path="/">
-            <Home/>
-          </Route>
+          <Switch>
+            <Route  path="/home">
+              <Home/>
+            </Route>
+            <Route  path="/home#Overview">
+              <Home/>
+            </Route>
+            <Route  path="/home#Itinerary">
+              <Home/>
+            </Route>
+            <Route  path="/home#WhatsIncluded">
+              <Home/>
+            </Route>
+            <Route  path="/contact">
+              <Contact/>
+            </Route>
+            <Route  path="/">
+              <Home/>
+            </Route>
+          </Switch>
         </div>
 
         <Footer/>
