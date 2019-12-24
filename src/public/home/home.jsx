@@ -67,8 +67,8 @@ function Home(props) {
   const [bannerImage, setBannerImage] = useState({backgroundImage: 'url(https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg)'});
   const [tab, setTab] = useState({component: <Overview/>, name: 'Overview'});
   const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const darkGreenBackground = {'backgroundColor': '#30472c'};
-  const lightGreenBackground = {'backgroundColor': '#4a7740'};
+  const darkGreenBackground = {'backgroundColor': '#E9E9E9'};
+  const lightGreenBackground = {'backgroundColor': 'white', 'border-bottom': 'none'};
 
   useEffect(() => {
     async function fetchData() {

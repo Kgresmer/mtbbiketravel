@@ -1,13 +1,13 @@
 
 .main-body {
-    color: white;
+    color: black;
     margin: 0 1vw 0 1vw;
 }
 
 .stats {
     font-size: 0.9em;
     margin-top: 2vh;
-    color: white;
+    color: black;
 }
 
 .flex-column-it {

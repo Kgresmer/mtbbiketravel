@@ -18,28 +18,28 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
-    color: 'white',
+    color: 'black',
   },
   secondaryHeading: {
     fontSize: '1.0em',
-    color: 'white'
+    color: 'black'
   },
   active: {
-    color: 'white'
+    color: 'black'
   },
   icon: {
-    color: 'white'
+    color: 'black'
   },
   panel: {
     borderBottom: '1px solid #bfbfbf',
-    backgroundColor: '#0b3442',
+    backgroundColor: 'white',
     '&:hover': {
-      backgroundColor: '#4a7740'
+      backgroundColor: '#E9E9E9'
     }
   },
   activePanel: {
     borderBottom: '1px solid #bfbfbf',
-    backgroundColor: '#0b3442',
+    backgroundColor: 'white',
   },
   lastPanel: {
     borderBottom: 'none'

@@ -1,10 +1,20 @@
 
 .inner-tab-content-section-w {
     display: flex;
-    background-color: #b7b7b7;
+    background-color: white;
     min-height: 60vh;
-    color: #0b3442;
+    color: black;
     flex-direction: column;
+    border: 1px solid #4a7740;
+}
+
+.inner-tab-content-section-bikes {
+    display: flex;
+    background-color: white;
+    min-height: 60vh;
+    color: black;
+    flex-direction: column;
+    border: 1px solid #4a7740;
 }
 
 @media screen and (max-width: 600px) {
@@ -29,34 +39,70 @@
     flex: 2;
     padding: 0 10px;
     text-align: center;
-    background-color: #4a7740;
-    border-left: 1px solid #b7b7b7;
-    border-top: 1px solid #b7b7b7;
-    border-bottom: 1px solid #b7b7b7;
+    background-color: #E9E9E9;
+    border-left: 1px solid #4a7740;
+    border-top: 1px solid #4a7740;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    position: relative;
 }
 
-.tab-heading-w:hover {
-    background-color: #b7b7b7;
+.tab-heading-w:hover  {
+    background-color: white;
     border-bottom: none;
-    color: #0b3442;
+    color: black;
+}
+
+.tab-heading:hover:after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid white;
+}
+
+.gear-repair-personal {
+    margin-left: 9%;
+}
+
+.tab-heading-w:hover > h5 {
+    color: var(--med-green);
+    border-bottom: 2px solid var(--med-green);
+    transition: width 0.4s;
+}
+
+h6 {
+    font-weight: bold !important;
+}
+
+.activeHeading h5 {
+    border-bottom: 2px solid var(--med-green);
 }
 
 .tab-content-section-w {
     display: flex;
     height: 100%;
-    border: 1px solid #b7b7b7;
+    border: 1px solid #E9E9E9;
 }
 
 .activeHeading {
-    background-color: #b7b7b7;
-    border-bottom: none;
-    border-left: none;
+    position: relative;
+    background-color: white;
+    border-bottom: 2px solid white;
     color: #0b3442;
+}
+
+.activeHeading:after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid white;
 }
 
 .banner {
@@ -91,7 +137,8 @@
 }
 
 .bike-section p {
-    margin-top: 2%;
+    margin: 4% 4%;
+
 }
 
 .right-section {

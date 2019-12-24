@@ -36,7 +36,7 @@ h5 {
     width: 100%;
     min-height: 80vh;
     overflow: visible;
-    color: white !important;
+    color: black !important;
 }
 
 @media screen and (min-width: 351px) {
@@ -53,10 +53,11 @@ h5 {
 
 .tab-content-section {
     display: flex;
-    background-color: #4a7740;
+    background-color: white;
     padding: 7vh 4vw;
+    color: black;
     height: 100%;
-    border: 1px solid #b7b7b7;
+    border: 1px solid #4a7740;
 }
 
 .tab-image-section {
@@ -86,11 +87,11 @@ h5 {
 }
 
 .background-color-non-selected {
-    background-color: #30472c;
+    background-color: #4a7740;
 }
 
 .background-color-selected {
-    background-color: #4a7740;
+    background-color: white;
 }
 
 .first-tab {
@@ -100,29 +101,41 @@ h5 {
 .overview-tab-banner {
     margin: 1% 3% -1% 10%;
     flex: 3;
+    color: white;
 }
 
 .tab-heading {
     flex: 2;
     padding: 0 10px;
     text-align: center;
-    background-color: #4a7740;
+    background-color: #E9E9E9;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: 1px solid #b7b7b7;
-    border-top: 1px solid #b7b7b7;
-    border-bottom: 1px solid #b7b7b7;
+    border-left: 1px solid #4a7740;
+    border-top: 1px solid #4a7740;
+    border-bottom: 1px solid #4a7740;
     text-transform: uppercase;
 }
 
 .last-tab {
-    border-right: 1px solid #b7b7b7;
+    border-right: 1px solid #4a7740;
 }
 
 .tab-heading:hover {
-    background-color: #4a7740 !important;
+    background-color: white !important;
+}
+.tab-heading:hover  {
+    background-color: white;
+    border-bottom: none;
+    color: black;
+}
+
+.tab-heading:hover > h5 {
+    color: var(--med-green);
+    border-bottom: 2px solid var(--med-green);
+    transition: width 0.4s;
 }
 
 .image-caption {
