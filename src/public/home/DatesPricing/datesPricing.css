@@ -53,3 +53,7 @@
     align-items: flex-end;
     font-weight: bold;
 }
+
+.tab-dates-section h5 {
+    font-weight: bold !important;
+}

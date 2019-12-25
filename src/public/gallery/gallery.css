@@ -57,7 +57,8 @@
 }
 
 .modal img {
-    height: 90vh;
+    height: auto;
+    max-height: 90vh;
 }
 
 .modal button {
