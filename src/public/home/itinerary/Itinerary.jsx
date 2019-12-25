@@ -31,23 +31,19 @@ const useStyles = makeStyles(theme => ({
     color: 'black'
   },
   panel: {
-    borderBottom: '1px solid #bfbfbf',
+    border: '1px solid #bfbfbf',
     backgroundColor: 'white',
     '&:hover': {
       backgroundColor: '#E9E9E9'
     }
   },
   activePanel: {
-    borderBottom: '1px solid #bfbfbf',
+    border: '1px solid #bfbfbf',
     backgroundColor: 'white',
   },
   lastPanel: {
-    borderBottom: 'none'
-  }
 
-  //Make the active header a different color, maybe try light green color.
-  //Possibly try making the active header white and the non-active ones the light green color.
-  //Whatever color we decide on should be the hover color when you hover over each section too.
+  }
 
 }));
 

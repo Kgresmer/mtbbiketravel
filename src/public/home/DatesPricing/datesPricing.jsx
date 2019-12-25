@@ -22,30 +22,72 @@ function DatesPricing() {
     console.log('date one');
   }
 
-  return (
-    <>
-      <div className={`tab-dates-section`}>
-        <div className="flex-column">
-          <div className="pricing-row">
-            <p>Jun 23 - July 5</p>
-            <p>$7500 / Person</p>
-            <p className="available-date">Available</p>
-            <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
-          </div>
-          <div className="pricing-row">
-            <p>July 7 - July 13</p>
-            <p>$7500 / Person</p>
-            <p className="available-date">Available</p>
-            <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
-          </div>
-          <div className="pricing-row">
-            <p>July 15 - July 23</p>
-            <p>$7500 / Person</p>
-            <p className="available-date">Available</p>
-            <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
+  const showPrices = () => {
+    if (windowSize > 768) {
+      return (
+        <div className={`tab-dates-section`}>
+          <div className="flex-column">
+            <div className="pricing-row title-row">
+              <p></p>
+              <p>Dates</p>
+              <p>Riding Guest</p>
+              <p>Non-riding Spouse/Partner</p>
+              <p></p>
+              <p></p>
+            </div>
+            <div className="pricing-row">
+              <p>Week #1</p>
+              <p>9/5/2020 through 9/11/2020</p>
+              <p>$4,000</p>
+              <p>$3,000</p>
+              <p className="available-date">Available</p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
+            </div>
+            <div className="pricing-row">
+              <p>Week #2</p>
+              <p>9/12/2020 through 9/18/2020</p>
+              <p>$4,000</p>
+              <p>$3,000</p>
+              <p className="available-date">Available</p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
+            </div>
           </div>
         </div>
-      </div>
+      )
+    } else {
+      return (
+        <div className={`tab-dates-section`}>
+          <div className="flex-column">
+            <h5>Week #1</h5>
+            <div className="pricing-row">
+              <p>9/5/2020 through 9/11/2020</p>
+              <p className="available-date">Available</p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
+            </div>
+            <h5>Week #2</h5>
+            <div className="pricing-row">
+              <p>9/12/2020 through 9/18/2020</p>
+              <p className="available-date">Available</p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS SITE" onClick={handleDate}/></p>
+            </div>
+            <h5>Prices</h5>
+            <div className="pricing-row title-row">
+              <p>Riding Guest</p>
+              <p>Non-riding Spouse/Partner</p>
+            </div>
+            <div className="pricing-row">
+              <p>$4,000</p>
+              <p>$3,000</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  };
+
+  return (
+    <>
+      {showPrices()}
     </>
   )
 }

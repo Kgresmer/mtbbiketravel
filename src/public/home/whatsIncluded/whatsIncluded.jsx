@@ -30,10 +30,11 @@ export default function OverviewWhatsIncluded() {
         <div className="tab-banner-w">
           <div className="banner">
             <h3>What's Included</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur.</p>
+            <p>There is nothing like the relaxed atmosphere and adventure of the small-town Swiss culture in the Alps.
+              From the minute you get on the train in Zurich, every detail of trip is about enjoying the moment.
+              We encourage non-riding spouses/partners to join us on the trip.  There are lots of things to do and
+              see while the group is out on the riding excursions including visiting the only National park in
+              Switzerland or just exploring the <a href="https://www.skiresort.info/ski-resort/scuol-motta-naluns/">local mountain resort</a> in Scuol. </p>
           </div>
         </div>
         <div className="flex-row">
