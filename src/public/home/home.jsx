@@ -3,59 +3,10 @@ import axios from 'axios';
 import './home.css';
 import Itinerary from "./itinerary/Itinerary";
 import WhatsIncluded from "./whatsIncluded/whatsIncluded";
+import Overview from "./overview/overview";
 import {withRouter} from "react-router-dom";
+import DatesPricing from "./DatesPricing/datesPricing";
 
-
-function Overview() {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    if (!typeof window === 'object') {
-      return false;
-    }
-
-    function handleResize() {
-      setWindowSize(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return (
-    <>
-      <div className={`tab-text-section ${windowSize > 768 ? 'tab-text-section-large' : ''}`}>
-        <div className="flex-column">
-          <div className="flex-row">
-            <div className="">
-              <p className="font-weight-bold">Ready to challenge yourself, enjoy great scenery and a little luxury?</p>
-              <br></br>
-              <p>Join us for a week of biking in the Swiss Alps.</p>
-              <p>Basecamp in Scuol is in a small village nestled in the Alps in eastern Switzerland
-                near the Austrian-Italian border. It’s remote and crowd-free. The week of riding
-                includes some big days of pedaling multiple days in a row. Climbing is limited, but
-                when it’s time, it’s a steep one. You’ll encounter trails with exposure, the need to
-                let go of the brakes and maybe find it’s time to roll down a two foot drop.</p>
-              <p>If you love being on your bike, are an experienced rider and want a new
-                challenge, this is for you.</p>
-              <p>As for the luxury: A gorgeous lodge, chilled beer, one of the oldest spa complexes
-                in Europe and day trips to remember.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {(windowSize > 768 && windowSize < 1099) && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="640" height="640"></iframe>
-      </div>}
-      {(windowSize >= 1100 && windowSize < 1350) && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="710" height="640"></iframe>
-      </div>}
-      {windowSize > 1350 && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840" height="640"></iframe>
-      </div>}
-    </>
-  )
-}
 
 function Home(props) {
   const { location } = props;
@@ -86,7 +37,6 @@ function Home(props) {
     const tabElements = document.getElementById('Overview');
     if (tabElements) {
       const y = tabElements.scrollHeight - 25;
-      console.log(y)
 
       if (window.location.hash === '#Itinerary') {
         switchTab({component: <Itinerary/>, name: 'Itinerary'});
@@ -96,6 +46,9 @@ function Home(props) {
         window.scrollTo(0, y)
       } else if (window.location.hash === '#Overview') {
         switchTab({component: <Overview/>, name: 'Overview'});
+      } else if (window.location.hash === '#DatesPricing') {
+        switchTab({component: <DatesPricing/>, name: 'DatesPricing'});
+        window.scrollTo(0, y)
       }
     }
   }, [location.hash]);
@@ -145,12 +98,16 @@ function Home(props) {
                  onClick={() => switchTab({component: <Itinerary/>, name: 'Itinerary'})}>
               <h5>Itinerary</h5>
             </div>
-            <div className="tab-heading last-tab"
+            <div className="tab-heading"
                  style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
               <h5>Whats Included</h5>
             </div>
-            <div className="tab-heading-offset"></div>
+            <div className="tab-heading last-tab"
+                 style={tab.name === 'DatesPricing' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <DatesPricing/>, name: 'DatesPricing'})}>
+              <h5>Dates & Pricing</h5>
+            </div>
             <div className="tab-heading-offset"></div>
           </div>
           <div className={`${tab.name === 'WhatsIncluded' ? 'tab-content-section-w' : 'tab-content-section'} flex-row background-color-selected`}>
@@ -176,6 +133,11 @@ function Home(props) {
                  style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
               <h5>Whats Included</h5>
+            </div>
+            <div className="tab-heading"
+                 style={tab.name === 'DatesPricing' ? lightGreenBackground : darkGreenBackground}
+                 onClick={() => switchTab({component: <DatesPricing/>, name: 'DatesPricing'})}>
+              <h5>Dates & Pricing</h5>
             </div>
           </div>
           <div className={`${tab.name === 'WhatsIncluded' ? 'tab-content-section-w' : 'tab-content-section'} flex-row background-color-selected`}>

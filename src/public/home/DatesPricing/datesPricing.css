@@ -1,0 +1,45 @@
+
+.tab-dates-section {
+    width: 100%;
+}
+
+.pricing-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.pricing-row p {
+    flex: 1;
+    text-align: center;
+}
+
+.pricing-row > p:first-child {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .pricing-row {
+        margin-bottom: 1%;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .pricing-row {
+        margin-bottom: 4%;
+    }
+}
+
+.date-one-button {
+    text-decoration: underline;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.available-date {
+    background-color: #4a7740;
+    color: white;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    cursor: pointer;
+}

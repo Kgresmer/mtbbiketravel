@@ -37,6 +37,9 @@ function App() {
             <Route  path="/home#WhatsIncluded">
               <Home/>
             </Route>
+            <Route  path="/home#DatesPricing">
+              <Home/>
+            </Route>
             <Route  path="/contact">
               <Contact/>
             </Route>

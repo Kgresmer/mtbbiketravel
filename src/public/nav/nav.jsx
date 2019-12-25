@@ -36,6 +36,9 @@ const Navigation = (props) => {
                 <Nav.Link href="/home#WhatsIncluded" className={`${route === '/home#WhatsIncluded' ? 'main-nav-active-link' : ''}`}>Whats Included</Nav.Link>
               </li>
               <li className="nav-item">
+                <Nav.Link href="/home#DatesPricing" className={`${route === '/home#DatesPricing' ? 'main-nav-active-link' : ''}`}>Dates & Pricing</Nav.Link>
+              </li>
+              <li className="nav-item">
                 <Nav.Link href="/contact" className={`${route === '/contact' ? 'main-nav-active-link' : ''}`}>Contact</Nav.Link>
               </li>
             </ul>
