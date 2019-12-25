@@ -13,6 +13,7 @@ import {fab} from '@fortawesome/free-brands-svg-icons'
 import {faCircleNotch} from '@fortawesome/free-solid-svg-icons'
 import Navigation from "./public/nav/nav";
 import Footer from "./public/footer/footer";
+import Gallery from "./public/gallery/gallery";
 
 library.add(fab, faCircleNotch);
 
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route  path="/contact">
               <Contact/>
+            </Route>
+            <Route  path="/gallery">
+              <Gallery/>
             </Route>
             <Route  path="/">
               <Home/>
