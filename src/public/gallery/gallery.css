@@ -9,6 +9,7 @@
 
 .gallery-body {
     background-color: white;
+    padding-bottom: 2vh;
 }
 
 .gallery-body h1 {
@@ -72,4 +73,25 @@
     width: 40px;
     position: absolute;
     right: 5%;
+}
+
+.showMoreContainer {
+    align-items: center;
+    display: flex;
+    height: 5vh;
+    width: 100%;
+    justify-content: center;
+    margin: 1vh;
+}
+
+.showMoreContainer button {
+    height: 100%;
+    border: none;
+    font-size: x-large;
+    padding: 0 6vw;
+    border-radius: 5px;
+}
+
+.showMoreContainer button:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

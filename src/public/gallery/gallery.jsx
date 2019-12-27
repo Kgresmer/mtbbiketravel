@@ -5,13 +5,17 @@ import axios from "axios";
 
 function Gallery() {
   const [thumbs, setThumbs] = useState([]);
+  const [thumbsNumArr, setThumbsNumArr] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [disableShowMore, setDisableShowMore] = useState(false);
   const [modalPhoto, setModalPhoto] = useState('');
+  const [numOfPhotosShown, setNumOfPhotosShown] = useState(19);
 
-  const buildDisplayThumbnails = (thumbsArr) => {
+  const buildDisplayThumbnails = (thumbsArr, numOfPhotos) => {
     const temp = [];
     for (let i = 0; i < thumbsArr.length; i++) {
       temp[i] = {url:`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/thumb-${thumbsArr[i]}.jpg`, num: thumbsArr[i]};
+      if (i === numOfPhotos) break;
     }
     setThumbs(temp);
   };
@@ -29,7 +33,8 @@ function Gallery() {
             thumbsArr.push(num)
           }
         });
-        buildDisplayThumbnails(thumbsArr)
+        setThumbsNumArr(thumbsArr);
+        buildDisplayThumbnails(thumbsArr, 19)
       }
     }
 
@@ -45,6 +50,15 @@ function Gallery() {
   const clearModal = () => {
     setShowModal(false);
   };
+
+  const showMorePhotos = () => {
+    const numPhotosShownCurrent = numOfPhotosShown + 20;
+    setNumOfPhotosShown(numPhotosShownCurrent);
+    buildDisplayThumbnails(thumbsNumArr, numPhotosShownCurrent);
+    if (numPhotosShownCurrent > thumbsNumArr.length) {
+      setDisableShowMore(true);
+    }
+  }
 
   return (
     <div>
@@ -68,6 +82,9 @@ function Gallery() {
           <button><CloseIcon fontSize="large" /></button>
           <img src={modalPhoto} />
         </div>
+        {!disableShowMore && <div className="showMoreContainer">
+          <button onClick={showMorePhotos}>Show More</button>
+        </div>}
       </main>
     </div>
   );
