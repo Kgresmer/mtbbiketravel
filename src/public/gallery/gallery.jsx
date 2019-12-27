@@ -21,10 +21,16 @@ function Gallery() {
     async function fetchData() {
       const response = await axios.get('https://mtnbiketravel-gallery.s3.amazonaws.com/?list-type=2');
       if (response && response.data) {
-        let regexp = /thumb-\d/g;
+        let regexp = /thumb-\d(\d)?(\d)?/g;
         let thumbsTemp = [...response.data.matchAll(regexp)];
-        thumbsTemp.forEach(thumb => thumbsArr.push(thumb[0].substr(6, 1)));
-        buildDisplayThumbnails(thumbsArr)      }
+        thumbsTemp.forEach(thumb => {
+          const num = thumb[0].substr(6, 3);
+          if(thumbsArr.indexOf(num) === -1) {
+            thumbsArr.push(num)
+          }
+        });
+        buildDisplayThumbnails(thumbsArr)
+      }
     }
 
     fetchData();
