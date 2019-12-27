@@ -1,29 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import './gallery.css';
 import CloseIcon from '@material-ui/icons/Close';
+import axios from "axios";
 
 function Gallery() {
   const [thumbs, setThumbs] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalPhoto, setModalPhoto] = useState('');
 
-  const buildDisplayThumbnails = () => {
-    const thumbArray = [];
-    for (let i = 1; i < 40; i++) {
-      const j = i % 2 === 0 ? 1 : 2;
-      thumbArray[i] = `https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/thumb-${j}.jpg`;
+  const buildDisplayThumbnails = (thumbsArr) => {
+    const temp = [];
+    for (let i = 0; i < thumbsArr.length; i++) {
+      temp[i] = {url:`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/thumb-${thumbsArr[i]}.jpg`, num: thumbsArr[i]};
     }
-    setThumbs(thumbArray);
+    setThumbs(temp);
   };
 
   useEffect(() => {
+    let thumbsArr = [];
+    async function fetchData() {
+      const response = await axios.get('https://mtnbiketravel-gallery.s3.amazonaws.com/?list-type=2');
+      if (response && response.data) {
+        let regexp = /thumb-\d/g;
+        let thumbsTemp = [...response.data.matchAll(regexp)];
+        thumbsTemp.forEach(thumb => thumbsArr.push(thumb[0].substr(6, 1)));
+        buildDisplayThumbnails(thumbsArr)      }
+    }
 
-    buildDisplayThumbnails()
+    fetchData();
+
   }, []);
 
   const showImageModal = (index) => {
-    const j = index % 2 === 0 ? 1 : 2;
-    setModalPhoto(`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${j}.jpg`);
+    setModalPhoto(`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${index}.jpg`);
     setShowModal(true);
   };
 
@@ -37,11 +46,16 @@ function Gallery() {
         <h1>Gallery</h1>
           <div className="gallery-container">
             {thumbs.map((thumb, index) => {
-              return (
-                <div key={index} className="gallery-card" onClick={() => showImageModal(index)}>
-                  <img src={thumb} />
-                </div>
-              );
+              try {
+                return (
+                  <div key={index} className="gallery-card" onClick={() => showImageModal(thumb.num)}>
+                    <img src={thumb.url}/>
+                  </div>
+                );
+              } catch (err) {
+                console.log('err caught')
+                console.log(err);
+              }
             })}
           </div>
         <div className={`modal ${showModal ? 'show' : 'dontShow'}`} onClick={() => clearModal()}>
