@@ -54,6 +54,101 @@
     font-weight: bold;
 }
 
+.book-trip-banner-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-trip-banner {
+    margin-bottom: 4%;
+}
+
 .tab-dates-section h5 {
     font-weight: bold !important;
+}
+
+.showSignUp {
+    display: block !important;
+}
+
+.dontShowSignUp {
+    display: none !important;
+}
+
+.column-1 {
+    flex: 1;
+}
+
+.MuiFormControl-marginNormal {
+    margin-top: 0 !important;
+}
+
+label {
+    margin-top: 2% !important;
+}
+
+.modal {
+    padding: 0 !important;
+    text-align: center;
+}
+
+button.MuiButtonBase-root {
+    color: black !important;
+}
+
+.column-2 {
+    flex: 1;
+    margin-left: 1%;
+}
+
+.sign-up-form-card > div {
+    padding: 20px;
+}
+
+.sign-up-form-card .close-sign-up {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 1.5rem;
+    height: 40px;
+    width: 40px;
+}
+
+button.close-sign-up {
+    position: center !important;
+    right: 0 !important;
+}
+#signUpModal {
+    overflow: scroll;
+}
+
+.flexible-error {
+    bottom: 15px;
+    position: relative;
+    color: red;
+}
+
+.sign-up-form-card {
+    text-align: initial;
+}
+
+@media screen and (max-width: 600px) {
+    .sign-up-form-card {
+        width: 90%;
+        margin: 2% auto;
+    }
+}
+
+@media screen and (min-width: 601px) {
+    .sign-up-form-card {
+        width: 90%;
+        margin: 5% auto;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .sign-up-form-card {
+        width: 75%;
+        margin: 4% auto;
+    }
 }

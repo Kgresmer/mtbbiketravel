@@ -79,7 +79,7 @@ function Gallery() {
             })}
           </div>
         <div className={`modal ${showModal ? 'show' : 'dontShow'}`} onClick={() => clearModal()}>
-          <button><CloseIcon fontSize="large" /></button>
+          <button className="close-gallery-modal"><CloseIcon fontSize="large" /></button>
           <img src={modalPhoto} />
         </div>
         {!disableShowMore && <div className="showMoreContainer">

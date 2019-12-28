@@ -62,9 +62,11 @@
 .modal img {
     height: auto;
     max-height: 90vh;
+    max-width: 90vw;
+    margin-top: 4%;
 }
 
-.modal button {
+.close-gallery-modal {
     background: none;
     border: none;
     color: white;
