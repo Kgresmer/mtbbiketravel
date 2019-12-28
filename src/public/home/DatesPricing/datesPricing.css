@@ -39,11 +39,14 @@
     text-decoration: underline;
     padding: 10px 15px;
     cursor: pointer;
+    background-color: #4a7740;
+    color: white;
 }
 
 .available-date {
-    background-color: #4a7740;
-    color: white;
+    font-weight: bold;
+    color: #4a7740;
+    border: 1px solid #4a7740;
     text-transform: uppercase;
     padding: 8px 12px;
     height: fit-content;
