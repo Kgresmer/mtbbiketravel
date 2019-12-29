@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react';
 import './gallery.css';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from "axios";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 function Gallery() {
   const [thumbs, setThumbs] = useState([]);
   const [thumbsNumArr, setThumbsNumArr] = useState([]);
+  const [photoIndex, setPhotoIndex] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [disableShowMore, setDisableShowMore] = useState(false);
   const [modalPhoto, setModalPhoto] = useState('');
@@ -33,7 +36,8 @@ function Gallery() {
             thumbsArr.push(num)
           }
         });
-        setThumbsNumArr(thumbsArr);
+        const sorted = thumbsArr.sort(function(a, b){return a-b});
+        setThumbsNumArr(sorted);
         buildDisplayThumbnails(thumbsArr, 19)
       }
     }
@@ -42,7 +46,24 @@ function Gallery() {
 
   }, []);
 
+  const keydown = (event) => {
+    if (event.keyCode === 37) {
+      scrollBackPhoto(true);
+    }
+    if (event.keyCode === 39) {
+      scrollForwardPhoto(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', keydown);
+    return () => {
+      window.removeEventListener('keydown', keydown);
+    };
+  }, [thumbsNumArr]);
+
   const showImageModal = (index) => {
+    setPhotoIndex(index);
     setModalPhoto(`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${index}.jpg`);
     setShowModal(true);
   };
@@ -58,7 +79,41 @@ function Gallery() {
     if (numPhotosShownCurrent > thumbsNumArr.length) {
       setDisableShowMore(true);
     }
-  }
+  };
+
+  const scrollBackPhoto = (fromArrow) => {
+    let newIndex;
+    if (fromArrow) {
+      const m = document.getElementById('modal-photo');
+      const numStr = m.src.split('full-')[1];
+      const num = numStr.split('.')[0];
+      newIndex = +num - 1;
+    } else {
+      newIndex = +photoIndex - 1;
+    }
+    if (newIndex === 0) {
+      newIndex = thumbsNumArr[thumbsNumArr.length -1];
+    }
+    setPhotoIndex(newIndex);
+    setModalPhoto(`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${newIndex}.jpg`);
+  };
+
+  const scrollForwardPhoto = (fromArrow) => {
+    let newIndex;
+    if (fromArrow) {
+      const m = document.getElementById('modal-photo');
+      const numStr = m.src.split('full-')[1];
+      const num = numStr.split('.')[0];
+      newIndex = +num + 1;
+    } else {
+      newIndex = +photoIndex + 1;
+    }
+    if (newIndex > thumbsNumArr[thumbsNumArr.length -1]) {
+      newIndex = thumbsNumArr[0];
+    }
+    setPhotoIndex(newIndex);
+    setModalPhoto(`https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${newIndex}.jpg`);
+  };
 
   return (
     <div>
@@ -78,9 +133,11 @@ function Gallery() {
               }
             })}
           </div>
-        <div className={`modal ${showModal ? 'show' : 'dontShow'}`} onClick={() => clearModal()}>
-          <button className="close-gallery-modal"><CloseIcon fontSize="large" /></button>
-          <img src={modalPhoto} />
+        <div className={`modal ${showModal ? 'show' : 'dontShow'}`}>
+          <button className="close-gallery-modal"><CloseIcon fontSize="large" onClick={() => clearModal()}/></button>
+          <ArrowBackIosIcon className="arrow" onClick={scrollBackPhoto} color="primary" fontSize="large" />
+          <img id="modal-photo" src={modalPhoto} />
+          <ArrowForwardIosIcon className="arrow" onClick={scrollForwardPhoto} color="primary" fontSize="large" />
         </div>
         {!disableShowMore && <div className="showMoreContainer">
           <button onClick={showMorePhotos}>Show More</button>
