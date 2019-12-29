@@ -5,11 +5,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import CloseIcon from '@material-ui/icons/Close';
 import Card from "@material-ui/core/Card";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Radio from "@material-ui/core/Radio";
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-import StarRateIcon from '@material-ui/icons/StarRate';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 function DatesPricing() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -21,14 +18,14 @@ function DatesPricing() {
   const [lastNameError, setLastNameError] = useState(false);
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState(false);
-  const [bestTime, setBestTime] = useState("");
-  const [flexibleDates, setFlexibleDates] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [selectedDate, setSelectedDate] = React.useState(null);
+  const [bestTime, setBestTime] = useState("");
+  const [modalData, setModalData] = useState({});
+  // const [selectedDate, setSelectedDate] = React.useState(null);
 
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
+  // const handleDateChange = date => {
+  //   setSelectedDate(date);
+  // };
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -73,8 +70,21 @@ function DatesPricing() {
 
   }
 
-  const showFormModal = (index) => {
+  const showFormModal = (week) => {
     setShowModal(true);
+    const week1 = {
+      week: "Week One",
+      dates: "9/5/2020 through 9/11/2020"
+    }
+    const week2 = {
+      week: "Week One",
+      dates: "9/5/2020 through 9/11/2020"
+    }
+    if (week === 'week1') {
+      setModalData(week1);
+    } else {
+      setModalData(week2);
+    }
   };
 
   const showPrices = () => {
@@ -117,13 +127,13 @@ function DatesPricing() {
             <div className="pricing-row">
               <p>9/5/2020 through 9/11/2020</p>
               <p className="available-date">Available</p>
-              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={showFormModal}/></p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week1')}/></p>
             </div>
             <h5>Week #2</h5>
             <div className="pricing-row">
               <p>9/12/2020 through 9/18/2020</p>
               <p className="available-date">Available</p>
-              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={showFormModal}/></p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week2')}/></p>
             </div>
             <h5>Prices</h5>
             <div className="pricing-row title-row">
@@ -149,7 +159,9 @@ function DatesPricing() {
               <div className="book-trip-banner-container">
                 <div className="flex-column">
                   <h4 className="book-trip-banner">Book This Trip</h4>
-                  <div className="required-text"><StarRateIcon color="primary" fontSize="small"/> - Required Fields</div>
+                  <p>{modalData.week}</p>
+                  <p>{modalData.dates}</p>
+                  <p className="required-text"><span className="asterisk">*</span> - Required Fields</p>
                 </div>
                 <button className="close-sign-up" onClick={clearModal}><CloseIcon fontSize="large"/></button>
               </div>
@@ -157,7 +169,7 @@ function DatesPricing() {
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <div className="flex-row">
                     <div className="column-1">
-                      <InputLabel htmlFor="first-name-input">First Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                      <InputLabel htmlFor="first-name-input">First Name  <span className="asterisk">*</span></InputLabel>
                       <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
                                      required={true}
                                      className=''
@@ -165,7 +177,7 @@ function DatesPricing() {
                                      fullWidth={true}
                                      helperText="Incorrect entry."
                                      onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
-                      <InputLabel htmlFor="email-input">Email<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                      <InputLabel htmlFor="email-input">Email  <span className="asterisk">*</span></InputLabel>
                       <OutlinedInput id="email-input" label="Email" variant="outlined"
                                      required={true}
                                      className=''
@@ -179,23 +191,23 @@ function DatesPricing() {
                                      error={false}
                                      fullWidth={true}
                                      onBlur={e => setField(e.target.value, () => {}, setBestTime)}/>
-                      <InputLabel htmlFor="dob-input">Date of Birth</InputLabel>
-                      <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        placeholder="mm/dd/yyyy"
-                        margin="normal"
-                        id="date-picker"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                          'aria-label': 'change date of birth',
-                        }}
-                      />
+                      {/*<InputLabel htmlFor="dob-input">Date of Birth</InputLabel>*/}
+                      {/*<KeyboardDatePicker*/}
+                        {/*disableToolbar*/}
+                        {/*variant="inline"*/}
+                        {/*format="MM/dd/yyyy"*/}
+                        {/*placeholder="mm/dd/yyyy"*/}
+                        {/*margin="normal"*/}
+                        {/*id="date-picker"*/}
+                        {/*value={selectedDate}*/}
+                        {/*onChange={handleDateChange}*/}
+                        {/*KeyboardButtonProps={{*/}
+                          {/*'aria-label': 'change date of birth',*/}
+                        {/*}}*/}
+                      {/*/>*/}
                     </div>
                     <div className="column-2">
-                      <InputLabel htmlFor="last-name-input">Last Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                      <InputLabel htmlFor="last-name-input">Last Name  <span className="asterisk">*</span></InputLabel>
                       <OutlinedInput id="last-name-input" label="Last Name" variant="outlined"
                                      required={true}
                                      className=''
@@ -203,7 +215,7 @@ function DatesPricing() {
                                      error={lastNameError}
                                      fullWidth={true}
                                      onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
-                      <InputLabel htmlFor="phone-input">Phone Number<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                      <InputLabel htmlFor="phone-input">Phone Number  <span className="asterisk">*</span></InputLabel>
                       <OutlinedInput id="phone-input" label="Phone" variant="outlined"
                                      required={true}
                                      className=''
@@ -211,9 +223,9 @@ function DatesPricing() {
                                      helperText="Incorrect entry."
                                      fullWidth={true}
                                      onBlur={e => setField(e.target.value, setPhoneError, setPhone)}/>
-                      <InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>
-                      <FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />
-                      <FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />
+                      {/*<InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>*/}
+                      {/*<FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />*/}
+                      {/*<FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />*/}
                     </div>
                   </div>
                   <input className={`book-submit-button ${!validateForm() ? 'disabled-submit' : ''}`} disabled={!validateForm()} type="submit" value="Submit"
@@ -232,14 +244,14 @@ function DatesPricing() {
               <div className="book-trip-banner-container">
                 <div>
                   <h4 className="book-trip-banner">Book This Trip</h4>
-                  <div className="required-text"><StarRateIcon color="primary" fontSize="small"/> - Required Fields</div>
+                  <div className="required-text"><span className="asterisk">*</span> - Required Fields</div>
                 </div>
                 <button className="close-sign-up" onClick={clearModal}><CloseIcon fontSize="large"/></button>
               </div>
               <form>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <div className="flex-column">
-                    <InputLabel htmlFor="first-name-input">First Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <InputLabel htmlFor="first-name-input">First Name  <span className="asterisk">*</span></InputLabel>
                     <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
                                    required={true}
                                    className=''
@@ -247,7 +259,7 @@ function DatesPricing() {
                                    fullWidth={true}
                                    helperText="Incorrect entry."
                                    onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
-                    <InputLabel htmlFor="last-name-input">Last Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <InputLabel htmlFor="last-name-input">Last Name  <span className="asterisk">*</span></InputLabel>
                     <OutlinedInput id="last-name-input" label="Last Name" variant="outlined"
                                    required={true}
                                    className=''
@@ -255,7 +267,7 @@ function DatesPricing() {
                                    error={lastNameError}
                                    fullWidth={true}
                                    onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
-                    <InputLabel htmlFor="email-input">Email<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <InputLabel htmlFor="email-input">Email  <span className="asterisk">*</span></InputLabel>
                     <OutlinedInput id="email-input" label="Email" variant="outlined"
                                    required={true}
                                    className=''
@@ -263,7 +275,7 @@ function DatesPricing() {
                                    fullWidth={true}
                                    helperText="Incorrect entry."
                                    onBlur={e => setField(e.target.value, setEmailError, setEmail)}/>
-                    <InputLabel htmlFor="phone-input">Phone Number<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <InputLabel htmlFor="phone-input">Phone Number  <span className="asterisk">*</span></InputLabel>
                     <OutlinedInput id="phone-input" label="Phone" variant="outlined"
                                    required={true}
                                    className=''
@@ -271,31 +283,31 @@ function DatesPricing() {
                                    helperText="Incorrect entry."
                                    fullWidth={true}
                                    onBlur={e => setField(e.target.value, setPhoneError, setPhone)}/>
-                    <InputLabel htmlFor="dob-input">Date of Birth</InputLabel>
-                    <KeyboardDatePicker
-                      disableToolbar
-                      variant="inline"
-                      format="MM/dd/yyyy"
-                      placeholder="mm/dd/yyyy"
-                      margin="normal"
-                      id="date-picker"
-                      value={selectedDate}
-                      onChange={handleDateChange}
-                      KeyboardButtonProps={{
-                        'aria-label': 'change date of birth',
-                      }}
-                    />
+                    {/*<InputLabel htmlFor="dob-input">Date of Birth</InputLabel>*/}
+                    {/*<KeyboardDatePicker*/}
+                      {/*disableToolbar*/}
+                      {/*variant="inline"*/}
+                      {/*format="MM/dd/yyyy"*/}
+                      {/*placeholder="mm/dd/yyyy"*/}
+                      {/*margin="normal"*/}
+                      {/*id="date-picker"*/}
+                      {/*value={selectedDate}*/}
+                      {/*onChange={handleDateChange}*/}
+                      {/*KeyboardButtonProps={{*/}
+                        {/*'aria-label': 'change date of birth',*/}
+                      {/*}}*/}
+                    {/*/>*/}
                     <InputLabel htmlFor="best-time-input">Best Time To Call You</InputLabel>
                     <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
                                    className=''
                                    error={false}
                                    fullWidth={true}
                                    onBlur={e => setField(e.target.value, () => {}, setBestTime)}/>
-                    <InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>
-                    <div className="flex-row">
-                      <FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />
-                      <FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />
-                    </div>
+                    {/*<InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>*/}
+                    {/*<div className="flex-row">*/}
+                      {/*<FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />*/}
+                      {/*<FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />*/}
+                    {/*</div>*/}
                   </div>
                   <input className={`book-submit-button ${!validateForm() ? 'disabled-submit' : ''}`} disabled={!validateForm()} type="submit" value="Submit"
                          onClick={handleSubmit}/>
