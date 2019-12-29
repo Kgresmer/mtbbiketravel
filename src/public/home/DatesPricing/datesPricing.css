@@ -17,6 +17,10 @@
     white-space: pre-wrap;
 }
 
+.required-text {
+    margin-bottom: 5%;
+}
+
 @media screen and (max-width: 600px) {
     .pricing-row {
         margin-bottom: 1%;
@@ -41,6 +45,10 @@
     cursor: pointer;
     background-color: #4a7740;
     color: white;
+}
+
+label {
+    color: black !important;
 }
 
 .available-date {
@@ -154,4 +162,17 @@ button.close-sign-up {
         width: 75%;
         margin: 4% auto;
     }
+}
+
+.book-submit-button {
+    background-color: #4a7740;
+    color: white;
+    text-transform: uppercase;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.disabled-submit {
+    background-color: #95999c;
+    cursor: not-allowed;
 }

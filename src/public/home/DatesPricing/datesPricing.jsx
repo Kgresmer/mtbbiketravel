@@ -9,6 +9,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import StarRateIcon from '@material-ui/icons/StarRate';
 
 function DatesPricing() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -18,20 +19,10 @@ function DatesPricing() {
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastName, setLastName] = useState("");
   const [lastNameError, setLastNameError] = useState(false);
-  const [city, setCity] = useState("");
-  const [cityError, setCityError] = useState(false);
-  const [zip, setZip] = useState("");
-  const [zipError, setZipError] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState(false);
   const [bestTime, setBestTime] = useState("");
-  const [bestTimeError, setBestTimeError] = useState(false);
-  const [address, setAddress] = useState("");
-  const [addressError, setAddressError] = useState(false);
-  const [state, setState] = useState("");
-  const [stateError, setStateError] = useState(false);
-  const [country, setCountry] = useState("");
-  const [countryError, setCountryError] = useState(false);
   const [flexibleDates, setFlexibleDates] = useState('');
-  const [showFlexibleError, setShowFlexibleError] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = React.useState(null);
 
@@ -58,15 +49,14 @@ function DatesPricing() {
   };
 
   const validateForm = () => {
-    return email.length > 0 && firstName.length > 0 && !emailError && !firstNameError && !lastNameError;
-  }
+    return email.length > 0 && firstName.length > 0
+      && lastName.length > 0 && phone.length > 0
+      && !emailError && !firstNameError
+      && !lastNameError && !phoneError;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!flexibleDates) {
-      setShowFlexibleError(true);
-      return;
-    }
 
     // axios.post('http://localhost:5000/data/login', {username: email, password}, {
     //   headers: {
@@ -157,42 +147,38 @@ function DatesPricing() {
           <div className="sign-up-form-card">
             <Card className=''>
               <div className="book-trip-banner-container">
-                <h4 className="book-trip-banner">Book This Trip</h4>
+                <div className="flex-column">
+                  <h4 className="book-trip-banner">Book This Trip</h4>
+                  <div className="required-text"><StarRateIcon color="primary" fontSize="small"/> - Required Fields</div>
+                </div>
                 <button className="close-sign-up" onClick={clearModal}><CloseIcon fontSize="large"/></button>
               </div>
               <form>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <div className="flex-row">
                     <div className="column-1">
-                      <InputLabel htmlFor="first-name-input">First Name</InputLabel>
+                      <InputLabel htmlFor="first-name-input">First Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
                       <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
                                      required={true}
                                      className=''
                                      error={firstNameError}
                                      fullWidth={true}
+                                     helperText="Incorrect entry."
                                      onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
-                      <InputLabel htmlFor="email-input">Email</InputLabel>
+                      <InputLabel htmlFor="email-input">Email<StarRateIcon color="primary" fontSize="small"/></InputLabel>
                       <OutlinedInput id="email-input" label="Email" variant="outlined"
                                      required={true}
                                      className=''
                                      error={emailError}
                                      fullWidth={true}
+                                     helperText="Incorrect entry."
                                      onBlur={e => setField(e.target.value, setEmailError, setEmail)}/>
-                      <InputLabel htmlFor="city-input">City</InputLabel>
-                      <OutlinedInput id="city-input" label="City" variant="outlined"
-                                     required={true}
+                      <InputLabel htmlFor="best-time-input">Best Time To Call You</InputLabel>
+                      <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
                                      className=''
-                                     error={cityError}
+                                     error={false}
                                      fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setCityError, setCity)}/>
-                      <InputLabel htmlFor="zip-input">Zip / Postal Code</InputLabel>
-                      <OutlinedInput id="zip-input" label="Zip" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     type="number"
-                                     error={zipError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setZipError, setZip)}/>
+                                     onBlur={e => setField(e.target.value, () => {}, setBestTime)}/>
                       <InputLabel htmlFor="dob-input">Date of Birth</InputLabel>
                       <KeyboardDatePicker
                         disableToolbar
@@ -200,7 +186,6 @@ function DatesPricing() {
                         format="MM/dd/yyyy"
                         placeholder="mm/dd/yyyy"
                         margin="normal"
-                        required={true}
                         id="date-picker"
                         value={selectedDate}
                         onChange={handleDateChange}
@@ -208,50 +193,30 @@ function DatesPricing() {
                           'aria-label': 'change date of birth',
                         }}
                       />
-                      <InputLabel htmlFor="best-time-input">Best Time To Call You</InputLabel>
-                      <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={bestTimeError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setBestTimeError, setBestTime)}/>
                     </div>
                     <div className="column-2">
-                      <InputLabel htmlFor="last-name-input">Last Name</InputLabel>
+                      <InputLabel htmlFor="last-name-input">Last Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
                       <OutlinedInput id="last-name-input" label="Last Name" variant="outlined"
                                      required={true}
                                      className=''
+                                     helperText="Incorrect entry."
                                      error={lastNameError}
                                      fullWidth={true}
                                      onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
-                      <InputLabel htmlFor="address-input">Address</InputLabel>
-                      <OutlinedInput id="address-input" label="Address" variant="outlined"
+                      <InputLabel htmlFor="phone-input">Phone Number<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                      <OutlinedInput id="phone-input" label="Phone" variant="outlined"
                                      required={true}
                                      className=''
-                                     error={addressError}
+                                     error={emailError}
+                                     helperText="Incorrect entry."
                                      fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setAddressError, setAddress)}/>
-                      <InputLabel htmlFor="state-input">State</InputLabel>
-                      <OutlinedInput id="state-input" label="State" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={stateError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setStateError, setState)}/>
-                      <InputLabel htmlFor="country-input">Country</InputLabel>
-                      <OutlinedInput id="country-input" label="Country" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={countryError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setCountryError, setCountry)}/>
+                                     onBlur={e => setField(e.target.value, setPhoneError, setPhone)}/>
                       <InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>
                       <FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />
                       <FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />
-                      {showFlexibleError && <p className="flexible-error">Please select Yes or No</p>}
                     </div>
                   </div>
-                  <input className="contact-submit-button" disabled={!validateForm()} type="submit" value="Submit"
+                  <input className={`book-submit-button ${!validateForm() ? 'disabled-submit' : ''}`} disabled={!validateForm()} type="submit" value="Submit"
                          onClick={handleSubmit}/>
                 </MuiPickersUtilsProvider>
               </form>
@@ -265,97 +230,74 @@ function DatesPricing() {
           <div className="sign-up-form-card">
             <Card className=''>
               <div className="book-trip-banner-container">
-                <h4 className="book-trip-banner">Book This Trip</h4>
+                <div>
+                  <h4 className="book-trip-banner">Book This Trip</h4>
+                  <div className="required-text"><StarRateIcon color="primary" fontSize="small"/> - Required Fields</div>
+                </div>
                 <button className="close-sign-up" onClick={clearModal}><CloseIcon fontSize="large"/></button>
               </div>
               <form>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <div className="flex-column">
-                      <InputLabel htmlFor="first-name-input">First Name</InputLabel>
-                      <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={firstNameError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
-                    <InputLabel htmlFor="last-name-input">Last Name</InputLabel>
+                    <InputLabel htmlFor="first-name-input">First Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
+                                   required={true}
+                                   className=''
+                                   error={firstNameError}
+                                   fullWidth={true}
+                                   helperText="Incorrect entry."
+                                   onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
+                    <InputLabel htmlFor="last-name-input">Last Name<StarRateIcon color="primary" fontSize="small"/></InputLabel>
                     <OutlinedInput id="last-name-input" label="Last Name" variant="outlined"
                                    required={true}
                                    className=''
+                                   helperText="Incorrect entry."
                                    error={lastNameError}
                                    fullWidth={true}
                                    onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
-                      <InputLabel htmlFor="email-input">Email</InputLabel>
-                      <OutlinedInput id="email-input" label="Email" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={emailError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setEmailError, setEmail)}/>
-                      <InputLabel htmlFor="dob-input">Date of Birth</InputLabel>
-                      <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        placeholder="mm/dd/yyyy"
-                        margin="normal"
-                        required={true}
-                        id="date-picker"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                          'aria-label': 'change date of birth',
-                        }}
-                      />
-                      <InputLabel htmlFor="best-time-input">Best Time To Call You</InputLabel>
-                      <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={bestTimeError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setBestTimeError, setBestTime)}/>
-                      <InputLabel htmlFor="address-input">Address</InputLabel>
-                      <OutlinedInput id="address-input" label="Address" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={addressError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setAddressError, setAddress)}/>
-                    <InputLabel htmlFor="city-input">City</InputLabel>
-                    <OutlinedInput id="city-input" label="City" variant="outlined"
+                    <InputLabel htmlFor="email-input">Email<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <OutlinedInput id="email-input" label="Email" variant="outlined"
                                    required={true}
                                    className=''
-                                   error={cityError}
+                                   error={emailError}
                                    fullWidth={true}
-                                   onBlur={e => setField(e.target.value, setCityError, setCity)}/>
-                    <InputLabel htmlFor="zip-input">Zip / Postal Code</InputLabel>
-                    <OutlinedInput id="zip-input" label="Zip" variant="outlined"
+                                   helperText="Incorrect entry."
+                                   onBlur={e => setField(e.target.value, setEmailError, setEmail)}/>
+                    <InputLabel htmlFor="phone-input">Phone Number<StarRateIcon color="primary" fontSize="small"/></InputLabel>
+                    <OutlinedInput id="phone-input" label="Phone" variant="outlined"
                                    required={true}
                                    className=''
-                                   type="number"
-                                   error={zipError}
+                                   error={emailError}
+                                   helperText="Incorrect entry."
                                    fullWidth={true}
-                                   onBlur={e => setField(e.target.value, setZipError, setZip)}/>
-                      <InputLabel htmlFor="state-input">State</InputLabel>
-                      <OutlinedInput id="state-input" label="State" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={stateError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setStateError, setState)}/>
-                      <InputLabel htmlFor="country-input">Country</InputLabel>
-                      <OutlinedInput id="country-input" label="Country" variant="outlined"
-                                     required={true}
-                                     className=''
-                                     error={countryError}
-                                     fullWidth={true}
-                                     onBlur={e => setField(e.target.value, setCountryError, setCountry)}/>
-                      <InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>
+                                   onBlur={e => setField(e.target.value, setPhoneError, setPhone)}/>
+                    <InputLabel htmlFor="dob-input">Date of Birth</InputLabel>
+                    <KeyboardDatePicker
+                      disableToolbar
+                      variant="inline"
+                      format="MM/dd/yyyy"
+                      placeholder="mm/dd/yyyy"
+                      margin="normal"
+                      id="date-picker"
+                      value={selectedDate}
+                      onChange={handleDateChange}
+                      KeyboardButtonProps={{
+                        'aria-label': 'change date of birth',
+                      }}
+                    />
+                    <InputLabel htmlFor="best-time-input">Best Time To Call You</InputLabel>
+                    <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
+                                   className=''
+                                   error={false}
+                                   fullWidth={true}
+                                   onBlur={e => setField(e.target.value, () => {}, setBestTime)}/>
+                    <InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>
+                    <div className="flex-row">
                       <FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />
                       <FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />
-                      {showFlexibleError && <p className="flexible-error">Please select Yes or No</p>}
+                    </div>
                   </div>
-                  <input className="contact-submit-button" disabled={!validateForm()} type="submit" value="Submit"
+                  <input className={`book-submit-button ${!validateForm() ? 'disabled-submit' : ''}`} disabled={!validateForm()} type="submit" value="Submit"
                          onClick={handleSubmit}/>
                 </MuiPickersUtilsProvider>
               </form>
