@@ -101,7 +101,7 @@ function Home(props) {
             <div className="tab-heading"
                  style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
-              <h5>Whats Included</h5>
+              <h5>What's Included</h5>
             </div>
             <div className="tab-heading last-tab"
                  style={tab.name === 'DatesPricing' ? lightGreenBackground : darkGreenBackground}
@@ -132,7 +132,7 @@ function Home(props) {
             <div className="tab-heading"
                  style={tab.name === 'WhatsIncluded' ? lightGreenBackground : darkGreenBackground}
                  onClick={() => switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'})}>
-              <h5>Whats Included</h5>
+              <h5>What's Included</h5>
             </div>
             <div className="tab-heading"
                  style={tab.name === 'DatesPricing' ? lightGreenBackground : darkGreenBackground}
@@ -159,7 +159,7 @@ function Home(props) {
         <section className="trip-info-section" id="Overview">
           <div className="flex-row">
             <div className="overview-tab-banner">
-              <h3>SCOUL SWISS ALPS TRIP</h3>
+              <h3>SCUOL SWISS ALPS TRIP</h3>
             </div>
           </div>
           {displayTabSelectors()}

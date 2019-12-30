@@ -58,7 +58,7 @@ const itineraryData = [
   },
   {
     day: 2,
-    title: 'St Mortiz – The Vail of Europe',
+    title: 'St Moritz – The Vail of Europe',
     body: 'We load into the vans and head to St Moritz for a spectacular day of riding. As the world’s\n' +
       'number one Alpine holiday destination, it is not surprising that the Winter Olympic Games were\n' +
       'held not once, but twice here in the heart of the fascinating Upper Engadin lake district.'

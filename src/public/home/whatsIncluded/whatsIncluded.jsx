@@ -41,7 +41,7 @@ export default function OverviewWhatsIncluded() {
           <div className="tab-heading-offset"></div>
           <div className={`tab-heading-w ${tab.name === 'WhatsIncluded' ? 'activeHeading' : ''}`}
                onClick={() => switchTab({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'})}>
-            <h5 className={'tab-title-w'}>Whats Included</h5>
+            <h5 className={'tab-title-w'}>What's Included</h5>
           </div>
           <div className={`tab-heading-w ${tab.name === 'WhatsNot' ? 'activeHeading' : ''}`}
                onClick={() => switchTab({component: <WhatsNot/>, name: 'WhatsNot'})}>
