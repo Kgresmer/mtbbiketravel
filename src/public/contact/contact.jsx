@@ -4,9 +4,13 @@ import './contact.css';
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import {withRouter} from "react-router-dom";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
-function Contact() {
+function Contact(props) {
+  const { history } = props;
 
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -14,7 +18,8 @@ function Contact() {
   const [nameError, setNameError] = useState(false);
   const [text, setText] = useState("");
   const [textError, setTextError] = useState(false);
-
+  const [submitMessage, setSubmitMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const setField = (value, errorFunction, stateFunction) => {
     !value ? errorFunction(true) : errorFunction(false);
@@ -23,26 +28,51 @@ function Contact() {
 
   const validateForm = () => {
     return email.length > 0 && name.length > 0 && text.length > 0 && !emailError && !nameError && !textError;
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(name)
-    console.log(email)
-    console.log(text)
+    if (loading) return;
+    setLoading(true);
 
-    // axios.post('http://localhost:5000/data/login', {username: email, password}, {
-    //   headers: {
-    //     'accept': 'application/json',
-    //     'Accept-Language': 'en-US,en;q=0.8'
-    //   }
-    // }).then((response) => {
-    //     console.log(response);
-    //   }
-    // ).catch((error) => {
-    //     console.log(error);
-    //   }
-    // );
+    const today = new Date();
+
+    const emailBody = {
+      "body": {
+        "Html": {
+          "Charset": "UTF-8",
+          "Data": "<!DOCTYPE html><html><head></head>" +
+            "<body><h1>Contact Request</h1>" +
+            `<p>Today's Date: ${today.toDateString()}</p>` +
+            `<p>Name: ${name}</p>` +
+            `<p>Email: ${email}</p>` +
+            `<p>Questions/Comments: ${text}</p>` +
+            "</body>" +
+            "</html>"
+        }
+      },
+      "subject": `Contact Request - ${name} - ${today.toDateString()}`
+    };
+
+    await axios.post(' https://ke6gtdh7r8.execute-api.us-east-1.amazonaws.com/dev/book-email', emailBody, {
+      headers: {
+        'accept': 'application/json',
+        'content-type': 'application/json'
+      },
+      crossDomain: true
+    }).then((response) => {
+      setSubmitMessage("Thank you for message. We will in touch soon. ");
+      setLoading(false);
+      setTimeout(() => {
+        history.push('/')
+      }, 3000);
+
+      }
+    ).catch((error) => {
+        setSubmitMessage("Something went wrong while trying to send your message. Please save your message in a note then reload the page and try again. ");
+        setLoading(false);
+      }
+    );
 
   }
 
@@ -80,8 +110,10 @@ function Contact() {
                   fullWidth={true}
                   onBlur={e => setField(e.target.value, setTextError, setText)}
                 />
-                <input className="contact-submit-button" disabled={!validateForm()} type="submit" value="Submit" onClick={handleSubmit}/>
+                <button className="contact-submit-button" disabled={!validateForm() || loading}
+                        type="button" value="Submit" onClick={handleSubmit}>{loading ? <CircularProgress color="white" /> : 'Submit'}</button>
               </form>
+              {submitMessage && <h4>{submitMessage}</h4>}
             </Card>
           </div>
       </main>
@@ -89,4 +121,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default withRouter(Contact);

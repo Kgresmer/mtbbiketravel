@@ -182,3 +182,16 @@ button.close-sign-up {
     background-color: #95999c;
     cursor: not-allowed;
 }
+
+.success-modal {
+    align-items: center;
+}
+
+.success-modal img {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.success-modal .close-sign-up {
+    align-self: flex-end;
+}
