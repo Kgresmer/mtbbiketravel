@@ -9,6 +9,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import MaskedInput from 'react-text-mask'
 
 
 function DatesPricing() {
@@ -51,6 +52,12 @@ function DatesPricing() {
   };
 
   const validateForm = () => {
+
+    if (email.length > 0 && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) && !emailError) {
+      setEmailError(true);
+      return false;
+    }
+
     return email.length > 0 && firstName.length > 0
       && lastName.length > 0 && phone.length > 0
       && !emailError && !firstNameError
@@ -225,26 +232,27 @@ function DatesPricing() {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <div className="flex-row">
               <div className="column-1">
-                <InputLabel htmlFor="first-name-input">First Name <span className="asterisk">*</span></InputLabel>
-                <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
+                <InputLabel htmlFor="firstName">First Name <span className="asterisk">*</span></InputLabel>
+                <OutlinedInput id="firstName" label="First Name" variant="outlined"
                                required={true}
                                className=''
+                               inputProps={{maxLength: 25, name: 'firstName'}}
                                error={firstNameError}
                                fullWidth={true}
-                               helperText="Incorrect entry."
                                onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
-                <InputLabel htmlFor="email-input">Email <span className="asterisk">*</span></InputLabel>
-                <OutlinedInput id="email-input" label="Email" variant="outlined"
+                <InputLabel htmlFor="email">Email <span className="asterisk">*</span>{emailError && <span className="error-email">Invalid Email</span>}</InputLabel>
+                <OutlinedInput id="email" label="Email" variant="outlined"
                                required={true}
                                className=''
+                               inputProps={{maxLength: 30, name: 'email'}}
                                error={emailError}
                                fullWidth={true}
-                               helperText="Incorrect entry."
                                onBlur={e => setField(e.target.value, setEmailError, setEmail)}/>
                 <InputLabel htmlFor="best-time-input">Best Time To Call You</InputLabel>
                 <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
                                className=''
                                error={false}
+                               inputProps={{maxLength: 70}}
                                fullWidth={true}
                                onBlur={e => setField(e.target.value, () => {
                                }, setBestTime)}/>
@@ -268,18 +276,29 @@ function DatesPricing() {
                 <OutlinedInput id="last-name-input" label="Last Name" variant="outlined"
                                required={true}
                                className=''
-                               helperText="Incorrect entry."
+                               inputProps={{maxLength: 25, name: 'lastName'}}
                                error={lastNameError}
                                fullWidth={true}
                                onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
                 <InputLabel htmlFor="phone-input">Phone Number <span className="asterisk">*</span></InputLabel>
-                <OutlinedInput id="phone-input" label="Phone" variant="outlined"
-                               required={true}
-                               className=''
-                               error={emailError}
-                               helperText="Incorrect entry."
-                               fullWidth={true}
-                               onBlur={e => setField(e.target.value, setPhoneError, setPhone)}/>
+                <div className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth"
+                     label="phone" variant="outlined" required>
+                <MaskedInput
+                  mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                  className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-fullWidth"
+                  placeholder=""
+                  id="phone"
+                  name="phone"
+                  error={phoneError}
+                  required
+                  onBlur={e => setField(e.target.value, setPhoneError, setPhone)}
+                />
+                  <fieldset aria-hidden="true" className="PrivateNotchedOutline-root-95 MuiOutlinedInput-notchedOutline"
+                            style={{paddingLeft: '8px'}}>
+                    <legend className="PrivateNotchedOutline-legend-96" style={{width: '0.01px'}}><span>&#8203;</span>
+                    </legend>
+                  </fieldset>
+                </div>
                 {/*<InputLabel htmlFor="email-input">Are your dates flexible?</InputLabel>*/}
                 {/*<FormControlLabel value="Yes" control={<Radio checked={flexibleDates === 'yes'}/>} onClick={() => setFlexibleDates('yes')} label="Yes" />*/}
                 {/*<FormControlLabel value="No" control={<Radio checked={flexibleDates === 'no'}/>} onClick={() => setFlexibleDates('no')} label="No" />*/}
@@ -287,7 +306,7 @@ function DatesPricing() {
             </div>
             <button className={`book-submit-button ${!validateForm() ? 'disabled-submit' : ''}`}
                     disabled={!validateForm() || loading} type="button"
-                    onClick={handleSubmit}>{loading ? <CircularProgress color="white" /> : 'Submit'}</button>
+                    onClick={handleSubmit}>{loading ? <CircularProgress color="white"/> : 'Submit'}</button>
           </MuiPickersUtilsProvider>
         </form>
       </>
@@ -309,38 +328,49 @@ function DatesPricing() {
         <form>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <div className="flex-column">
-              <InputLabel htmlFor="first-name-input">First Name <span className="asterisk">*</span></InputLabel>
-              <OutlinedInput id="first-name-input" label="First Name" variant="outlined"
+              <InputLabel htmlFor="firstName">First Name <span className="asterisk">*</span></InputLabel>
+              <OutlinedInput id="firstName" label="First Name" variant="outlined"
                              required={true}
                              className=''
+                             inputProps={{maxLength: 25, name: 'firstName'}}
                              error={firstNameError}
                              fullWidth={true}
-                             helperText="Incorrect entry."
                              onBlur={e => setField(e.target.value, setFirstNameError, setFirstName)}/>
-              <InputLabel htmlFor="last-name-input">Last Name <span className="asterisk">*</span></InputLabel>
-              <OutlinedInput id="last-name-input" label="Last Name" variant="outlined"
+              <InputLabel htmlFor="lastName">Last Name <span className="asterisk">*</span></InputLabel>
+              <OutlinedInput id="lastName" label="Last Name" variant="outlined"
                              required={true}
                              className=''
-                             helperText="Incorrect entry."
+                             inputProps={{maxLength: 25, name: 'lastName'}}
                              error={lastNameError}
                              fullWidth={true}
                              onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
-              <InputLabel htmlFor="email-input">Email <span className="asterisk">*</span></InputLabel>
-              <OutlinedInput id="email-input" label="Email" variant="outlined"
+              <InputLabel htmlFor="email">Email <span className="asterisk">*</span></InputLabel>
+              <OutlinedInput id="email" label="Email" variant="outlined"
                              required={true}
                              className=''
+                             inputProps={{maxLength: 35, name: 'email'}}
                              error={emailError}
                              fullWidth={true}
-                             helperText="Incorrect entry."
                              onBlur={e => setField(e.target.value, setEmailError, setEmail)}/>
               <InputLabel htmlFor="phone-input">Phone Number <span className="asterisk">*</span></InputLabel>
-              <OutlinedInput id="phone-input" label="Phone" variant="outlined"
-                             required={true}
-                             className=''
-                             error={emailError}
-                             helperText="Incorrect entry."
-                             fullWidth={true}
-                             onBlur={e => setField(e.target.value, setPhoneError, setPhone)}/>
+              <div className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth"
+                   label="phone" variant="outlined" required>
+                <MaskedInput
+                  mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+                  className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-fullWidth"
+                  placeholder=""
+                  name="phone"
+                  id="phone"
+                  error={phoneError}
+                  required
+                  onBlur={e => setField(e.target.value, setPhoneError, setPhone)}
+                />
+                <fieldset aria-hidden="true" className="PrivateNotchedOutline-root-95 MuiOutlinedInput-notchedOutline"
+                          style={{paddingLeft: '8px'}}>
+                  <legend className="PrivateNotchedOutline-legend-96" style={{width: '0.01px'}}><span>&#8203;</span>
+                  </legend>
+                </fieldset>
+              </div>
               {/*<InputLabel htmlFor="dob-input">Date of Birth</InputLabel>*/}
               {/*<KeyboardDatePicker*/}
               {/*disableToolbar*/}
@@ -359,6 +389,7 @@ function DatesPricing() {
               <OutlinedInput id="best-time-input" label="Best Time" variant="outlined"
                              className=''
                              error={false}
+                             inputProps={{maxLength: 70}}
                              fullWidth={true}
                              onBlur={e => setField(e.target.value, () => {
                              }, setBestTime)}/>
@@ -369,8 +400,8 @@ function DatesPricing() {
               {/*</div>*/}
             </div>
             <button className={`book-submit-button ${!validateForm() ? 'disabled-submit' : ''}`}
-                   disabled={!validateForm() || loading} type="button"
-                    onClick={handleSubmit}>{loading ? <CircularProgress color="white" /> : 'Submit'}</button>
+                    disabled={!validateForm() || loading} type="button"
+                    onClick={handleSubmit}>{loading ? <CircularProgress color="white"/> : 'Submit'}</button>
           </MuiPickersUtilsProvider>
         </form>
       </>

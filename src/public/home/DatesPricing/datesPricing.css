@@ -195,3 +195,7 @@ button.close-sign-up {
 .success-modal .close-sign-up {
     align-self: flex-end;
 }
+
+.error-email {
+    color: red;
+}
