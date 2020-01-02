@@ -147,7 +147,7 @@ function DatesPricing() {
               <p>$4,000</p>
               <p>$3,000</p>
               <p className="available-date">Available</p>
-              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={showFormModal}/></p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week1')}/></p>
             </div>
             <div className="pricing-row">
               <p>Week #2</p>
@@ -155,7 +155,7 @@ function DatesPricing() {
               <p>$4,000</p>
               <p>$3,000</p>
               <p className="available-date">Available</p>
-              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={showFormModal}/></p>
+              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week2')}/></p>
             </div>
           </div>
         </div>
@@ -293,7 +293,7 @@ function DatesPricing() {
                   required
                   onBlur={e => setField(e.target.value, setPhoneError, setPhone)}
                 />
-                  <fieldset aria-hidden="true" className="PrivateNotchedOutline-root-95 MuiOutlinedInput-notchedOutline"
+                  <fieldset aria-hidden="true" className={`PrivateNotchedOutline MuiOutlinedInput-notchedOutline ${phoneError ? 'errorBorder' : ''}`}
                             style={{paddingLeft: '8px'}}>
                     <legend className="PrivateNotchedOutline-legend-96" style={{width: '0.01px'}}><span>&#8203;</span>
                     </legend>
@@ -365,7 +365,7 @@ function DatesPricing() {
                   required
                   onBlur={e => setField(e.target.value, setPhoneError, setPhone)}
                 />
-                <fieldset aria-hidden="true" className="PrivateNotchedOutline-root-95 MuiOutlinedInput-notchedOutline"
+                <fieldset aria-hidden="true" className={`PrivateNotchedOutline MuiOutlinedInput-notchedOutline ${phoneError ? 'errorBorder' : ''}`}
                           style={{paddingLeft: '8px'}}>
                   <legend className="PrivateNotchedOutline-legend-96" style={{width: '0.01px'}}><span>&#8203;</span>
                   </legend>

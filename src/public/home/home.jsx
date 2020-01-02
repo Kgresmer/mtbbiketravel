@@ -153,7 +153,7 @@ function Home(props) {
     <div>
       <main className="">
         <section className="hero-section" style={bannerImage} id="home">
-          <div className="image-caption">Unique, mountain bike adventures, organized by local experts</div>
+          <div className="image-caption">Unique mountain bike adventures, organized by local experts</div>
         </section>
 
         <section className="trip-info-section" id="Overview">
