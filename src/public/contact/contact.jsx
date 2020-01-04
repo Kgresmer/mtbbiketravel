@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import './contact.css';
 import OutlinedInput from "@material-ui/core/OutlinedInput";
@@ -25,6 +25,10 @@ function Contact(props) {
     !value ? errorFunction(true) : errorFunction(false);
     stateFunction(value);
   };
+
+  useEffect(() => {
+    document.title = "Contact Us Form - Email"
+  }, []);
 
   const validateForm = () => {
     return email.length > 0 && name.length > 0 && text.length > 0 && !emailError && !nameError && !textError;

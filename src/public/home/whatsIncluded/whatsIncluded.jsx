@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from "react";
 import './whatsIncluded.css';
-import Itinerary from "../home";
-
 
 export default function OverviewWhatsIncluded() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -23,6 +21,10 @@ export default function OverviewWhatsIncluded() {
   const switchTab = (selectedTab) => {
     setTab(selectedTab);
   };
+
+  useEffect(() => {
+    document.title = "What's Included, What's Not, Bikes, Gear"
+  }, []);
 
   return (
     <>

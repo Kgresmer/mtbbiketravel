@@ -178,6 +178,10 @@ export default function Itinerary() {
   };
 
   useEffect(() => {
+    document.title = "Day to Day Itinerary"
+  }, []);
+
+  useEffect(() => {
     setExpanded('panel1');
     updateTabImage(1);
     if (!typeof window === 'object') {

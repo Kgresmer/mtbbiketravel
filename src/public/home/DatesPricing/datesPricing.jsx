@@ -46,6 +46,10 @@ function DatesPricing() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    document.title = "Dates & Pricing"
+  }, []);
+
   const setField = (value, errorFunction, stateFunction) => {
     !value ? errorFunction(true) : errorFunction(false);
     stateFunction(value);

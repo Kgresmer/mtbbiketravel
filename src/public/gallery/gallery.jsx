@@ -46,6 +46,10 @@ function Gallery() {
 
   }, []);
 
+  useEffect(() => {
+    document.title = "Gallery of Photos from Previous Trips"
+  }, []);
+
   const keydown = (event) => {
     if (event.keyCode === 37) {
       scrollBackPhoto(true);
