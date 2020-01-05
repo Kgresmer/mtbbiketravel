@@ -26,14 +26,11 @@
 }
 
 .stat-column {
-    margin-right: 2vw;
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-
-.stat-column p {
-    font-size: 0.7em;
+    align-items: center;
+    height: 8em;
 }
 
 .center {
@@ -45,15 +42,70 @@
     text-align: center;
 }
 
-/*.MuiExpansionPanel-rounded:first-child {*/
-    /*border-bottom: 1px solid red !important;*/
-    /*border-top: none !important;*/
-/*}*/
+.skill-hover-modal {
+    position: fixed;
+    background-color: black;
+    color: white;
+    width: 450px;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    outline: 0;
+    opacity: 0;
+    display: none;
+    text-align: left;
+}
 
-/*.MuiExpansionPanel-rounded:last-child {*/
-    /*border-bottom: none !important;*/
-/*}*/
+.stat-text {
+    color: #0b3442;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.85em;
+    cursor: pointer;
+}
 
-/*.MuiExpansionPanel-rounded {*/
-    /*border-bottom: 1px solid red !important;*/
-/*}*/
+.more-info {
+    color: lightskyblue;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.stat-level {
+    font-weight: bold;
+    font-size: 1.12em;
+    font-style: normal;
+    color: black;
+}
+
+.skill-level-modal {
+    padding: 10px;
+}
+
+.skill-level-modal h5 {
+    text-align: center;
+}
+
+.skills-fitness-modal {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 6%;
+    background: white;
+    padding: 2%;
+    text-align: left;
+}
+
+.close-skills-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 13%;
+}
+
+.skills-modal {
+    overflow: scroll !important;
+}

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -6,9 +6,8 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './itinerary.css';
-import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import FilterHdrIcon from '@material-ui/icons/FilterHdr';
+import DayDisplay from "./DayDisplay";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,9 +40,7 @@ const useStyles = makeStyles(theme => ({
     border: '1px solid #bfbfbf',
     backgroundColor: 'white',
   },
-  lastPanel: {
-
-  }
+  lastPanel: {}
 
 }));
 
@@ -51,6 +48,8 @@ const itineraryData = [
   {
     day: 1,
     title: 'Arrive in Zurich',
+    showStats: false,
+    rideDur: "",
     body: 'Welcome to Switzerland! You will be met at the Zürich Airport and begin the week there. We take a 2.5 hour train through\n' +
       'the Swiss countryside then begin the ascent into the spectacular place called the Alps.\n' +
       'Once we arrive in Scuol and get settled we’ll grab our bikes and go for a warm-up ride. The day\n' +
@@ -59,6 +58,8 @@ const itineraryData = [
   {
     day: 2,
     title: 'St Moritz – The Vail of Europe',
+    showStats: true,
+    rideDur: "4 - 5 Hours",
     body: 'We load into the vans and head to St Moritz for a spectacular day of riding. As the world’s\n' +
       'number one Alpine holiday destination, it is not surprising that the Winter Olympic Games were\n' +
       'held not once, but twice here in the heart of the fascinating Upper Engadin lake district.'
@@ -66,6 +67,8 @@ const itineraryData = [
   {
     day: 3,
     title: 'Davos – Highest point in Europe',
+    showStats: true,
+    rideDur: "4 - 5 Hours",
     body: `Davos is on the agenda for day 3. We’ll use some of the high-tech train and lift systems that
 characterize the Swiss public transport. The Swiss transport system gives us easy access to
 impressive alpine terrain and the best of the extensive Davos trail network.`
@@ -73,6 +76,8 @@ impressive alpine terrain and the best of the extensive Davos trail network.`
   {
     day: 4,
     title: 'River rafting adventure',
+    showStats: false,
+    rideDur: "",
     body: `This is a trip that everyone will enjoy! The Scuol gorge is a 9-kilometre run that starts 5 km
 above the village and finishes at Pradella a few kilometers below Scuol. It has some great white
 water at the beginning, Frenchman’s the challenging first rapid is only a matter of meters away
@@ -86,6 +91,8 @@ for you`
   {
     day: 5,
     title: 'Livigno Italy – Flow country',
+    showStats: true,
+    rideDur: "5 - 6 Hours",
     body: `We pack up to make the 1.5 hour drive to Livigno, Italy. The Italian resort of Livigno is set in a
     high, wide, remote valley close to the Swiss border. Most of the slopes are above the tree line, and
     Livigno is known as ‘Little Tibet’ because of its height and remoteness. With a few days of European trails under our belt, we’ll step it up today and session some more
@@ -95,6 +102,8 @@ for you`
   {
     day: 6,
     title: 'E-bike Day - Tour de Scuol',
+    showStats: true,
+    rideDur: "4 - 5 Hours",
     body: `We will spend the day exploring the beautiful Engiadina valley on ebikes. Nothing like climbing 4k
   feet in the high altitude and not breaking a sweat while taking in spectacular views.
   The day and the week will end at the Bike Villa for the world famous Werni BBQ hosted the by amazing
@@ -103,6 +112,8 @@ for you`
   {
     day: 7,
     title: 'Party’s Over',
+    showStats: false,
+    rideDur: "",
     body: `We will head out early to get back to Zürich. Plan accordingly.
 
 If you would like to extend your European holiday there is no better place to start than from
@@ -111,55 +122,6 @@ If you would like to extend your European holiday there is no better place to st
 Travel times from Zurich by train:`
   }
 ];
-
-function DayDisplay(props) {
-  const {data} = props;
-
-  return (
-    <>
-      <div className="flex-column-it">
-        <div className="main-body">{data.body}
-          {data.day === 7 && <ul>
-            <li>Milan – 4 Hours</li>
-            <li>London – 7 Hours</li>
-            <li>Paris – 4 Hours</li>
-            <li>Munich – 4 hours</li>
-          </ul>}
-        </div>
-
-        {data.day !== 7 && <div className="flex-row center stats">
-          <div className="stat-column center">
-            <div className="">
-              <AirportShuttleIcon/>
-            </div>
-            <div className="center-text">
-              Distance from Scuol:<br></br>
-              <p>65 kilometers</p>
-            </div>
-          </div>
-          <div className="stat-column center">
-            <div className="">
-              <FilterHdrIcon/>
-            </div>
-            <div className="center-text">
-              Elevation at base:<br></br>
-              <p>1344 meters</p>
-            </div>
-          </div>
-          <div className="stat-column center">
-            <div className="">
-              <AccessTimeIcon/>
-            </div>
-            <div className="center-text">
-              Ride Duration:<br></br>
-              <p>~3 hours 30 minutes</p>
-            </div>
-          </div>
-        </div>}
-      </div>
-    </>
-  )
-}
 
 export default function Itinerary() {
   const classes = useStyles();
@@ -238,7 +200,9 @@ export default function Itinerary() {
 
       return (
         <div key={index}>
-          <ExpansionPanel className={`${isActive ? classes.activePanel : classes.panel} ${index === 6 ? classes.lastPanel : ''}`} expanded={isActive} onChange={handleChange(`panel${data.day}`)}>
+          <ExpansionPanel
+            className={`${isActive ? classes.activePanel : classes.panel} ${index === 6 ? classes.lastPanel : ''}`}
+            expanded={isActive} onChange={handleChange(`panel${data.day}`)}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon className={classes.icon}/>}
               aria-controls={`panel${data.day}bh-content`}
@@ -263,14 +227,17 @@ export default function Itinerary() {
           {expansionItems}
         </div>
       </div>
-      {(windowSize > 768 && windowSize < 1099) && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="640" height="640"></iframe>
+      {(windowSize > 768 && windowSize < 1099) && <div className="tab-image-section">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="640"
+                height="640"></iframe>
       </div>}
-      {(windowSize >= 1100 && windowSize < 1350) && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="710" height="640"></iframe>
+      {(windowSize >= 1100 && windowSize < 1350) && <div className="tab-image-section">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="710"
+                height="640"></iframe>
       </div>}
-      {windowSize > 1350 && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840" height="640"></iframe>
+      {windowSize > 1350 && <div className="tab-image-section">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840"
+                height="640"></iframe>
       </div>}
     </>
   );

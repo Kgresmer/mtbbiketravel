@@ -155,11 +155,10 @@ function Home(props) {
 
   return (
     <div>
+      <section className="hero-section" alt="mountain bike trail switzerland" style={bannerImage} id="home">
+        <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
+      </section>
       <main className="">
-        <section className="hero-section" alt="mountain bike trail switzerland" style={bannerImage} id="home">
-          <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
-        </section>
-
         <section className="trip-info-section" id="Overview">
           <div className="flex-row">
             <div className="overview-tab-banner">
