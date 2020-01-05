@@ -11,8 +11,8 @@ const Footer = () => {
       <footer>
         <div className="footer-container">
           <div>
-            <p><a href="#" className="plain-link"><FacebookIcon/> Mtn Bike Travel</a></p>
-            <p><a href="#" className="plain-link"><InstagramIcon/> @MtnBikeTravel</a></p>
+            <p><a href="https://www.facebook.com/mtnbiketravel" className="plain-link"><FacebookIcon/> Mtn Bike Travel</a></p>
+            <p><a href="https://www.instagram.com/mtnbiketravel/" className="plain-link"><InstagramIcon/> @MtnBikeTravel</a></p>
           </div>
           <div>
             Copyright 2020
