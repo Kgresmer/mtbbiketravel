@@ -202,7 +202,7 @@ function DatesPricing() {
       <>
         <div className="flex-column success-modal">
           <button className="close-sign-up" onClick={clearModal}><CloseIcon fontSize="large"/></button>
-          <img src="https://mtbbiketravel.s3.us-east-2.amazonaws.com/success-booking.jpg"/>
+          <img src="https://mtbbiketravel.s3.us-east-2.amazonaws.com/success-booking.jpg" alt="swiss mountain view with a church"/>
           <h4>{submitMessage.message}</h4>
         </div>
       </>

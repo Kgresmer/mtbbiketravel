@@ -34,7 +34,7 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
-    document.title = "MTN Bike Travel, Swiss Cycling Adventure"
+    document.title = "MTN Bike Travel, Cycling Adventure in Switzerland"
   }, []);
 
   useEffect(() => {
@@ -156,14 +156,14 @@ function Home(props) {
   return (
     <div>
       <main className="">
-        <section className="hero-section" style={bannerImage} id="home">
+        <section className="hero-section" alt="mountain bike trail switzerland" style={bannerImage} id="home">
           <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
         </section>
 
         <section className="trip-info-section" id="Overview">
           <div className="flex-row">
             <div className="overview-tab-banner">
-              <h3>SCUOL SWISS ALPS TRIP</h3>
+              <h3>SCUOL SWISS ALPS MOUNTAIN BIKE TRIP</h3>
             </div>
           </div>
           {displayTabSelectors()}

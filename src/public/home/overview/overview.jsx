@@ -17,6 +17,10 @@ function Overview() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    document.title = "MTN Bike Travel, Cycling Adventure in Switzerland"
+  }, []);
+
   return (
     <>
       <div className={`tab-text-section ${windowSize > 768 ? 'tab-text-section-large' : ''}`}>
@@ -40,13 +44,13 @@ function Overview() {
         </div>
       </div>
       {(windowSize > 768 && windowSize < 1099) && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="640" height="640"></iframe>
+        <iframe alt="scuol mountain bike adventure map" src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="640" height="640"></iframe>
       </div>}
       {(windowSize >= 1100 && windowSize < 1350) && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="710" height="640"></iframe>
+        <iframe alt="scuol mountain bike adventure map" src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="710" height="640"></iframe>
       </div>}
       {windowSize > 1350 && <div className="tab-image-section" >
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840" height="640"></iframe>
+        <iframe alt="scuol mountain bike adventure map" src="https://www.google.com/maps/d/u/0/embed?mid=1EBDe6rQcV2XIIm4MC_GQbQW-SEUk37Jq" width="840" height="640"></iframe>
       </div>}
     </>
   )

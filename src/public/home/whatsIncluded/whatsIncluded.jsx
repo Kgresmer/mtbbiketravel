@@ -183,12 +183,12 @@ function Bikes(props) {
       return (
         <div className="flex-row">
           <div className="bike-section">
-            <img className="" src="bike-none.jpeg"/>
+            <img className="" src="bike-none.jpeg" alt="non electric mountain bike"/>
             <p>Trek Trail Mountain Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy 7</a></p>
             <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain boxes.</p>
           </div>
           <div className="bike-section right-section">
-            <img className="" src="bike-ele.jpeg"/>
+            <img className="" src="bike-ele.jpeg" alt="electric mountain bike"/>
             <p>Trek Long Travel E-Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly LT 9.7</a></p>
             <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you better balance and protection on the trail, great looks, and exceptional ease of use.</p>
           </div>
@@ -198,10 +198,10 @@ function Bikes(props) {
       return (
         <div className="flex-row">
           <div className="bike-section">
-            <img className="" src="bike-none.jpeg"/>
+            <img className="" src="bike-none.jpeg" alt="non electric mountain bike"/>
             <p>Trek Trail Mountain Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy 7</a></p>
             <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain boxes.</p>
-            <img className="" src="bike-ele.jpeg"/>
+            <img className="" src="bike-ele.jpeg" alt="electric mountain bike"/>
             <p>Trek Long Travel E-Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly LT 9.7</a></p>
             <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you better balance and protection on the trail, great looks, and exceptional ease of use.</p>
           </div>
