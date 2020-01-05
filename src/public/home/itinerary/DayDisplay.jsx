@@ -52,10 +52,10 @@ export default function DayDisplay(props) {
   const fitnessDisplay = useRef();
   const [showModal, setShowModal] = useState(false);
 
-  const displaySkills = () => {
+  const displaySkills = (day) => {
     if (skillDisplay.current && skillDisplay.current.style && skillDisplay.current.style.display !== 'block') {
       skillDisplay.current.style.display = "block";
-      const skillIcon = document.getElementById('skill-icon');
+      const skillIcon = document.getElementById(`skill-icon-${day}`);
       if (skillIcon) {
         skillDisplay.current.style.left = skillIcon.getBoundingClientRect().x + 30 + 'px';
         skillDisplay.current.style.top = skillIcon.getBoundingClientRect().y - 150 + 'px';
@@ -94,10 +94,10 @@ export default function DayDisplay(props) {
     }
   };
 
-  const displayFitness = () => {
+  const displayFitness = (day) => {
     if (fitnessDisplay.current && fitnessDisplay.current.style && fitnessDisplay.current.style.display !== 'block') {
       fitnessDisplay.current.style.display = "block";
-      const fitnessIcon = document.getElementById('fitness-icon');
+      const fitnessIcon = document.getElementById(`fitness-icon-${day}`);
       if (fitnessIcon) {
         fitnessDisplay.current.style.left = fitnessIcon.getBoundingClientRect().x + 30 + 'px';
         fitnessDisplay.current.style.top = fitnessIcon.getBoundingClientRect().y - 150 + 'px';
@@ -164,8 +164,8 @@ export default function DayDisplay(props) {
             <div className="center-text" onMouseLeave={removeSkills}>
               Skill Level:<br></br>
               <p className="stat-text" onClick={showSkillsAndFitnessModal}>INTERMEDIATE ADVANCED </p>
-              <p className="stat-level">6/9 <InfoIcon ref={skillIcon} id="skill-icon"
-                                                      onMouseOver={displaySkills}
+              <p className="stat-level">6/9 <InfoIcon ref={skillIcon} id={`skill-icon-${data.day}`}
+                                                      onMouseOver={() => displaySkills(data.day)}
                                                       fontSize="small"
                                                       color="primary"/>
               </p>
@@ -180,8 +180,8 @@ export default function DayDisplay(props) {
             <div className="center-text" onMouseLeave={removeFitness}>
               Fitness Level:<br></br>
               <p className="stat-level">5/9 <InfoIcon ref={fitnessIcon}
-                                                      id="fitness-icon"
-                                                      onMouseOver={displayFitness}
+                                                      id={`fitness-icon-${data.day}`}
+                                                      onMouseOver={() => displayFitness(data.day)}
                                                       fontSize="small" color="primary"/></p>
               <div className="skill-hover-modal" ref={fitnessDisplay}><FitnessLevelModal showSkillsAndFitnessModal={showSkillsAndFitnessModal}/>
               </div>
