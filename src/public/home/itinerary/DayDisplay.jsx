@@ -56,9 +56,12 @@ export default function DayDisplay(props) {
     if (skillDisplay.current && skillDisplay.current.style && skillDisplay.current.style.display !== 'block') {
       skillDisplay.current.style.display = "block";
       const skillIcon = document.getElementById(`skill-icon-${day}`);
-      if (skillIcon) {
+      if (skillIcon && window.innerWidth > 600) {
         skillDisplay.current.style.left = skillIcon.getBoundingClientRect().x + 30 + 'px';
         skillDisplay.current.style.top = skillIcon.getBoundingClientRect().y - 150 + 'px';
+      } else if (skillIcon && window.innerWidth <= 600) {
+        skillDisplay.current.style.top = '100px';
+        skillDisplay.current.style.width = '100%';
       }
       let pos = 0;
 
@@ -98,9 +101,12 @@ export default function DayDisplay(props) {
     if (fitnessDisplay.current && fitnessDisplay.current.style && fitnessDisplay.current.style.display !== 'block') {
       fitnessDisplay.current.style.display = "block";
       const fitnessIcon = document.getElementById(`fitness-icon-${day}`);
-      if (fitnessIcon) {
+      if (fitnessIcon && window.innerWidth > 600) {
         fitnessDisplay.current.style.left = fitnessIcon.getBoundingClientRect().x + 30 + 'px';
         fitnessDisplay.current.style.top = fitnessIcon.getBoundingClientRect().y - 150 + 'px';
+      } else if (fitnessIcon && window.innerWidth <= 600) {
+        fitnessDisplay.current.style.top = '100px';
+        fitnessDisplay.current.style.width = '100%';
       }
       let pos = 0;
 

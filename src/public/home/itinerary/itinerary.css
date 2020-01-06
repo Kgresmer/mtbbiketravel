@@ -88,12 +88,29 @@
 }
 
 .skills-fitness-modal {
-    max-width: 80%;
     margin: 0 auto;
     margin-top: 6%;
     background: white;
     padding: 2%;
     text-align: left;
+}
+
+@media screen and (min-width: 642px) {
+    .skills-fitness-modal {
+        max-width: 80%;
+    }
+    .close-skills-modal {
+        right: 13%;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .skills-fitness-modal {
+        max-width: 95%;
+    }
+    .close-skills-modal {
+        right: 7%;
+    }
 }
 
 .close-skills-modal {
@@ -103,7 +120,6 @@
     height: 40px;
     width: 40px;
     position: absolute;
-    right: 13%;
 }
 
 .skills-modal {
