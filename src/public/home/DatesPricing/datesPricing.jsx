@@ -137,6 +137,7 @@ function DatesPricing() {
       return (
         <div className={`tab-dates-section`}>
           <div className="flex-column">
+            <h3 className="center-text" style={{paddingBottom: '1.5em', paddingTop: '1em'}}>Check back soon for 2021 dates!</h3>
             <div className="pricing-row title-row">
               <p></p>
               <p>Dates</p>
@@ -147,19 +148,19 @@ function DatesPricing() {
             </div>
             <div className="pricing-row">
               <p>Week #1</p>
-              <p>9/5/2020 through 9/11/2020</p>
+              <p className="strike">9/5/2020 through 9/11/2020</p>
               <p>$4,000</p>
               <p>$3,000</p>
-              <p className="available-date">Available</p>
-              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week1')}/></p>
+              <p className="available-date">Unavailable</p>
+              <p><input className="date-one-button" type="button" disabled value="BOOK THIS TRIP" onClick={() => {console.log('disabled click detected')}}/></p>
             </div>
             <div className="pricing-row">
               <p>Week #2</p>
-              <p>9/12/2020 through 9/18/2020</p>
+              <p className="strike">9/12/2020 through 9/18/2020</p>
               <p>$4,000</p>
               <p>$3,000</p>
-              <p className="available-date">Available</p>
-              <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week2')}/></p>
+              <p className="available-date">Unavailable</p>
+              <p><input className="date-one-button" type="button" disabled value="BOOK THIS TRIP" onClick={() => {console.log('disabled click detected')}}/></p>
             </div>
           </div>
         </div>
