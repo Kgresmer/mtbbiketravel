@@ -47,13 +47,9 @@
 .date-one-button {
     text-decoration: underline;
     padding: 10px 15px;
-    cursor: not-allowed;
-    background-color: dimgrey;
+    cursor: pointer;
+    background-color: #4a7740;
     color: white;
-}
-
-.strike {
-    text-decoration: line-through;
 }
 
 label {
