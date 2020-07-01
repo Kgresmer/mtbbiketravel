@@ -34,7 +34,7 @@
 }
 
 .main-nav a:hover {
-    color: var(--med-green);
+    color: black;
 }
 
 .main-nav a:after {
@@ -43,12 +43,12 @@
     bottom: -3px;
     left: 0;
     width: 0;
-    border-bottom: 2px solid var(--med-green);
+    border-bottom: 2px solid black;
     transition: 0.4s;
 }
 
 .main-nav-active-link {
-    border-bottom: 2px solid var(--med-green);
+    border-bottom: 2px solid black;
 }
 
 .main-nav a:hover:after {
