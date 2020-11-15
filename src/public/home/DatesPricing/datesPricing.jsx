@@ -104,6 +104,7 @@ function DatesPricing() {
         setLoading(false);
       }
     ).catch((error) => {
+      console.log(error);
         setSubmitMessage({
           submitted: true,
           success: false,
@@ -333,15 +334,15 @@ function DatesPricing() {
                                onBlur={e => setField(e.target.value, setLastNameError, setLastName)}/>
                 <InputLabel htmlFor="phone-input">Phone Number <span className="asterisk">*</span></InputLabel>
                 <div className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth"
-                     label="phone" variant="outlined" required>
+                     label="phone" variant="outlined">
                 <MaskedInput
                   mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
                   className="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-fullWidth"
                   placeholder=""
                   id="phone"
                   name="phone"
-                  error={phoneError}
-                  required
+                  error={'Invalid value'}
+                  required={true}
                   onBlur={e => setField(e.target.value, setPhoneError, setPhone)}
                 />
                   <fieldset aria-hidden="true" className={`PrivateNotchedOutline MuiOutlinedInput-notchedOutline ${phoneError ? 'errorBorder' : ''}`}
@@ -412,7 +413,7 @@ function DatesPricing() {
                   placeholder=""
                   name="phone"
                   id="phone"
-                  error={phoneError}
+                  error={'Invalid value'}
                   required
                   onBlur={e => setField(e.target.value, setPhoneError, setPhone)}
                 />

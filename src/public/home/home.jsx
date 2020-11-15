@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './home.css';
 import Itinerary from "./itinerary/Itinerary";
@@ -151,15 +151,15 @@ function Home(props) {
       )
     }
   };
-  var data = [];
+  const data = [];
 
-  for(var i = 1; i <= 87; i++) {
+  for(let i = 1; i <= 87; i++) {
     data.push(i);
   }
 
   return (
     <div>
-      <Carousel swiping={true} defaultControlsConfig={{nextButtonText: '>', prevButtonClassName: 'carArrow', nextButtonClassName: 'carArrow', prevButtonText: '<'}}>
+      <Carousel defaultControlsConfig={{nextButtonText: '>', prevButtonClassName: 'carArrow', nextButtonClassName: 'carArrow', prevButtonText: '<'}} withoutControls={windowSize <= 700} swiping={true} >
         {data.map(num => <section key={num} className="hero-section" alt="mountain bike trail switzerland" style={{backgroundImage: `url(https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${num}.jpg)`}} id={`home-ban-${num}`}>
           <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
         </section>)}
@@ -179,7 +179,6 @@ function Home(props) {
         </section>
       </main>
     </div>
-
   );
 }
 

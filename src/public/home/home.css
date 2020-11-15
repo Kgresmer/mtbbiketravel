@@ -22,6 +22,7 @@ h5 {
 
 .carArrow {
     font-size: 4rem;
+    background: rgba(0, 0, 0, 0) !important;
 }
 
 .flex-row {
@@ -72,7 +73,7 @@ h5 {
 }
 
 .tab-image-section {
-    width: 60vw;
+
     height: 70vh;
     margin: 5px;
 }

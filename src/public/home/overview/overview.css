@@ -18,3 +18,19 @@
     font-size: 1.15rem;
     margin: 1% 0%;
 }
+
+.overview-banner {
+    padding: 0% 4%;
+    padding-bottom: 2%;
+}
+
+.inner-list {
+    list-style-type: none;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding-inline-start: 1px;
+}
+
+.inner-list li {
+    margin-bottom: 1%;
+}
