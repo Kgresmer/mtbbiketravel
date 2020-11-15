@@ -20,6 +20,10 @@ h5 {
     position: relative;
 }
 
+.carArrow {
+    font-size: 4rem;
+}
+
 .flex-row {
     display: flex;
 }
@@ -54,7 +58,7 @@ h5 {
         margin-top: 6vh;
     }
     .tab-content-section {
-        padding: 7vh 4vw;
+        padding: 7vh 0;
     }
 }
 
@@ -74,7 +78,7 @@ h5 {
 }
 
 .tab-text-section-large {
-    width: 32vw;
+    width: 30vw;
     height: 70vh;
     margin: 8px;
 }

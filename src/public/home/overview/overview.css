@@ -1,0 +1,20 @@
+
+
+.inner-tab-content-section-o {
+    padding: 3% 4%;
+    border: 1px solid #4a7740;
+    min-height: 50vh;
+    justify-content: flex-start;
+}
+
+.guide-section {
+    flex: 1;
+    margin: 1%;
+    margin-top: 4%;
+}
+
+.guide-name {
+    font-weight: bold;
+    font-size: 1.15rem;
+    margin: 1% 0%;
+}

@@ -6,6 +6,7 @@ import WhatsIncluded from "./whatsIncluded/whatsIncluded";
 import Overview from "./overview/overview";
 import {withRouter} from "react-router-dom";
 import DatesPricing from "./DatesPricing/datesPricing";
+import Carousel from "nuka-carousel";
 
 
 function Home(props) {
@@ -19,7 +20,7 @@ function Home(props) {
   const [tab, setTab] = useState({component: <Overview/>, name: 'Overview'});
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const darkGreenBackground = {'backgroundColor': '#E9E9E9'};
-  const lightGreenBackground = {'backgroundColor': 'white', 'border-bottom': 'none'};
+  const lightGreenBackground = {'backgroundColor': 'white', 'borderBottom': 'none'};
 
   useEffect(() => {
     async function fetchData() {
@@ -71,7 +72,6 @@ function Home(props) {
   }, []);
 
   const determineScreenSize = () => {
-
     if (windowSize < 480) {
       setBannerImage('https://mtbbiketravel.s3.us-east-2.amazonaws.com/main-ban.jpg');
     } else if (windowSize >= 480 && windowSize < 780) {
@@ -151,13 +151,19 @@ function Home(props) {
       )
     }
   };
+  var data = [];
 
+  for(var i = 1; i <= 87; i++) {
+    data.push(i);
+  }
 
   return (
     <div>
-      <section className="hero-section" alt="mountain bike trail switzerland" style={bannerImage} id="home">
-        <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
-      </section>
+      <Carousel swiping={true} defaultControlsConfig={{nextButtonText: '>', prevButtonClassName: 'carArrow', nextButtonClassName: 'carArrow', prevButtonText: '<'}}>
+        {data.map(num => <section key={num} className="hero-section" alt="mountain bike trail switzerland" style={{backgroundImage: `url(https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${num}.jpg)`}} id={`home-ban-${num}`}>
+          <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
+        </section>)}
+      </Carousel>
       <main className="">
         <section className="trip-info-section" id="Overview">
           <div className="flex-row">

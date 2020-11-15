@@ -63,19 +63,19 @@ export default function OverviewWhatsIncluded() {
           <div className="tab-heading-offset"></div>
           <div className={`tab-heading-w ${tab.name === 'WhatsIncluded' ? 'activeHeading' : ''}`}
                onClick={() => switchTab({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'})}>
-            <h5 className={'tab-title-w'}>What's Included</h5>
+            <h5 className={'tab-title-w'}><span className={'wi-title'}>What's Included</span></h5>
           </div>
           <div className={`tab-heading-w ${tab.name === 'WhatsNot' ? 'activeHeading' : ''}`}
                onClick={() => switchTab({component: <WhatsNot/>, name: 'WhatsNot'})}>
-            <h5 className={'tab-title-w'}>Whats Not</h5>
+            <h5 className={'tab-title-w'}><span className={'wi-title'}>Whats Not</span></h5>
           </div>
           <div className={`tab-heading-w ${tab.name === 'Bikes' ? 'activeHeading' : ''}`}
                onClick={() => switchTab({component: <Bikes/>, name: 'Bikes'})}>
-            <h5 className={'tab-title-w'}>Bikes</h5>
+            <h5 className={'tab-title-w'}><span className={'wi-title'}>Bikes</span></h5>
           </div>
           <div className={`tab-heading-w ${tab.name === 'Gear' ? 'activeHeading' : ''} last-tab`}
                onClick={() => switchTab({component: <Gear/>, name: 'Gear'})}>
-            <h5 className={'tab-title-w'}>Gear</h5>
+            <h5 className={'tab-title-w'}><span className={'wi-title'}>Gear</span></h5>
           </div>
           <div className="tab-heading-offset"></div>
         </div>
