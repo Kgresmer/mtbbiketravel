@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import './whatsIncluded.css';
+import { useLocation } from 'react-router-dom'
 
 export default function OverviewWhatsIncluded() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [tab, setTab] = useState({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'});
+  const { hash } = useLocation();
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -23,8 +25,26 @@ export default function OverviewWhatsIncluded() {
   };
 
   useEffect(() => {
+    const tabElements = document.getElementById('Overview');
+    if (tabElements) {
+      const y = tabElements.scrollHeight - 25;
+
+      if (hash === '#WhatsIncluded-gear') {
+        switchTab({component: <Gear/>, name: 'Gear'});
+        window.scrollTo(0, y)
+      } else if (hash === '#WhatsIncluded-info') {
+        switchTab({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'});
+        window.scrollTo(0, y)
+      } else if (hash === '#WhatsIncluded-whats-not') {
+        switchTab({component: <WhatsNot/>, name: 'WhatsNot'});
+        window.scrollTo(0, y)
+      } else if (hash === '#WhatsIncluded-bikes') {
+        switchTab({component: <Bikes/>, name: 'Bikes'});
+        window.scrollTo(0, y)
+      }
+    }
     document.title = "What's Included, What's Not, Bikes, Gear"
-  }, []);
+  }, [hash]);
 
   return (
     <>
@@ -124,7 +144,7 @@ function WhatsIncludedTab(props) {
               <li>Hearty Daily Breakfast – Very Swiss!</li>
               <li>First & last night’s dinner including the famous Werni BBG at the Bike Villa</li>
               <li>Bike rental for week including an e-bike rental on day-6</li>
-              <li>Osprey Raptor hydration pack to keep</li>
+              <li>Osprey Raptor hydration pack for you to keep</li>
               <li>Photos – A SmugMug gallery of the week in photos</li>
               <li>Lift tickets at resorts throughout the week as needed</li>
               <li>Day 4 morning rafting trip on one of the most exciting white-water rivers in Europe</li>
@@ -183,12 +203,12 @@ function Bikes(props) {
       return (
         <div className="flex-row">
           <div className="bike-section">
-            <img className="" src="bike-none.jpeg" alt="non electric mountain bike"/>
+            <img className="" src="./bike-none.jpeg" alt="non electric mountain bike"/>
             <p>Trek Trail Mountain Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy 7</a></p>
             <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain boxes.</p>
           </div>
           <div className="bike-section right-section">
-            <img className="" src="bike-ele.jpeg" alt="electric mountain bike"/>
+            <img className="" src="./bike-ele.jpeg" alt="electric mountain bike"/>
             <p>Trek Long Travel E-Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly LT 9.7</a></p>
             <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you better balance and protection on the trail, great looks, and exceptional ease of use.</p>
           </div>
@@ -198,10 +218,10 @@ function Bikes(props) {
       return (
         <div className="flex-row">
           <div className="bike-section">
-            <img className="" src="bike-none.jpeg" alt="non electric mountain bike"/>
+            <img className="" src="./bike-none.jpeg" alt="non electric mountain bike"/>
             <p>Trek Trail Mountain Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy 7</a></p>
             <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain boxes.</p>
-            <img className="" src="bike-ele.jpeg" alt="electric mountain bike"/>
+            <img className="" src="./bike-ele.jpeg" alt="electric mountain bike"/>
             <p>Trek Long Travel E-Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly LT 9.7</a></p>
             <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you better balance and protection on the trail, great looks, and exceptional ease of use.</p>
           </div>
@@ -258,8 +278,7 @@ function Gear(props) {
           <div className="flex-1 gear-repair-personal">
             <h6>Repair</h6>
             <ul>
-              <li>Tubes & pump</li>
-              <li>Chain tool</li>
+              <li>The guides will provide all necessary parts and tools to perform repairs</li>
             </ul>
             <h6>Personal</h6>
             <ul>

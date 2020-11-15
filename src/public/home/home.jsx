@@ -45,7 +45,7 @@ function Home(props) {
       if (window.location.hash === '#Itinerary') {
         switchTab({component: <Itinerary/>, name: 'Itinerary'});
         window.scrollTo(0, y)
-      } else if (window.location.hash === '#WhatsIncluded') {
+      } else if (window.location.hash.indexOf('#WhatsIncluded') > -1) {
         switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'});
         window.scrollTo(0, y)
       } else if (window.location.hash === '#Overview') {

@@ -4,14 +4,15 @@ import './nav.css';
 import {withRouter} from 'react-router-dom';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const Navigation = (props) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [route, setRoute] = useState('');
+  const [hover, setHover] = useState(false);
 
   useEffect(() => {
     setRoute(props.location.pathname);
-
   }, [props.location]);
 
   useEffect(() => {
@@ -26,6 +27,15 @@ const Navigation = (props) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const handleHover = (show) => {
+    setHover(show);
+  };
+
+  const changeHash = (hash, event) => {
+    setHover(false);
+    if (hash) window.location.hash = hash;
+  };
 
   const showNav = () => {
     if (windowSize > 768) {
@@ -44,8 +54,19 @@ const Navigation = (props) => {
                 <li className="nav-item">
                   <Nav.Link href="/home#Itinerary" className={`${route === '/home#Itinerary' ? 'main-nav-active-link' : ''}`}>Itinerary</Nav.Link>
                 </li>
-                <li className="nav-item">
-                  <Nav.Link href="/home#WhatsIncluded" className={`${route === '/home#WhatsIncluded' ? 'main-nav-active-link' : ''}`}>What's Included</Nav.Link>
+                <li className="nav-item" onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
+                  <Dropdown show={hover} onSelect={changeHash}>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      <Nav.Link href="/home#WhatsIncluded" className={`${route === '/home#WhatsIncluded' ? 'main-nav-active-link' : ''}`}>What's Included</Nav.Link>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={(e) => changeHash("WhatsIncluded-info", e)}>More Info</Dropdown.Item>
+                      <Dropdown.Item onClick={(e) => changeHash("WhatsIncluded-whats-not", e)}>Whats Not</Dropdown.Item>
+                      <Dropdown.Item onClick={(e) => changeHash("WhatsIncluded-bikes", e)}>Bikes</Dropdown.Item>
+                      <Dropdown.Item onClick={(e) => changeHash("WhatsIncluded-gear", e)}>Gear</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </li>
                 <li className="nav-item">
                   <Nav.Link href="/home#DatesPricing" className={`${route === '/home#DatesPricing' ? 'main-nav-active-link' : ''}`}>Dates & Pricing</Nav.Link>

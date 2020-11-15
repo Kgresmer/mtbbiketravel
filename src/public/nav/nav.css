@@ -25,64 +25,90 @@
     position: relative;
 }
 
+.btn-success {
+    background-color: #f8f9fa !important;
+    border: none !important;
+}
+
+.btn-success:hover {
+    background-color: #f8f9fa !important;
+    border: none !important;
+}
+
+.btn {
+    padding: 0 !important;
+}
+
+.btn-success:focus {
+    box-shadow: none !important;
+}
+
+.dropdown-menu {
+background-color: white !important;
+border-left: #95999c 1px solid !important;
+border-bottom: #95999c 1px solid !important;
+border-radius: 0 !important;
+margin-top: -25px !important;
+}
+
 .navbar {
-    margin-bottom: 0;
+margin-bottom: 0;
 }
 
 .navbar-toggle {
-    margin-top: 3.5rem;
+margin-top: 3.5rem;
 }
 
 .main-nav a:hover {
-    color: black;
+color: black;
 }
 
 .main-nav a:after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    border-bottom: 2px solid black;
-    transition: 0.4s;
+content: '';
+position: absolute;
+bottom: -3px;
+left: 0;
+width: 0;
+border-bottom: 2px solid black;
+transition: 0.4s;
 }
 
 .main-nav-active-link {
-    border-bottom: 2px solid black;
+border-bottom: 2px solid black;
 }
 
 .main-nav a:hover:after {
-    width: 100%;
+width: 100%;
 }
 
 .nav-item {
-    padding: .5em .5em;
-    float: right;
+padding: .5em .5em;
+float: right;
 }
 
 .nav-link {
-    display: block;
-    padding: .5rem .5rem !important;
+display: block;
+padding: .5rem .5rem !important;
 }
 
 .logo {
-    width: auto;
+width: auto;
 }
 
 @media screen and (max-width: 600px) {
-    .logo {
-        height: 60px;
-    }
+.logo {
+    height: 60px;
+}
 }
 
 @media screen and (min-width: 601px) {
-    .logo {
-        height: 70px;
-    }
+.logo {
+    height: 70px;
+}
 }
 
 .image-link {
-    width: 376px;
-    text-align:center;
-    padding:2px;
+width: 376px;
+text-align:center;
+padding:2px;
 }
