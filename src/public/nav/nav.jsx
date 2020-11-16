@@ -9,7 +9,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 const Navigation = (props) => {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [route, setRoute] = useState('');
-  const [hover, setHover] = useState(false);
+  const [hoverW, setHoverW] = useState(false);
+  const [hoverO, setHoverO] = useState(false);
 
   useEffect(() => {
     setRoute(props.location.pathname);
@@ -28,12 +29,13 @@ const Navigation = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleHover = (show) => {
-    setHover(show);
+  const handleHover = (show, funcName) => {
+    funcName(show);
   };
 
   const changeHash = (hash, event) => {
-    setHover(false);
+    setHoverW(false);
+    setHoverO(false);
     if (hash) window.location.hash = hash;
   };
 
@@ -48,14 +50,24 @@ const Navigation = (props) => {
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <div className="justify-content-end navbar-collapse collapse show" id="basic-navbar-nav">
               <ul className="main-nav nav">
-                <li className="nav-item">
-                  <Nav.Link href="/home#Overview" className={`${route === '/home#Overview' ? 'main-nav-active-link' : ''}`}>Overview</Nav.Link>
+                <li className="nav-item" onMouseEnter={() => handleHover(true, setHoverO)} onMouseLeave={() => handleHover(false, setHoverO)}>
+                  <Dropdown show={hoverO} onSelect={changeHash}>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      <Nav.Link href="/home#Overview" className={`${route === '/home#Overview' ? 'main-nav-active-link' : ''}`}>Overview</Nav.Link>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={(e) => changeHash("Overview-OverviewDetail", e)}>Big Picture</Dropdown.Item>
+                      <Dropdown.Item onClick={(e) => changeHash("Overview-OurTeam", e)}>Our Guides</Dropdown.Item>
+                      <Dropdown.Item onClick={(e) => changeHash("Overview-FAQ", e)}>FAQ's</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </li>
                 <li className="nav-item">
                   <Nav.Link href="/home#Itinerary" className={`${route === '/home#Itinerary' ? 'main-nav-active-link' : ''}`}>Itinerary</Nav.Link>
                 </li>
-                <li className="nav-item" onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
-                  <Dropdown show={hover} onSelect={changeHash}>
+                <li className="nav-item" onMouseEnter={() => handleHover(true, setHoverW)} onMouseLeave={() => handleHover(false, setHoverW)}>
+                  <Dropdown show={hoverW} onSelect={changeHash}>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                       <Nav.Link href="/home#WhatsIncluded" className={`${route === '/home#WhatsIncluded' ? 'main-nav-active-link' : ''}`}>What's Included</Nav.Link>
                     </Dropdown.Toggle>

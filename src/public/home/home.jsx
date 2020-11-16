@@ -49,7 +49,7 @@ function Home(props) {
       } else if (window.location.hash.indexOf('#WhatsIncluded') > -1) {
         switchTab({component: <WhatsIncluded/>, name: 'WhatsIncluded'});
         window.scrollTo(0, y)
-      } else if (window.location.hash === '#Overview') {
+      } else if (window.location.hash.indexOf('#Overview') > -1) {
         switchTab({component: <Overview/>, name: 'Overview'});
       } else if (window.location.hash === '#DatesPricing') {
         switchTab({component: <DatesPricing/>, name: 'DatesPricing'});

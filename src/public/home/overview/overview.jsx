@@ -39,13 +39,13 @@ function Overview() {
     if (tabElements) {
       const y = tabElements.scrollHeight - 25;
 
-      if (hash === '#overview-detail') {
-        switchTab({component: <Overview/>, name: 'Overview'});
+      if (hash === '#Overview-OverviewDetail') {
+        switchTab({component: <OverviewDetail/>, name: 'OverviewDetail'});
         window.scrollTo(0, y)
-      } else if (hash === '#our-team') {
+      } else if (hash === '#Overview-OurTeam') {
         switchTab({component: <OurTeam/>, name: 'OurTeam'});
         window.scrollTo(0, y)
-      } else if (hash === '#faq') {
+      } else if (hash === '#Overview-FAQ') {
         switchTab({component: <FAQ/>, name: 'FAQ'});
         window.scrollTo(0, y)
       }
