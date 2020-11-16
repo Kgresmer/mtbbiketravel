@@ -516,8 +516,11 @@ function DatesPricing() {
         {showPrices()}
         {showBookModal()}
       </div>
-      <div style={{alignSelf: 'center'}}>
-        <p>Travel Insurance is mandatory for this trip. For more <Link to={'home#WhatsIncluded-whats-not'}>info click here.</Link></p>
+      <div style={{alignSelf: 'center', padding: '0 5%'}}>
+        <p><span style={{fontWeight: 'bold'}}>Deposits</span> – 50% deposit is required at time of booking.
+          Given all the uncertainty around travel we are offering fully refundable deposits up to 60 days before departure.
+          Payment in full is due 60 days before departure.</p>
+        <p style={{marginTop: '2%'}}>Travel Insurance is mandatory for this trip. For more <Link to={'home#WhatsIncluded-whats-not'}>info click here.</Link></p>
       </div>
     </div>
   )
