@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import './whatsIncluded.css';
-import { useLocation } from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 
 export default function OverviewWhatsIncluded() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [tab, setTab] = useState({component: <WhatsIncludedTab/>, name: 'WhatsIncluded'});
-  const { hash } = useLocation();
+  const {hash} = useLocation();
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -54,9 +54,11 @@ export default function OverviewWhatsIncluded() {
             <h3>What's Included</h3>
             <p>There is nothing like the relaxed atmosphere and adventure of the small-town Swiss culture in the Alps.
               From the minute you get on the train in Zurich, every detail of trip is about enjoying the moment.
-              We encourage non-riding spouses/partners to join us on the trip.  There are lots of things to do and
-              see while the group is out on the riding excursions including visiting the only <a href="https://www.nationalpark.ch/de/">National Park</a> in
-              Switzerland or just exploring the <a href="https://www.skiresort.info/ski-resort/scuol-motta-naluns/">local mountain resort</a> in Scuol. </p>
+              We encourage non-riding spouses/partners to join us on the trip. There are lots of things to do and
+              see while the group is out on the riding excursions including visiting the only <a
+                href="https://www.nationalpark.ch/de/">National Park</a> in
+              Switzerland or just exploring the <a href="https://www.skiresort.info/ski-resort/scuol-motta-naluns/">local
+                mountain resort</a> in Scuol. </p>
           </div>
         </div>
         <div className="flex-row">
@@ -79,7 +81,8 @@ export default function OverviewWhatsIncluded() {
           </div>
           <div className="tab-heading-offset"></div>
         </div>
-        <div className={`${tab.name === 'Bikes' ? 'inner-tab-content-section-bikes' : 'inner-tab-content-section-w'} background-color-selected`}>
+        <div
+          className={`${tab.name === 'Bikes' ? 'inner-tab-content-section-bikes' : 'inner-tab-content-section-w'} background-color-selected`}>
           {tab.component}
         </div>
       </div>
@@ -114,7 +117,8 @@ function WhatsIncludedTab(props) {
               <li>Shuttle transportation to riding destinations throughout the week</li>
               <li>Local Swiss guides that know every twist & turn for each adventure</li>
               <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and flexible
-                attitude, as well as the local connections that our guides have make each and every trip spectacular.</li>
+                attitude, as well as the local connections that our guides have make each and every trip spectacular.
+              </li>
             </ul>
           </div>
           <div className="flex-1">
@@ -140,7 +144,8 @@ function WhatsIncludedTab(props) {
               <li>Shuttle transportation to riding destinations throughout the week</li>
               <li>Local Swiss guides that know every twist & turn for each adventure</li>
               <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and flexible
-                attitude, as well as the local connections that our guides have make each and every trip spectacular.</li>
+                attitude, as well as the local connections that our guides have make each and every trip spectacular.
+              </li>
               <li>Hearty Daily Breakfast – Very Swiss!</li>
               <li>First & last night’s dinner including the famous Werni BBG at the Bike Villa</li>
               <li>Bike rental for week including an e-bike rental on day-6</li>
@@ -162,8 +167,7 @@ function WhatsIncludedTab(props) {
   )
 }
 
-function WhatsNot(props) {
-  // const {data} = props;
+function WhatsNot() {
 
   return (
     <>
@@ -173,7 +177,27 @@ function WhatsNot(props) {
             <li>Airfare to Zürich</li>
             <li>Not all meals – We encourage you to explore the local cuisine</li>
             <li>Drinks</li>
-            <li>Travel Insurance – required</li>
+            <li>Travel insurance is mandatory for the trip. It’s not expensive and simple to purchase. <a href='https://www.worldnomads.com/usa/travel-insurance' >World Nomads </a>
+              offer a policy for ~$70 to cover everything listed below.
+              <ul>
+                <li>Any trip insurance should cover the following:</li>
+                <ul style={{listStyleType: 'lower-alpha'}}>
+                  <li>cover evacuation (e.g. air evacuation) and hospital costs while in other countries</li>
+                  <li>cover mountain biking trips (some policies include mountain biking in their list of 'extreme'
+                  sports that are not covered).</li>
+                </ul>
+                <li>We strongly recommend also getting insurance that covers the following:</li>
+                <ul>
+                  <li>Trip cancellation up to 100% of your trip cost</li>
+                  <li>Equipment protection for delay, loss, theft and damage (if traveling with your bike/expensive
+                    equipment)
+                  </li>
+                  <li>Trip interruption up to 100% of trip cost</li>
+                  <li>Medical expenses up to $50,000</li>
+                  <li>Emergency medical transportation</li>
+                </ul>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -204,13 +228,23 @@ function Bikes(props) {
         <div className="flex-row">
           <div className="bike-section">
             <img className="" src="./bike-none.jpeg" alt="non electric mountain bike"/>
-            <p>Trek Trail Mountain Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy 7</a></p>
-            <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain boxes.</p>
+            <p>Trek Trail Mountain Bike <a
+              href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy
+              7</a></p>
+            <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance
+              features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm
+              RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain
+              boxes.</p>
           </div>
           <div className="bike-section right-section">
             <img className="" src="./bike-ele.jpeg" alt="electric mountain bike"/>
-            <p>Trek Long Travel E-Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly LT 9.7</a></p>
-            <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you better balance and protection on the trail, great looks, and exceptional ease of use.</p>
+            <p>Trek Long Travel E-Bike <a
+              href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly
+              LT 9.7</a></p>
+            <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a
+              high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and
+              down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you
+              better balance and protection on the trail, great looks, and exceptional ease of use.</p>
           </div>
         </div>
       )
@@ -219,11 +253,21 @@ function Bikes(props) {
         <div className="flex-row">
           <div className="bike-section">
             <img className="" src="./bike-none.jpeg" alt="non electric mountain bike"/>
-            <p>Trek Trail Mountain Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy 7</a></p>
-            <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain boxes.</p>
+            <p>Trek Trail Mountain Bike <a
+              href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy
+              7</a></p>
+            <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance
+              features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm
+              RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain
+              boxes.</p>
             <img className="" src="./bike-ele.jpeg" alt="electric mountain bike"/>
-            <p>Trek Long Travel E-Bike <a href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly LT 9.7</a></p>
-            <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you better balance and protection on the trail, great looks, and exceptional ease of use.</p>
+            <p>Trek Long Travel E-Bike <a
+              href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly
+              LT 9.7</a></p>
+            <p>Powerfly LT 9.7 is an OCLV Mountain Carbon electric mountain bike with long-travel suspension and a
+              high-end parts spec. This high-performance e-MTB is built to take you into the wild unknown to rip up and
+              down whatever mountains you'll find. Plus, Trek's Removable Integrated Battery (RIB) system gives you
+              better balance and protection on the trail, great looks, and exceptional ease of use.</p>
           </div>
         </div>
       )
@@ -262,12 +306,15 @@ function Gear(props) {
             <h6>Suggested Bike & Gear list</h6>
             <ul>
               <li>Trek Remedy full carbon 150mm travel bike provided for the week. A Trek Superfly E-
-                bike will be provided for day 6.</li>
+                bike will be provided for day 6.
+              </li>
               <li>You’re welcome to ship your own bike to Scuol. Approximate round trip shipping is
                 $600. Full assembly and re-packing are included should you decide to ship your own
-                bike.</li>
+                bike.
+              </li>
               <li>Pedals (optional) - Shimano pedals will be provided. Bring your own if you have a
-                favorite</li>
+                favorite
+              </li>
               <li>Helmet will be provided but it is recommended you bring your own</li>
               <li>Osprey Hydration Pack. A brand-new Osprey hydration pack will be provided</li>
               <li>Bike Cloths including wind &amp; rain protection</li>
@@ -296,12 +343,15 @@ function Gear(props) {
             <h6>Suggested Bike & Gear list</h6>
             <ul>
               <li>Trek Remedy full carbon 150mm travel bike provided for the week. A Trek Superfly E-
-                bike will be provided for day 6.</li>
+                bike will be provided for day 6.
+              </li>
               <li>You’re welcome to ship your own bike to Scuol. Approximate round trip shipping is
                 $600. Full assembly and re-packing are included should you decide to ship your own
-                bike.</li>
+                bike.
+              </li>
               <li>Pedals (optional) - Shimano pedals will be provided. Bring your own if you have a
-                favorite</li>
+                favorite
+              </li>
               <li>Helmet will be provided but it is recommended you bring your own</li>
               <li>Osprey Hydration Pack. A brand-new Osprey hydration pack will be provided</li>
               <li>Bike Cloths including wind &amp; rain protection</li>

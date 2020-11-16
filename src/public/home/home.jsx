@@ -4,7 +4,7 @@ import './home.css';
 import Itinerary from "./itinerary/Itinerary";
 import WhatsIncluded from "./whatsIncluded/whatsIncluded";
 import Overview from "./overview/overview";
-import {withRouter} from "react-router-dom";
+import {withRouter, useLocation} from "react-router-dom";
 import DatesPricing from "./DatesPricing/datesPricing";
 import Carousel from "nuka-carousel";
 
@@ -38,6 +38,7 @@ function Home(props) {
     document.title = "MTN Bike Travel, Cycling Adventure in Switzerland"
   }, []);
 
+
   useEffect(() => {
     const tabElements = document.getElementById('Overview');
     if (tabElements) {
@@ -56,7 +57,7 @@ function Home(props) {
         window.scrollTo(0, y)
       }
     }
-  }, [location.hash]);
+  }, [window.location.hash]);
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -85,6 +86,7 @@ function Home(props) {
 
   const switchTab = (selectedTab) => {
     setTab(selectedTab);
+    window.history.pushState(null, null, '#' + selectedTab.name);
   };
 
   const displayTabSelectors = () => {

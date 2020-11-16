@@ -10,6 +10,7 @@ import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MaskedInput from 'react-text-mask'
+import {Link} from "react-router-dom";
 
 
 function DatesPricing() {
@@ -510,10 +511,15 @@ function DatesPricing() {
   };
 
   return (
-    <>
-      {showPrices()}
-      {showBookModal()}
-    </>
+    <div className="flex-column" style={{width: '100%'}}>
+      <div>
+        {showPrices()}
+        {showBookModal()}
+      </div>
+      <div style={{alignSelf: 'center'}}>
+        <p>Travel Insurance is mandatory for this trip. For more <Link to={'home#WhatsIncluded-whats-not'}>info click here.</Link></p>
+      </div>
+    </div>
   )
 }
 
