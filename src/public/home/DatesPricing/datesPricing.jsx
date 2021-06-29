@@ -33,6 +33,22 @@ function DatesPricing() {
   // const handleDateChange = date => {
   //   setSelectedDate(date);
   // };
+  const week1 = {
+    week: "Week One",
+    dates: "Late June 2022"
+  };
+  const week2 = {
+    week: "Week Two",
+    dates: "Early July 2022"
+  };
+  const week3 = {
+    week: "Week Three",
+    dates: "Early September 2022"
+  };
+  const week4 = {
+    week: "Week Four",
+    dates: "Mid September 2022"
+  };
 
   useEffect(() => {
     if (!typeof window === 'object') {
@@ -119,22 +135,6 @@ function DatesPricing() {
 
   const showFormModal = (week) => {
     setShowModal(true);
-    const week1 = {
-      week: "Week One",
-      dates: "6/26/21 through 7/2/21"
-    };
-    const week2 = {
-      week: "Week Two",
-      dates: "7/3/21 through 7/9/21"
-    };
-    const week3 = {
-      week: "Week Three",
-      dates: "9/4/21 through 9/10/21"
-    };
-    const week4 = {
-      week: "Week Four",
-      dates: "9/11/21 through 9/17/21"
-    };
     switch (week) {
       case 'week1':
         setModalData(week1);
@@ -166,33 +166,33 @@ function DatesPricing() {
             </div>
             <div className="pricing-row">
               <p>Week #1</p>
-              <p>6/26/21 through 7/2/21</p>
-              <p>$4,000</p>
-              <p>$3,000</p>
+              <p>{week1.dates}</p>
+              <p>TBD</p>
+              <p>TBD</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week1')}/></p>
             </div>
             <div className="pricing-row">
               <p>Week #2</p>
-              <p>7/3/21 through 7/9/21</p>
-              <p>$4,000</p>
-              <p>$3,000</p>
+              <p>{week2.dates}</p>
+              <p>TBD</p>
+              <p>TBD</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week2')}/></p>
             </div>
             <div className="pricing-row">
               <p>Week #3</p>
-              <p>9/4/21 through 9/10/21</p>
-              <p>$4,000</p>
-              <p>$3,000</p>
+              <p>{week3.dates}</p>
+              <p>TBD</p>
+              <p>TBD</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week3')}/></p>
             </div>
             <div className="pricing-row">
               <p>Week #4</p>
-              <p>9/11/21 through 9/17/21</p>
-              <p>$4,000</p>
-              <p>$3,000</p>
+              <p>{week4.dates}</p>
+              <p>TBD</p>
+              <p>TBD</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week4')}/></p>
             </div>
@@ -205,28 +205,28 @@ function DatesPricing() {
           <div className="flex-column">
             <h5>Week #1</h5>
             <div className="pricing-row">
-              <p>6/26/21 through 7/2/21</p>
+              <p>{week1.dates}</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP"
                         onClick={() => showFormModal('week1')}/></p>
             </div>
             <h5>Week #2</h5>
             <div className="pricing-row">
-              <p>7/3/21 through 7/9/21</p>
+              <p>{week2.dates}</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP"
                         onClick={() => showFormModal('week2')}/></p>
             </div>
             <h5>Week #3</h5>
             <div className="pricing-row">
-              <p>9/4/21 through 9/10/21</p>
+              <p>{week3.dates}</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP"
                         onClick={() => showFormModal('week3')}/></p>
             </div>
             <h5>Week #4</h5>
             <div className="pricing-row">
-              <p>9/11/21 through 9/17/21</p>
+              <p>{week4.dates}</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP"
                         onClick={() => showFormModal('week4')}/></p>
@@ -237,8 +237,8 @@ function DatesPricing() {
               <p>Non-riding Spouse/Partner</p>
             </div>
             <div className="pricing-row">
-              <p>$4,000</p>
-              <p>$3,000</p>
+              <p>TBD</p>
+              <p>TBD</p>
             </div>
           </div>
         </div>
