@@ -241,7 +241,7 @@ function FAQ() {
           </ul>
         </li>
         <li>
-          Trek Remedy rental bikes are included in the price but can I bring my own bike?
+          Trek e-bikes are included in the price but can I bring my own bike?
           <ul className='inner-list'>
             <li>
               Yes! We can arrange to ship your bike at additional cost. Our professional staff will build it and have it

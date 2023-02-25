@@ -163,7 +163,7 @@ function Home(props) {
     <div>
       <Carousel defaultControlsConfig={{nextButtonText: '>', prevButtonClassName: 'carArrow', nextButtonClassName: 'carArrow', prevButtonText: '<'}} swiping={true} >
         {data.map(num => <section key={num} className="hero-section" alt="mountain bike trail switzerland" style={{backgroundImage: `url(https://mtnbiketravel-gallery.s3.us-east-2.amazonaws.com/full-${num}.jpg)`}} id={`home-ban-${num}`}>
-          <div className="image-caption">Unique mountain bike adventures organized by local experts</div>
+          <div className="image-caption">Unique electric mountain bike adventures organized by local experts</div>
         </section>)}
       </Carousel>
       <main className="">

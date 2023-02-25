@@ -15,7 +15,7 @@ const Footer = () => {
             <p><a href="https://www.instagram.com/mtnbiketravel/" className="plain-link"><InstagramIcon/> @MtnBikeTravel</a></p>
           </div>
           <div>
-            Copyright 2020
+            Copyright 2023
           </div>
         </div>
       </footer>

@@ -124,9 +124,8 @@ function WhatsIncludedTab(props) {
           <div className="flex-1">
             <ul>
               <li>Hearty Daily Breakfast – Very Swiss!</li>
-              <li>First & last night’s dinner including the famous Werni BBG at the Bike Villa</li>
-              <li>Bike rental for week including an e-bike rental on day-6</li>
-              <li>Osprey Raptor hydration pack to keep</li>
+              <li>First & last night’s dinner including the famous Werni BBQ at the Bike Villa</li>
+              <li>Bike rental for the week</li>
               <li>Photos – A SmugMug gallery of the week in photos</li>
               <li>Lift tickets at resorts throughout the week as needed</li>
               <li>Day 4 morning rafting trip on one of the most exciting white-water rivers in Europe</li>
@@ -147,9 +146,8 @@ function WhatsIncludedTab(props) {
                 attitude, as well as the local connections that our guides have make each and every trip spectacular.
               </li>
               <li>Hearty Daily Breakfast – Very Swiss!</li>
-              <li>First & last night’s dinner including the famous Werni BBG at the Bike Villa</li>
-              <li>Bike rental for week including an e-bike rental on day-6</li>
-              <li>Osprey Raptor hydration pack for you to keep</li>
+              <li>First & last night’s dinner including the famous Werni BBQ at the Bike Villa</li>
+              <li>Bike rental for the week</li>
               <li>Photos – A SmugMug gallery of the week in photos</li>
               <li>Lift tickets at resorts throughout the week as needed</li>
               <li>Day 4 morning rafting trip on one of the most exciting white-water rivers in Europe</li>
@@ -226,16 +224,6 @@ function Bikes(props) {
     if (windowSize > 768) {
       return (
         <div className="flex-row">
-          <div className="bike-section">
-            <img className="" src="./bike-none.jpeg" alt="non electric mountain bike"/>
-            <p>Trek Trail Mountain Bike <a
-              href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy
-              7</a></p>
-            <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance
-              features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm
-              RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain
-              boxes.</p>
-          </div>
           <div className="bike-section right-section">
             <img className="" src="./bike-ele.jpeg" alt="electric mountain bike"/>
             <p>Trek Long Travel E-Bike <a
@@ -252,14 +240,6 @@ function Bikes(props) {
       return (
         <div className="flex-row">
           <div className="bike-section">
-            <img className="" src="./bike-none.jpeg" alt="non electric mountain bike"/>
-            <p>Trek Trail Mountain Bike <a
-              href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Remedy
-              7</a></p>
-            <p>Remedy 7 is a mountain bike built for mountain towns. Our best-value Remedy has all the performance
-              features you could want for a ridiculously fun time on the most technical trails. A long travel 160mm
-              RockShox fork, 150mm rear suspension, dropper post, and an 12-speed drivetrain check all the all-mountain
-              boxes.</p>
             <img className="" src="./bike-ele.jpeg" alt="electric mountain bike"/>
             <p>Trek Long Travel E-Bike <a
               href="https://www.trekbikes.com/us/en_US/bikes/mountain-bikes/trail-mountain-bikes/remedy/remedy-7/p/28509/?colorCode=teal">Powerfly
@@ -297,7 +277,6 @@ function Gear(props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // const {data} = props;
   const showGearInfo = () => {
     if (windowSize > 768) {
       return (
@@ -305,8 +284,7 @@ function Gear(props) {
           <div className="flex-1">
             <h6>Suggested Bike & Gear list</h6>
             <ul>
-              <li>Trek Remedy full carbon 150mm travel bike provided for the week. A Trek Superfly E-
-                bike will be provided for day 6.
+              <li>A Trek powerfly e-bike will be provided.
               </li>
               <li>You’re welcome to ship your own bike to Scuol. Approximate round trip shipping is
                 $600. Full assembly and re-packing are included should you decide to ship your own
@@ -316,7 +294,6 @@ function Gear(props) {
                 favorite
               </li>
               <li>Helmet will be provided but it is recommended you bring your own</li>
-              <li>Osprey Hydration Pack. A brand-new Osprey hydration pack will be provided</li>
               <li>Bike Cloths including wind &amp; rain protection</li>
               <li>Cool weather gear</li>
               <li>Bike computer</li>
@@ -342,8 +319,7 @@ function Gear(props) {
           <div className="flex-1">
             <h6>Suggested Bike & Gear list</h6>
             <ul>
-              <li>Trek Remedy full carbon 150mm travel bike provided for the week. A Trek Superfly E-
-                bike will be provided for day 6.
+              <li>A Trek powerfly e-bike will be provided.
               </li>
               <li>You’re welcome to ship your own bike to Scuol. Approximate round trip shipping is
                 $600. Full assembly and re-packing are included should you decide to ship your own
@@ -353,7 +329,6 @@ function Gear(props) {
                 favorite
               </li>
               <li>Helmet will be provided but it is recommended you bring your own</li>
-              <li>Osprey Hydration Pack. A brand-new Osprey hydration pack will be provided</li>
               <li>Bike Cloths including wind &amp; rain protection</li>
               <li>Cool weather gear</li>
               <li>Bike computer</li>
