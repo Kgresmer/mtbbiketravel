@@ -116,7 +116,7 @@ function WhatsIncludedTab(props) {
               <li>6 Nights of deluxe lodging in Scuol</li>
               <li>Shuttle transportation to riding destinations throughout the week</li>
               <li>Local Swiss guides that know every twist & turn for each adventure</li>
-              <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and flexible
+              <li>Local guide to provide intimate knowledge, support, and camaraderie. The service, knowledge, passion, fun and flexible
                 attitude, as well as the local connections that our guides have make each and every trip spectacular.
               </li>
             </ul>
@@ -124,8 +124,8 @@ function WhatsIncludedTab(props) {
           <div className="flex-1">
             <ul>
               <li>Hearty Daily Breakfast – Very Swiss!</li>
-              <li>First & last night’s dinner including the famous Werni BBQ at the Bike Villa</li>
-              <li>Bike rental for the week</li>
+              <li>All dinners included. But of course, you are welcome to explore local cuisine on your own.</li>
+              <li>E-Bike rental for the week</li>
               <li>Photos – A SmugMug gallery of the week in photos</li>
               <li>Lift tickets at resorts throughout the week as needed</li>
               <li>Day 4 morning rafting trip on one of the most exciting white-water rivers in Europe</li>
@@ -142,12 +142,12 @@ function WhatsIncludedTab(props) {
               <li>6 Nights of deluxe lodging in Scuol</li>
               <li>Shuttle transportation to riding destinations throughout the week</li>
               <li>Local Swiss guides that know every twist & turn for each adventure</li>
-              <li>Each ride has a minimum of one guide per 7 riders. The service, knowledge, passion, fun and flexible
+              <li>Local guide to provide intimate knowledge, support, and camaraderie. The service, knowledge, passion, fun and flexible
                 attitude, as well as the local connections that our guides have make each and every trip spectacular.
               </li>
               <li>Hearty Daily Breakfast – Very Swiss!</li>
-              <li>First & last night’s dinner including the famous Werni BBQ at the Bike Villa</li>
-              <li>Bike rental for the week</li>
+              <li>All dinners included. But of course, you are welcome to explore local cuisine on your own.</li>
+              <li>E-Bike rental for the week</li>
               <li>Photos – A SmugMug gallery of the week in photos</li>
               <li>Lift tickets at resorts throughout the week as needed</li>
               <li>Day 4 morning rafting trip on one of the most exciting white-water rivers in Europe</li>
@@ -173,8 +173,7 @@ function WhatsNot() {
         <div className="flex-1">
           <ul>
             <li>Airfare to Zürich</li>
-            <li>Not all meals – We encourage you to explore the local cuisine</li>
-            <li>Drinks</li>
+            <li>We suggest a tip for your guides and gracious hosts. While Swiss francs preferred, there are other options to make tipping easier. Our guides accept gratuity via PayPal, Venmo or our staff can help before or after the trip.</li>
             <li>Travel insurance is mandatory for the trip. It’s not expensive and simple to purchase. <a href='https://www.worldnomads.com/usa/travel-insurance' >World Nomads </a>
               offer a policy for ~$70 to cover everything listed below.
               <ul>

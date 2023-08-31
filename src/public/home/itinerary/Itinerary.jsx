@@ -101,7 +101,7 @@ for you`
   },
   {
     day: 6,
-    title: 'E-bike Day - Tour de Scuol',
+    title: 'Tour de Scuol',
     showStats: true,
     rideDur: "4 - 5 Hours",
     body: `We will spend the day exploring the beautiful Engiadina valley on ebikes. Nothing like climbing 4k

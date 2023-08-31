@@ -31,11 +31,11 @@ function DatesPricing() {
 
   const week1 = {
     week: "Week One",
-    dates: "Aug 26th - Sept 1st"
+    dates: "8/24/24 - 8/30/24"
   };
   const week2 = {
     week: "Week Two",
-    dates: "Sept 2nd - Sept 8th"
+    dates: "8/31/24 thru 9/6/24"
   };
 
   useEffect(() => {
@@ -149,16 +149,16 @@ function DatesPricing() {
             <div className="pricing-row">
               <p>Week #1</p>
               <p>{week1.dates}</p>
-              <p>TBD</p>
-              <p>TBD</p>
+              <p>$4000</p>
+              <p>$3000</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week1')}/></p>
             </div>
             <div className="pricing-row">
               <p>Week #2</p>
               <p>{week2.dates}</p>
-              <p>TBD</p>
-              <p>TBD</p>
+              <p>$4000</p>
+              <p>$3000</p>
               <p className="available-date">Available</p>
               <p><input className="date-one-button" type="button" value="BOOK THIS TRIP" onClick={() => showFormModal('week2')}/></p>
             </div>
